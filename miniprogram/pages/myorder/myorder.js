@@ -153,11 +153,10 @@ Page({
     let goodsInfo = ''
     order.goods.forEach(item => {
       const skuName = item.skuName && item.skuName !== '默认规格' ? `（${item.skuName}）` : ''
-      goodsInfo += `${item.dishName || item.goodsName || '未知菜品'}${skuName} x${item.count} ¥${item.price}\n`
+      goodsInfo += `${item.dishName || item.goodsName || '未知菜品'}${skuName} x${item.count}\n`
     })
 
-    let content = `订单商品：\n${goodsInfo}\n合计：¥${order.totalPrice}`
-    content += `\n实付：¥${order.finalPrice}\n状态：${this.getOrderStatusText(order)}`
+    let content = `订单商品：\n${goodsInfo}\n状态：${this.getOrderStatusText(order)}`
     if (order.remark) {
       content += `\n备注：${order.remark}`
     }

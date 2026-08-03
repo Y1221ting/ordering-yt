@@ -140,11 +140,6 @@
 
     <view class="action-bar">
       <view class="action-summary">
-        <view class="bottom-price">
-          <text class="bottom-price-label">合计</text>
-          <text class="currency">¥</text>
-          <text class="bottom-price-value">{{totalPriceText}}</text>
-        </view>
         <view class="stepper">
           <view
             class="stepper-button {{quantity <= 1 ? 'disabled' : ''}}"

@@ -29,8 +29,6 @@ Page({
     allGoodsEmpty: false,
     cart: {},
     cartCount: 0,
-    cartTotalPrice: 0,
-    cartTotalPriceText: '0.00',
     showCart: false,
     userInfo: null,
     shopName: DEFAULT_SHOP_SETTINGS.shopName,
@@ -40,7 +38,6 @@ Page({
     selectedSkuId: '',
     selectedTags: {},
     modalDishCount: 1,
-    modalTotalPrice: 0,
     showAuthModal: false,
     searchVisible: false,
     searchKeyword: '',
@@ -741,8 +738,7 @@ Page({
       currentDish: dish,
       selectedSkuId: sku.id,
       selectedTags: this.buildInitialTags(dish),
-      modalDishCount: 1,
-      modalTotalPrice: sku.price.toFixed(2)
+      modalDishCount: 1
     })
   },
 
@@ -958,8 +954,7 @@ Page({
     if (!sku) return
 
     this.setData({
-      selectedSkuId: skuId,
-      modalTotalPrice: (sku.price * this.data.modalDishCount).toFixed(2)
+      selectedSkuId: skuId
     })
   },
 
@@ -1011,19 +1006,13 @@ Page({
       currentDish: null,
       selectedSkuId: '',
       selectedTags: {},
-      modalDishCount: 1,
-      modalTotalPrice: 0
+      modalDishCount: 1
     })
   },
 
   updateModalTotal(count) {
-    const sku = this.data.currentDish
-      ? (this.data.currentDish.enabledSkus || []).find(item => item.id === this.data.selectedSkuId)
-      : null
-    const price = sku ? sku.price : 0
     this.setData({
-      modalDishCount: count,
-      modalTotalPrice: (price * count).toFixed(2)
+      modalDishCount: count
     })
   },
 
@@ -1186,13 +1175,10 @@ Page({
 
   updateCart(cart) {
     let totalCount = 0
-    let totalPrice = 0
 
     for (let cartKey in cart) {
       if (cart[cartKey] && cart[cartKey].count) {
-        const unitPrice = cart[cartKey].sku ? cart[cartKey].sku.price : cart[cartKey].info.price
         totalCount += cart[cartKey].count
-        totalPrice += unitPrice * cart[cartKey].count
       }
     }
 
@@ -1202,8 +1188,6 @@ Page({
     this.setData({
       cart,
       cartCount: totalCount,
-      cartTotalPrice: totalPrice,
-      cartTotalPriceText: totalPrice.toFixed(2),
       goodsSections,
       showCart: totalCount > 0 ? this.data.showCart : false
     })
@@ -1232,8 +1216,7 @@ Page({
   navigateToSettle() {
     try {
       wx.setStorageSync('settleCartData', {
-        cart: this.data.cart,
-        totalPrice: this.data.cartTotalPrice
+        cart: this.data.cart
       })
 
       wx.navigateTo({

@@ -48,7 +48,6 @@
                 <van-tag type="success" wx:for="{{goods.tags}}" wx:key="index" wx:for-item="tagVal">{{tagVal}}</van-tag>
               </view>
               <view class="goods-detail">
-                <text class="goods-price">¥{{goods.price}}</text>
                 <text class="goods-count">x{{goods.count}}</text>
               </view>
             </view>
@@ -66,13 +65,8 @@
             备注：{{item.remark}}
           </view>
         </view>
-        <view class="order-actions">
-          <view class="order-price">
-            <text class="price-label">实付：</text>
-            <text class="price-num">¥{{item.finalPrice}}</text>
-          </view>
-          <!-- 当前不需要详情、取消等按钮，保留结构方便后续扩展 -->
-        </view>
+        <!-- 当前不需要详情、取消等按钮，保留结构方便后续扩展 -->
+      </view>
       </view>
     </view>
 

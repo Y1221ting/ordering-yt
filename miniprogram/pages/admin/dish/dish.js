@@ -1,8 +1,7 @@
 // pages/admin/dish/dish.js
 const db = wx.cloud.database()
 
-const MAX_PRICE = 10000
-const MAX_DISH_IMAGES = 9
+const MAX_DISH_IMAGES = 3
 const DEFAULT_SKU_NAME = '默认规格'
 
 function makeId(prefix) {
@@ -21,7 +20,6 @@ function createSku(options = {}) {
   return {
     id: options.id || makeId('sku'),
     name: options.name !== undefined ? options.name : '',
-    price: normalizeNumber(options.price, ''),
     status: options.status === 0 ? 0 : 1,
     sort: Number(options.sort) || 0
   }
@@ -33,7 +31,6 @@ function normalizeSkus(dish = {}) {
     : [createSku({
       id: 'default',
       name: DEFAULT_SKU_NAME,
-      price: dish.price,
       status: 1,
       sort: 0
     })]
@@ -90,7 +87,6 @@ Page({
     currentDish: {
       _id: '',
       name: '',
-      price: '',
       description: '',
       categoryId: '',
       categoryName: '',
@@ -341,17 +337,12 @@ Page({
   normalizeDishForView(dish) {
     const skus = normalizeSkus(dish)
     const images = normalizeDishImages(dish)
-    const enabledSkus = skus.filter(sku => sku.status !== 0)
-    const baseSku = (enabledSkus.length > 0 ? enabledSkus : skus)
-      .slice()
-      .sort((a, b) => Number(a.price || 0) - Number(b.price || 0))[0]
 
     return {
       ...dish,
       skus,
       images,
       image: images[0] || '',
-      price: Number(baseSku.price || dish.price || 0),
       skuSummary: skus.length > 1
         ? `${skus.length}个规格`
         : (skus[0] && skus[0].name !== DEFAULT_SKU_NAME ? skus[0].name : '')
@@ -451,7 +442,6 @@ Page({
       currentDish: {
         _id: '',
         name: '',
-        price: '',
         description: '',
         categoryId: this.data.currentCategoryId,
         categoryName: currentCategory ? currentCategory.name : '',
@@ -544,31 +534,6 @@ Page({
     })
   },
 
-  sanitizePriceInput(value) {
-    if (value === '') {
-      return ''
-    }
-    const num = Number(value)
-    if (Number.isNaN(num)) {
-      return ''
-    }
-    if (num < 0) {
-      wx.showToast({
-        title: '价格不能为负数',
-        icon: 'none'
-      })
-      return 0
-    }
-    if (num > MAX_PRICE) {
-      wx.showToast({
-        title: `价格最高${MAX_PRICE}`,
-        icon: 'none'
-      })
-      return MAX_PRICE
-    }
-    return value
-  },
-
   updateSkuField(index, field, value) {
     const skus = clone(this.data.currentDish.skus || [])
     if (!skus[index]) return
@@ -609,10 +574,6 @@ Page({
     this.updateSkuField(e.currentTarget.dataset.index, 'name', e.detail.value)
   },
 
-  onSkuPriceInput(e) {
-    this.updateSkuField(e.currentTarget.dataset.index, 'price', this.sanitizePriceInput(e.detail.value))
-  },
-
   onSkuSortInput(e) {
     this.updateSkuField(e.currentTarget.dataset.index, 'sort', parseInt(e.detail.value, 10) || 0)
   },
@@ -627,7 +588,7 @@ Page({
 
     if (remainingCount <= 0) {
       wx.showToast({
-        title: '最多上传9张图片',
+        title: '最多上传3张图片',
         icon: 'none'
       })
       return
@@ -731,7 +692,6 @@ Page({
     const normalized = source.map((sku, index) => ({
       id: sku.id || makeId('sku'),
       name: String(sku.name || '').trim() || (isSingleSku ? DEFAULT_SKU_NAME : ''),
-      price: sku.price === '' || sku.price === undefined || sku.price === null ? NaN : Number(sku.price),
       status: sku.status === 0 ? 0 : 1,
       sort: Number(sku.sort) || index
     }))
@@ -740,12 +700,6 @@ Page({
       const sku = normalized[i]
       if (!sku.name) {
         return { error: `请输入第${i + 1}个规格名称` }
-      }
-      if (Number.isNaN(sku.price)) {
-        return { error: `请输入"${sku.name}"的售价` }
-      }
-      if (sku.price < 0 || sku.price > MAX_PRICE) {
-        return { error: `"${sku.name}"售价需在0-${MAX_PRICE}之间` }
       }
     }
 
@@ -813,10 +767,6 @@ Page({
       return
     }
 
-    const baseSku = skuResult.enabledSkus
-      .slice()
-      .sort((a, b) => Number(a.price || 0) - Number(b.price || 0))[0]
-
     try {
       wx.showLoading({ title: '保存中...' })
       const { _id, _openid, skuSummary, ...updateData } = currentDish
@@ -828,7 +778,6 @@ Page({
       updateData.image = dishImages[0]
       updateData.tags = Array.isArray(currentDish.tags) ? currentDish.tags : []
       updateData.skus = skuResult.skus
-      updateData.price = Number(baseSku.price.toFixed(2))
       delete updateData[['original', 'Price'].join('')]
       updateData.updateTime = new Date()
 

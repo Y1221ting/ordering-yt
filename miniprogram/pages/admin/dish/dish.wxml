@@ -135,11 +135,6 @@
                   <view class="status-dot"></view>
                   <text>{{item.status === 1 ? '可点' : '已下架'}}</text>
                 </view>
-                <view class="dish-price">
-                  <text class="price-symbol">¥</text>
-                  <text class="price-current">{{item.price}}</text>
-                  <text class="price-prefix" wx:if="{{item.skus && item.skus.length > 1}}">起</text>
-                </view>
               </view>
             </view>
           </view>
@@ -298,7 +293,7 @@
         <view class="form-item">
           <view class="form-label image-label">
             <view>菜品图片<text class="required-mark">*</text></view>
-            <text class="image-count">{{currentDish.images.length}}/9</text>
+            <text class="image-count">{{currentDish.images.length}}/3</text>
           </view>
           <view class="dish-image-grid">
             <view
@@ -323,7 +318,7 @@
             </view>
             <view
               class="dish-image-add"
-              wx:if="{{currentDish.images.length < 9}}"
+              wx:if="{{currentDish.images.length < 3}}"
               bindtap="chooseDishImage"
               hover-class="upload-pressed"
               aria-role="button"
@@ -335,7 +330,7 @@
         </view>
         <view class="form-item sku-form-item">
           <view class="form-label">
-            规格与价格<text class="required-mark">*</text>
+            规格<text class="required-mark">*</text>
           </view>
           <view class="sku-list">
             <view class="sku-card" wx:for="{{currentDish.skus}}" wx:key="id">
@@ -360,18 +355,6 @@
                     bindinput="onSkuNameInput"
                     data-index="{{index}}"
                     aria-label="规格 {{index + 1}} 名称"
-                  />
-                </view>
-                <view class="sku-field">
-                  <view class="sku-label">售价</view>
-                  <input
-                    class="form-input compact"
-                    type="digit"
-                    placeholder="0-10000"
-                    value="{{item.price}}"
-                    bindinput="onSkuPriceInput"
-                    data-index="{{index}}"
-                    aria-label="规格 {{index + 1}} 售价"
                   />
                 </view>
                 <view class="sku-field">

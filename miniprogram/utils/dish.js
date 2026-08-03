@@ -49,7 +49,7 @@ function normalizeImages(dish = {}) {
     }
   })
 
-  return images.slice(0, 9)
+  return images.slice(0, 3)
 }
 
 function normalizeDish(dish = {}) {

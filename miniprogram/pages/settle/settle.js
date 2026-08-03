@@ -5,8 +5,6 @@ const db = wx.cloud.database()
 Page({
   data: {
     orderGoods: [],
-    totalPrice: 0,
-    finalPrice: 0,
     remark: '',
     userInfo: null,
     submitting: false,
@@ -57,12 +55,9 @@ Page({
 
         const sku = item.sku || {
           id: 'default',
-          name: '默认规格',
-          price: item.info.price
+          name: '默认规格'
         }
-        const unitPrice = Number(sku.price || item.info.price || 0)
         const count = Number(item.count || 0)
-        const subtotal = (unitPrice * count).toFixed(2)
 
         goodsList.push({
           cartKey,
@@ -71,19 +66,13 @@ Page({
           dishImage: item.info.image,
           skuId: sku.id || 'default',
           skuName: sku.name || '默认规格',
-          price: unitPrice,
           count,
-          tags: tagsArray,
-          subtotal
+          tags: tagsArray
         })
       }
 
-      const totalPrice = Number(cartData.totalPrice) || 0
-
       this.setData({
-        orderGoods: goodsList,
-        totalPrice,
-        finalPrice: totalPrice
+        orderGoods: goodsList
       })
 
       wx.removeStorageSync('settleCartData')
@@ -168,8 +157,6 @@ Page({
       console.error('加载用户信息失败', err)
     }
 
-    const actualFinalPrice = Number(this.data.finalPrice) || 0
-
     this.setData({ submitting: true })
     wx.showLoading({ title: '下单中...' })
 
@@ -178,8 +165,6 @@ Page({
         name: 'doBuy',
         data: {
           orderGoods: this.data.orderGoods,
-          totalPrice: this.data.totalPrice,
-          finalPrice: actualFinalPrice,
           remark: this.data.remark || ''
         }
       })

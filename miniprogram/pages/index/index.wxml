@@ -101,11 +101,6 @@
                 <view class="goods-name">{{item.name}}</view>
                 <view class="goods-desc" wx:if="{{item.description || item.desc}}">{{item.description || item.desc}}</view>
                 <view class="goods-footer">
-                  <view class="goods-price">
-                    <text class="price-symbol">¥</text>
-                    <text class="price-num">{{item.price}}</text>
-                    <text class="price-prefix" wx:if="{{item.hasMultipleSkus}}">起</text>
-                  </view>
                   <view class="goods-actions" catchtap="stopPropagation">
                     <view class="action-btn reduce" wx:if="{{item.cartCount > 0}}" catchtap="reduceDishFromCart" data-goods="{{item}}">
                       <text>-</text>
@@ -145,11 +140,6 @@
           <view class="cart-badge" wx:if="{{cartCount > 0}}">{{cartCount}}</view>
         </view>
         <view class="cart-info">
-          <view class="cart-price">
-            <text class="price-label">总价：</text>
-            <text class="price-symbol">¥</text>
-            <text class="price-num">{{cartTotalPriceText}}</text>
-          </view>
           <view class="cart-tip">想吃啥就点啥，姐给你做</view>
         </view>
       </view>
@@ -180,7 +170,6 @@
                 {{tagVal}}
               </text>
             </view>
-            <view class="cart-goods-price">¥{{item.sku ? item.sku.price : item.info.price}} × {{item.count}}</view>
           </view>
         </view>
         <view class="cart-goods-actions">
@@ -199,15 +188,8 @@
 
     <!-- 购物车底部栏 -->
     <view class="cart-footer" wx:if="{{cartCount > 0}}">
-      <view class="cart-footer-left">
-        <view class="cart-total-label">合计：</view>
-        <view class="cart-total-price">
-          <text class="price-symbol">¥</text>
-          <text class="price-num">{{cartTotalPriceText}}</text>
-        </view>
-      </view>
       <view class="cart-footer-right">
-        <view class="cart-settle-btn" bindtap="goToSettle">去结算</view>
+        <view class="cart-settle-btn" bindtap="goToSettle">去下单</view>
       </view>
     </view>
   </view>
@@ -224,11 +206,6 @@
           <view class="dish-detail-info">
             <view class="dish-detail-name">{{currentDish.name}}</view>
             <view class="dish-detail-desc" wx:if="{{currentDish.description}}">{{currentDish.description}}</view>
-            <view class="dish-detail-price">
-              <text class="price-symbol">¥</text>
-              <text class="price-num">{{currentDish.price}}</text>
-              <text class="price-prefix" wx:if="{{currentDish.hasMultipleSkus}}">起</text>
-            </view>
           </view>
         </view>
 
@@ -247,7 +224,6 @@
               bindtap="selectSkuOption"
               data-sku-id="{{sku.id}}">
               <view class="sku-option-name">{{sku.name}}</view>
-              <view class="sku-option-price">¥{{sku.price}}</view>
             </view>
           </view>
         </view>
@@ -302,11 +278,6 @@
 
       <!-- 底部按钮 -->
       <view class="modal-footer-bar">
-        <view class="footer-price">
-          <text class="total-label">小计：</text>
-          <text class="price-symbol">¥</text>
-          <text class="price-num">{{modalTotalPrice}}</text>
-        </view>
         <view class="add-cart-btn" bindtap="confirmAddToCart">加入购物车</view>
       </view>
     </view>
@@ -345,11 +316,6 @@
         <view class="search-result-info">
           <view class="search-result-name">{{item.name}}</view>
           <view class="search-result-cat" wx:if="{{item.categoryName}}">{{item.categoryName}}</view>
-          <view class="search-result-price">
-            <text class="price-symbol">¥</text>
-            <text class="price-num">{{item.priceText}}</text>
-            <text class="price-prefix" wx:if="{{item.hasMultipleSkus}}">起</text>
-          </view>
         </view>
       </view>
 

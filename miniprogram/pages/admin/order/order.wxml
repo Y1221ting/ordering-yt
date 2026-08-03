@@ -64,7 +64,6 @@
                 <van-tag type="success" wx:for="{{goods.tags}}" wx:key="index" wx:for-item="tagVal">{{tagVal}}</van-tag>
               </view>
               <view class="goods-detail">
-                <text class="goods-price">¥{{goods.price}}</text>
                 <text class="goods-count">x{{goods.count}}</text>
               </view>
             </view>
@@ -89,9 +88,9 @@
           </view>
         </view>
         <view class="order-actions">
-          <view class="order-price">
+          <view class="order-price" wx:if="{{item.type === 'recharge'}}">
             <text class="price-label">实付：</text>
-            <text class="price-num">¥{{item.type === 'recharge' ? item.amount : item.finalPrice}}</text>
+            <text class="price-num">¥{{item.amount}}</text>
           </view>
           <view class="action-btns">
             <!-- <view class="action-btn delete" bindtap="deleteOrder" data-order="{{item}}" catchtap="stopPropagation">删除</view> -->

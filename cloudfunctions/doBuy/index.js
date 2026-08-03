@@ -7,25 +7,12 @@ cloud.init({
 
 const db = cloud.database()
 
-function toNumber(value, fallback = 0) {
-  if (value === undefined || value === null || value === '') {
-    return fallback
-  }
-  const num = Number(value)
-  return Number.isNaN(num) ? fallback : num
-}
-
-function roundMoney(value) {
-  return Math.round((toNumber(value) + Number.EPSILON) * 100) / 100
-}
-
 function normalizeSkus(dish = {}) {
   const source = Array.isArray(dish.skus) && dish.skus.length > 0
     ? dish.skus
     : [{
       id: 'default',
       name: '默认规格',
-      price: dish.price,
       status: 1,
       sort: 0
     }]
@@ -33,14 +20,9 @@ function normalizeSkus(dish = {}) {
   return source.map((sku, index) => ({
     id: sku.id || `sku_${index + 1}`,
     name: sku.name || (index === 0 ? '默认规格' : `规格${index + 1}`),
-    price: roundMoney(toNumber(sku.price, toNumber(dish.price, 0))),
     status: sku.status === 0 ? 0 : 1,
     sort: Number(sku.sort) || index
   })).sort((a, b) => a.sort - b.sort)
-}
-
-function assertPriceEqual(actual, expected) {
-  return Math.abs(roundMoney(actual) - roundMoney(expected)) < 0.01
 }
 
 function normalizeTags(tags) {
@@ -60,8 +42,6 @@ exports.main = async (event, context) => {
 
   const {
     orderGoods,
-    totalPrice,
-    finalPrice,
     remark
   } = event
 
@@ -84,7 +64,6 @@ exports.main = async (event, context) => {
       }
 
       const validatedGoods = []
-      let recalculatedTotal = 0
 
       for (const item of orderGoods) {
         const dishId = item && item.dishId
@@ -112,9 +91,6 @@ exports.main = async (event, context) => {
           throw new Error(`"${dish.name || '菜品'}"规格已下架，请重新选择`)
         }
 
-        const subtotal = roundMoney(sku.price * count)
-        recalculatedTotal = roundMoney(recalculatedTotal + subtotal)
-
         validatedGoods.push({
           dishId: dish._id,
           dishName: dish.name || item.dishName || '未知菜品',
@@ -123,10 +99,8 @@ exports.main = async (event, context) => {
           categoryName: '', // 稍后统一补齐
           skuId: sku.id,
           skuName: sku.name,
-          price: sku.price,
           count,
-          tags: normalizeTags(item.tags),
-          subtotal
+          tags: normalizeTags(item.tags)
         })
       }
 
@@ -145,24 +119,12 @@ exports.main = async (event, context) => {
       }
       validatedGoods = validatedGoods.map(g => ({ ...g, categoryName: g.categoryName || '' }))
 
-      if (!assertPriceEqual(totalPrice, recalculatedTotal)) {
-        throw new Error('菜品价格已更新，请重新确认')
-      }
-
-      const recalculatedFinalPrice = recalculatedTotal
-
-      if (!assertPriceEqual(finalPrice, recalculatedFinalPrice)) {
-        throw new Error('菜品价格已更新，请重新确认')
-      }
-
       // 3. 创建订单（家庭版：下单即生效，无支付环节）
       const date = new Date() // 记录订单创建时间
 
       const orderData = {
         type: 'order',
         goods: validatedGoods,
-        totalPrice: recalculatedTotal,
-        finalPrice: recalculatedFinalPrice,
         orderType: 'dineIn',
         // 家庭版：下单即生效，一律标记已支付（订单列表只显示已支付订单）
         pay_status: true,

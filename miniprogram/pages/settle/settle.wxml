@@ -1,5 +1,4 @@
 <!--pages/settle/settle.wxml-->
-<wxs module="priceHelper" src="../../utils/priceHelper.wxs"></wxs>
 <view class="page">
   <!-- 备注 -->
   <view class="section">
@@ -38,12 +37,8 @@
             </van-tag>
           </view>
           <view class="goods-price-count">
-            <text class="goods-price">¥{{item.price}}</text>
             <text class="goods-count">×{{item.count}}</text>
           </view>
-        </view>
-        <view class="goods-subtotal">
-          ¥{{item.subtotal}}
         </view>
       </view>
 
@@ -53,15 +48,11 @@
 
   <!-- 底部提交按钮 -->
   <view class="footer">
-    <view class="footer-price">
-      <text class="footer-label">合计：</text>
-      <text class="footer-price-num">¥{{priceHelper.formatPrice(finalPrice)}}</text>
-    </view>
     <view
       class="submit-btn {{submitting || !canSubmit ? 'disabled' : ''}}"
       bind:tap="submitOrder">
       <text wx:if="{{submitting}}">提交中...</text>
-      <text wx:else>提交订单</text>
+      <text wx:else>就点这些</text>
     </view>
   </view>
 </view>

@@ -2,7 +2,6 @@ const db = wx.cloud.database()
 const { normalizeDish } = require('../../utils/dish')
 const {
   addCartItem,
-  getCartSummary,
   getStoredCart,
   saveStoredCart
 } = require('../../utils/cart')
@@ -20,8 +19,6 @@ Page({
     selectedSkuId: '',
     selectedTags: {},
     quantity: 1,
-    currentPriceText: '0.00',
-    totalPriceText: '0.00',
     shareImageUrl: '',
     statusBarHeight: 20,
     navBarHeight: 44
@@ -94,16 +91,13 @@ Page({
 
       const selectedSku = dish.enabledSkus[0] || null
       const selectedTags = this.buildInitialTags(dish)
-      const currentPrice = selectedSku ? selectedSku.price : dish.price
 
       this.setData({
         dish,
         loading: false,
         selectedSkuId: selectedSku ? selectedSku.id : '',
         selectedTags,
-        quantity: 1,
-        currentPriceText: Number(currentPrice).toFixed(2),
-        totalPriceText: Number(currentPrice).toFixed(2)
+        quantity: 1
       })
 
       wx.setNavigationBarTitle({
@@ -189,9 +183,7 @@ Page({
     }
 
     this.setData({
-      selectedSkuId: skuId,
-      currentPriceText: sku.priceText,
-      totalPriceText: (sku.price * this.data.quantity).toFixed(2)
+      selectedSkuId: skuId
     })
   },
 
@@ -223,13 +215,8 @@ Page({
   },
 
   updateQuantity(quantity) {
-    const sku = (this.data.dish.enabledSkus || [])
-      .find(item => item.id === this.data.selectedSkuId)
-    const price = sku ? sku.price : 0
-
     this.setData({
-      quantity,
-      totalPriceText: (price * quantity).toFixed(2)
+      quantity
     })
   },
 
@@ -339,16 +326,14 @@ Page({
       this.getTagLabels(),
       this.data.quantity
     )
-    const summary = getCartSummary(cart)
 
-    this.navigateToSettle(cart, summary)
+    this.navigateToSettle(cart)
   },
 
-  navigateToSettle(cart, summary) {
+  navigateToSettle(cart) {
     try {
       wx.setStorageSync('settleCartData', {
-        cart,
-        totalPrice: summary.totalPrice
+        cart
       })
 
       wx.navigateTo({
@@ -391,13 +376,13 @@ Page({
 
     if (!dish) {
       return {
-        title: '发现一道好菜',
+        title: '家里点菜',
         path: '/pages/index/index'
       }
     }
 
     return {
-      title: `${dish.name}｜${dish.hasMultipleSkus ? `${dish.priceText}元起` : `${dish.priceText}元`}`,
+      title: `${dish.name}｜家里点菜`,
       path: `/pages/dish-detail/dish-detail?id=${encodeURIComponent(dish._id)}`,
       imageUrl: this.data.shareImageUrl || dish.image || ''
     }
@@ -408,13 +393,13 @@ Page({
 
     if (!dish) {
       return {
-        title: '发现一道好菜',
+        title: '家里点菜',
         query: ''
       }
     }
 
     return {
-      title: `${dish.name}｜${dish.hasMultipleSkus ? `${dish.priceText}元起` : `${dish.priceText}元`}`,
+      title: `${dish.name}｜家里点菜`,
       query: `id=${encodeURIComponent(dish._id)}`,
       imageUrl: this.data.shareImageUrl || dish.image || ''
     }
