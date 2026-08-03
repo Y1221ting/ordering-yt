@@ -55,13 +55,6 @@ Page({
     })
   },
 
-  // 用户管理
-  goToUser() {
-    wx.navigateTo({
-      url: '/pages/admin/user/user'
-    })
-  },
-
   // 订单管理
   goToOrder() {
     wx.navigateTo({
@@ -69,31 +62,10 @@ Page({
     })
   },
 
-  // 充值选项管理
-  goToRechargeOptions() {
-    wx.navigateTo({
-      url: '/pages/admin/rechargeOptions/rechargeOptions'
-    })
-  },
-
-  // 桌码管理
-  goToTableCode() {
-    wx.navigateTo({
-      url: '/pages/admin/tableCode/tableCode'
-    })
-  },
-
   // 店铺设置
   goToShopSettings() {
     wx.navigateTo({
       url: '/pages/admin/shopSettings/shopSettings'
-    })
-  },
-
-  // 打印机管理
-  goToPrinter() {
-    wx.navigateTo({
-      url: '/pages/admin/printer/printer'
     })
   },
 
