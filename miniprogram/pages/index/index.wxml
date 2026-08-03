@@ -150,8 +150,7 @@
             <text class="price-symbol">¥</text>
             <text class="price-num">{{cartTotalPriceText}}</text>
           </view>
-          <view class="cart-tip" wx:if="{{tableNumber}}">{{tableNumber}}号桌</view>
-          <view class="cart-tip" wx:else>想吃啥就点啥，姐给你做</view>
+          <view class="cart-tip">想吃啥就点啥，姐给你做</view>
         </view>
       </view>
       <view class="cart-right">

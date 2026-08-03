@@ -180,7 +180,7 @@ Page({
     
     wx.showModal({
       title: '确认取消',
-      content: '确定要取消这个订单吗？余额将原路退回',
+      content: '确定要取消这个订单吗？',
       success: async (res) => {
         if (res.confirm) {
           await this.doCancelOrder(order)
@@ -192,35 +192,15 @@ Page({
   // 执行取消订单
   async doCancelOrder(order) {
     wx.showLoading({ title: '处理中...' })
-    
+
     try {
-      const openid = app.globalData.openid
-      
       // 更新订单状态
       await db.collection('order').doc(order._id).update({
         data: {
           status: 3 // 已取消
         }
       })
-      
-      // 退回余额
-      if (order.finalPrice > 0) {
-        const userRes = await db.collection('user').where({
-          _openid: openid
-        }).get()
-        
-        if (userRes.data && userRes.data.length > 0) {
-          const user = userRes.data[0]
-          const newBalance = (user.balance || 0) + order.finalPrice
-          
-          await db.collection('user').doc(user._id).update({
-            data: {
-              balance: newBalance
-            }
-          })
-        }
-      }
-      
+
       wx.hideLoading()
       wx.showToast({ title: '订单已取消', icon: 'success' })
       

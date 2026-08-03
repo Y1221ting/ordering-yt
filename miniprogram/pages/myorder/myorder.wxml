@@ -25,9 +25,7 @@
           </view>
         </view>
         <view class="order-type">
-          <text wx:if="{{item.orderType === 'dineIn'}}">堂食订单</text>
-          <text wx:elif="{{item.orderType === 'takeOut'}}">打包订单</text>
-          <text wx:else>点餐订单</text>
+          <text>{{item.type === 'recharge' ? '充值' : '点餐'}}</text>
         </view>
         <!-- <view class="order-status {{item.status === 3 ? 'cancel' : ''}}">
           {{item.type === 'recharge' ? '已完成' : (item.status === 0 ? '待确认' : item.status === 1 ? '制作中' : item.status === 2 ? '已完成' : '已取消')}}
@@ -63,9 +61,6 @@
         <view class="order-info">
           <view class="order-time">
             {{item.createTimeText}}
-          </view>
-          <view class="order-table-code" wx:if="{{item.tableNumber}}">
-            桌码：{{item.tableNumber}}
           </view>
           <view class="order-table-code" wx:if="{{item.remark}}">
             备注：{{item.remark}}

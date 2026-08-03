@@ -1,17 +1,12 @@
 // pages/settle/settle.js
 const app = getApp()
 const db = wx.cloud.database()
-const {
-  normalizeTableNumber
-} = require('../../utils/tableCode')
 
 Page({
   data: {
     orderGoods: [],
     totalPrice: 0,
     finalPrice: 0,
-    orderType: 'dineIn',
-    tableNumber: '',
     remark: '',
     userInfo: null,
     submitting: false,
@@ -83,15 +78,12 @@ Page({
         })
       }
 
-      const tableNumber = normalizeTableNumber(cartData.tableNumber)
       const totalPrice = Number(cartData.totalPrice) || 0
 
       this.setData({
         orderGoods: goodsList,
         totalPrice,
-        finalPrice: totalPrice,
-        tableNumber,
-        orderType: 'dineIn'
+        finalPrice: totalPrice
       })
 
       wx.removeStorageSync('settleCartData')
@@ -144,12 +136,6 @@ Page({
     }
   },
 
-  selectOrderType(e) {
-    const orderType = e.currentTarget.dataset.value
-    this.setData({ orderType })
-    this.updateCanSubmit()
-  },
-
   onRemarkInput(e) {
     this.setData({
       remark: e.detail.value
@@ -194,8 +180,6 @@ Page({
           orderGoods: this.data.orderGoods,
           totalPrice: this.data.totalPrice,
           finalPrice: actualFinalPrice,
-          tableNumber: this.data.tableNumber,
-          orderType: this.data.orderType,
           remark: this.data.remark || ''
         }
       })

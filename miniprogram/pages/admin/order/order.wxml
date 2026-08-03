@@ -25,10 +25,8 @@
           </view>
         </view>
         <view class="order-type">
-          <text wx:if="{{item.type === 'recharge'}}">充值订单</text>
-          <text wx:elif="{{item.orderType === 'dineIn'}}">堂食订单</text>
-          <text wx:elif="{{item.orderType === 'takeOut'}}">打包订单</text>
-          <text wx:else>点餐订单</text>
+          <text wx:if="{{item.type === 'recharge'}}">充值</text>
+          <text wx:else>点餐</text>
         </view>
       </view>
 
@@ -79,9 +77,6 @@
         <view class="order-info">
           <view class="order-time">
             {{item.createTimeText}}
-          </view>
-          <view class="order-table-code" wx:if="{{item.tableNumber}}">
-            桌码：{{item.tableNumber}}
           </view>
           <view class="order-table-code" wx:if="{{item.remark}}">
             备注：{{item.remark}}

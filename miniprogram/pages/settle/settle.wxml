@@ -1,30 +1,12 @@
 <!--pages/settle/settle.wxml-->
 <wxs module="priceHelper" src="../../utils/priceHelper.wxs"></wxs>
 <view class="page">
-  <!-- 订单类型选择 -->
+  <!-- 备注 -->
   <view class="section">
-    <view class="order-type-list">
-      <view
-        class="order-type-item {{orderType === 'dineIn' ? 'active' : ''}}"
-        data-value="dineIn"
-        bind:tap="selectOrderType">
-        堂食
-      </view>
-      <view
-        class="order-type-item {{orderType === 'takeOut' ? 'active' : ''}}"
-        data-value="takeOut"
-        bind:tap="selectOrderType">
-        打包/自取
-      </view>
-    </view>
-  </view>
-
-  <!-- 打包/自取备注 -->
-  <view class="section" wx:if="{{orderType === 'takeOut'}}">
-    <view class="section-title">打包备注</view>
+    <view class="section-title">备注（选填）</view>
     <textarea
       class="remark-input"
-      placeholder="可填写口味、取餐时间或其他备注（选填）"
+      placeholder="想吃什么口味、有什么忌口，写在这里"
       maxlength="120"
       value="{{remark}}"
       bindinput="onRemarkInput"
@@ -35,7 +17,7 @@
   <view class="section">
     <view class="section-title-wrapper">
       <text class="section-title">订单明细</text>
-      <view class="edit-order-btn" bind:tap="editOrder" data-table-number="{{tableNumber}}">
+      <view class="edit-order-btn" bind:tap="editOrder">
         修改
       </view>
     </view>

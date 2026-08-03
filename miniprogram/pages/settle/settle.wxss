@@ -49,28 +49,6 @@
   background: #fdfaf3;
 }
 
-/* 订单类型选择 */
-.order-type-list {
-  display: flex;
-  padding: 0 30rpx;
-  gap: 20rpx;
-}
-
-.order-type-item {
-  flex: 1;
-  height: 80rpx;
-  line-height: 80rpx;
-  text-align: center;
-  font-size: 28rpx;
-  color: #6b7a72;
-  background: #fdfaf3;
-  border-radius: 12rpx;
-  border: 2rpx solid transparent;
-  transition: all 0.3s;
-  cursor: pointer;
-  user-select: none;
-}
-
 .remark-input {
   width: auto;
   display: block;
@@ -82,13 +60,6 @@
   color: #2f3632;
   font-size: 28rpx;
   line-height: 1.5;
-}
-
-.order-type-item.active {
-  color: #5fc4a3;
-  background: rgba(229, 77, 66, 0.1);
-  border-color: #5fc4a3;
-  font-weight: 600;
 }
 
 /* 桌码显示 */
@@ -449,19 +420,6 @@
   border-color: rgba(95, 196, 163, 0.32);
   background: #fff4f0;
   border-radius: 999rpx;
-}
-
-.order-type-item {
-  background: #fdfaf3;
-  border-color: #e3dbc9;
-  color: #6b7a72;
-}
-
-.order-type-item.active {
-  color: #5fc4a3;
-  background: #fff4f0;
-  border-color: rgba(95, 196, 163, 0.34);
-  box-shadow: 0 8rpx 18rpx rgba(95, 196, 163, 0.1);
 }
 
 .remark-input,
