@@ -7,8 +7,7 @@
     "van-radio": "/vant/radio/index",
     "van-button": "/vant/button/index",
     "van-empty": "/vant/empty/index",
-    "van-tag": "/vant/tag/index",
-    "avatar-nickname-modal": "/components/avatarNicknameModal/avatarNicknameModal"
+    "van-tag": "/vant/tag/index"
   }
 }
 

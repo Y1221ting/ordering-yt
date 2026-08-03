@@ -2,9 +2,7 @@
 const app = getApp()
 const db = wx.cloud.database()
 const {
-  isScanCancelled,
-  normalizeTableNumber,
-  scanTableCodeFromCamera
+  normalizeTableNumber
 } = require('../../utils/tableCode')
 
 Page({
@@ -15,13 +13,9 @@ Page({
     orderType: 'dineIn',
     tableNumber: '',
     remark: '',
-    payMethod: 'balance',
     userInfo: null,
-    userBalance: 0,
     submitting: false,
-    canSubmit: false,
-    showAuthModal: false,
-    savedPayMethod: null
+    canSubmit: false
   },
 
   onLoad() {
@@ -102,11 +96,6 @@ Page({
 
       wx.removeStorageSync('settleCartData')
       this.updateCanSubmit()
-      this.updatePayMethod()
-
-      if (!tableNumber) {
-        this.requestTableCode()
-      }
     } catch (err) {
       console.error('加载购物车数据失败', err)
       wx.showToast({
@@ -123,11 +112,7 @@ Page({
     try {
       const userInfo = app.globalData.userInfo
       if (userInfo) {
-        this.setData({
-          userInfo,
-          userBalance: userInfo.balance || 0
-        })
-        this.updatePayMethod()
+        this.setData({ userInfo })
         this.updateCanSubmit()
       } else {
         await this.loadUserInfoFromDB()
@@ -137,7 +122,7 @@ Page({
     }
   },
 
-  async loadUserInfoFromDB(options = {}) {
+  async loadUserInfoFromDB() {
     try {
       const openid = app.globalData.openid
       const res = await db.collection('user').where({
@@ -146,25 +131,12 @@ Page({
 
       if (res.data && res.data.length > 0) {
         const user = res.data[0]
-        if (typeof user.balance === 'undefined') {
-          await db.collection('user').doc(user._id).update({
-            data: {
-              balance: 0
-            }
-          })
-          user.balance = 0
-        }
 
         this.setData({
-          userInfo: user,
-          userBalance: user.balance || 0
+          userInfo: user
         })
 
         app.globalData.userInfo = user
-
-        if (!options.skipUpdatePayMethod) {
-          this.updatePayMethod()
-        }
         this.updateCanSubmit()
       }
     } catch (err) {
@@ -184,104 +156,11 @@ Page({
     })
   },
 
-  requestTableCode() {
-    wx.showModal({
-      title: '请先扫描桌码',
-      content: '每笔订单都需要绑定桌码，扫码后才能提交订单。',
-      confirmText: '去扫码',
-      cancelText: '稍后',
-      success: (result) => {
-        if (result.confirm) {
-          this.scanTableCode()
-        }
-      }
-    })
-  },
-
-  async scanTableCode() {
-    try {
-      const tableNumber = await scanTableCodeFromCamera()
-
-      this.setData({
-        tableNumber
-      }, () => {
-        this.syncTableNumberToSourcePages(tableNumber)
-        this.updateCanSubmit()
-        wx.showToast({
-          title: `已绑定${tableNumber}号桌`,
-          icon: 'success'
-        })
-      })
-    } catch (err) {
-      if (isScanCancelled(err)) {
-        return
-      }
-
-      console.error('扫码失败', err)
-      wx.showToast({
-        title: err && err.code === 'INVALID_TABLE_CODE' ? '未能识别桌码' : '扫码失败',
-        icon: 'none'
-      })
-    }
-  },
-
-  syncTableNumberToSourcePages(tableNumber) {
-    const pages = getCurrentPages()
-
-    pages.forEach(page => {
-      if (
-        page &&
-        typeof page.setData === 'function' &&
-        (page.route === 'pages/index/index' || page.route === 'pages/dish-detail/dish-detail')
-      ) {
-        page.setData({
-          tableNumber
-        })
-      }
-    })
-  },
-
-  selectPayMethod(e) {
-    const payMethod = e.currentTarget.dataset.value
-
-    if (payMethod === 'balance' && this.data.userBalance < this.data.totalPrice) {
-      wx.showToast({
-        title: '余额不足，已切换为微信支付',
-        icon: 'none',
-        duration: 2000
-      })
-      this.updateFinalPrice('wechat')
-      return
-    }
-
-    this.updateFinalPrice(payMethod)
-  },
-
-  updateFinalPrice(payMethod) {
-    this.setData({
-      payMethod,
-      finalPrice: Number(this.data.totalPrice) || 0
-    })
-  },
-
-  updatePayMethod() {
-    const { userBalance, totalPrice } = this.data
-    if (userBalance >= totalPrice) {
-      this.updateFinalPrice('balance')
-    } else {
-      this.updateFinalPrice('wechat')
-    }
-  },
-
   updateCanSubmit() {
-    const { tableNumber, orderGoods } = this.data
+    const { orderGoods } = this.data
     let canSubmit = true
 
     if (!orderGoods || orderGoods.length === 0) {
-      canSubmit = false
-    }
-
-    if (!tableNumber) {
       canSubmit = false
     }
 
@@ -290,11 +169,6 @@ Page({
 
   async submitOrder() {
     if (this.data.submitting) {
-      return
-    }
-
-    if (!this.data.tableNumber) {
-      this.requestTableCode()
       return
     }
 
@@ -308,35 +182,7 @@ Page({
       console.error('加载用户信息失败', err)
     }
 
-    const userInfo = this.data.userInfo
-    if (!userInfo || !userInfo.avatarUrl || !userInfo.nickName || !userInfo.phoneNumber) {
-      this.setData({
-        showAuthModal: true,
-        savedPayMethod: this.data.payMethod
-      })
-      return
-    }
-
-    if (!this.data.tableNumber) {
-      wx.showToast({
-        title: '请先扫描桌码',
-        icon: 'none'
-      })
-      return
-    }
-
-    const payMethod = this.data.payMethod
     const actualFinalPrice = Number(this.data.finalPrice) || 0
-    const payWithBalance = payMethod === 'balance'
-
-    if (payWithBalance && this.data.userBalance < actualFinalPrice) {
-      wx.showToast({
-        title: '余额不足，请使用微信支付',
-        icon: 'none'
-      })
-      this.updateFinalPrice('wechat')
-      return
-    }
 
     this.setData({ submitting: true })
     wx.showLoading({ title: '下单中...' })
@@ -348,7 +194,6 @@ Page({
           orderGoods: this.data.orderGoods,
           totalPrice: this.data.totalPrice,
           finalPrice: actualFinalPrice,
-          payWithBalance,
           tableNumber: this.data.tableNumber,
           orderType: this.data.orderType,
           remark: this.data.remark || ''
@@ -360,42 +205,8 @@ Page({
         throw new Error(errorMsg)
       }
 
-      const orderId = doBuyRes.result.orderId
-
-      if (payWithBalance) {
-        wx.hideLoading()
-        wx.showToast({ title: '下单成功', icon: 'success' })
-        this.clearCart()
-
-        setTimeout(() => {
-          wx.switchTab({
-            url: '/pages/myorder/myorder'
-          })
-        }, 1500)
-        return
-      }
-
       wx.hideLoading()
-      wx.showLoading({ title: '拉起支付中...' })
-
-      const nonceStr = Math.random().toString(36).substr(2, 15) + Date.now().toString(36)
-
-      const payRes = await wx.cloud.callFunction({
-        name: 'pay',
-        data: {
-          body: `点餐订单支付¥${actualFinalPrice.toFixed(2)}`,
-          outTradeNo: orderId,
-          totalFee: actualFinalPrice,
-          nonceStr
-        }
-      })
-
-      const payment = payRes.result && payRes.result.payment ? payRes.result.payment : payRes.result
-
-      wx.hideLoading()
-      await wx.requestPayment(payment)
-
-      wx.showToast({ title: '支付成功', icon: 'success' })
+      wx.showToast({ title: '下单成功', icon: 'success' })
       this.clearCart()
 
       setTimeout(() => {
@@ -425,31 +236,5 @@ Page({
     if (indexPage) {
       indexPage.updateCart({})
     }
-  },
-
-  async onUserInfoSaved() {
-    const savedPayMethod = this.data.savedPayMethod || this.data.payMethod
-
-    this.setData({
-      showAuthModal: false
-    })
-
-    try {
-      await this.loadUserInfoFromDB({ skipUpdatePayMethod: true })
-    } catch (err) {
-      console.error('刷新用户信息失败', err)
-    }
-
-    if (savedPayMethod) {
-      this.updateFinalPrice(savedPayMethod)
-    }
-
-    this.setData({
-      savedPayMethod: null
-    })
-
-    setTimeout(() => {
-      this.submitOrder()
-    }, 300)
   }
 })

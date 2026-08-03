@@ -19,21 +19,6 @@
     </view>
   </view>
 
-  <!-- 订单绑定桌码 -->
-  <view class="section table-section">
-    <view class="table-code-wrapper">
-      <view class="table-code-display">
-        <text class="table-code-value table-code-bold" wx:if="{{tableNumber}}">{{tableNumber}}号桌</text>
-        <text class="table-code-value table-code-empty" wx:else>未绑定</text>
-      </view>
-      <view class="table-code-actions">
-        <view class="change-table-btn" bind:tap="scanTableCode">
-          {{tableNumber ? '换桌' : '扫码'}}
-        </view>
-      </view>
-    </view>
-  </view>
-
   <!-- 打包/自取备注 -->
   <view class="section" wx:if="{{orderType === 'takeOut'}}">
     <view class="section-title">打包备注</view>
@@ -84,47 +69,10 @@
     </view>
   </view>
 
-  <!-- 支付方式 -->
-  <view class="section payment-section">
-    <view class="section-title">支付方式</view>
-    <view class="pay-method-list">
-      <!-- 余额支付 -->
-      <view
-        class="pay-method-item {{payMethod === 'balance' ? 'active' : ''}}"
-        data-value="balance"
-        bind:tap="selectPayMethod">
-        <view class="pay-method-content">
-          <view class="pay-method-left">
-            <view class="pay-method-title">余额支付</view>
-            <view class="pay-method-desc">余额：¥{{priceHelper.formatPrice(userBalance)}}</view>
-          </view>
-          <view class="pay-method-radio {{payMethod === 'balance' ? 'checked' : ''}}">
-            <view class="radio-dot" wx:if="{{payMethod === 'balance'}}"></view>
-          </view>
-        </view>
-      </view>
-      <!-- 微信支付 -->
-      <view
-        class="pay-method-item {{payMethod === 'wechat' ? 'active' : ''}}"
-        data-value="wechat"
-        bind:tap="selectPayMethod">
-        <view class="pay-method-content">
-          <view class="pay-method-left">
-            <view class="pay-method-title">微信支付</view>
-            <!-- <view class="pay-method-desc"></view> -->
-          </view>
-          <view class="pay-method-radio {{payMethod === 'wechat' ? 'checked' : ''}}">
-            <view class="radio-dot" wx:if="{{payMethod === 'wechat'}}"></view>
-          </view>
-        </view>
-      </view>
-    </view>
-  </view>
-
   <!-- 底部提交按钮 -->
   <view class="footer">
     <view class="footer-price">
-      <text class="footer-label">实付：</text>
+      <text class="footer-label">合计：</text>
       <text class="footer-price-num">¥{{priceHelper.formatPrice(finalPrice)}}</text>
     </view>
     <view
@@ -134,10 +82,4 @@
       <text wx:else>提交订单</text>
     </view>
   </view>
-
-  <!-- 用户信息授权组件 -->
-  <avatar-nickname-modal
-    showAvaModal="{{showAuthModal}}"
-    bind:saved="onUserInfoSaved">
-  </avatar-nickname-modal>
 </view>
