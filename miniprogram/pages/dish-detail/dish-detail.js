@@ -257,23 +257,6 @@ Page({
       return null
     }
 
-    const missingTag = (this.data.dish.tags || []).find(tag => {
-      if (!tag.required) {
-        return false
-      }
-
-      const value = this.data.selectedTags[tag.id]
-      return !value || (Array.isArray(value) && value.length === 0)
-    })
-
-    if (missingTag) {
-      wx.showToast({
-        title: `请选择${missingTag.name}`,
-        icon: 'none'
-      })
-      return null
-    }
-
     return selectedSku
   },
 

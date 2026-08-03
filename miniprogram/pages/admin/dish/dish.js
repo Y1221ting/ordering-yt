@@ -201,12 +201,6 @@ Page({
     })
   },
 
-  onCategorySortInput(e) {
-    this.setData({
-      'currentCategory.sort': parseInt(e.detail.value, 10) || 0
-    })
-  },
-
   async saveCategory() {
     const { editCategoryMode, currentCategory } = this.data
 
@@ -528,12 +522,6 @@ Page({
     })
   },
 
-  onDishSortInput(e) {
-    this.setData({
-      'currentDish.sort': parseInt(e.detail.value, 10) || 0
-    })
-  },
-
   updateSkuField(index, field, value) {
     const skus = clone(this.data.currentDish.skus || [])
     if (!skus[index]) return
@@ -572,14 +560,6 @@ Page({
 
   onSkuNameInput(e) {
     this.updateSkuField(e.currentTarget.dataset.index, 'name', e.detail.value)
-  },
-
-  onSkuSortInput(e) {
-    this.updateSkuField(e.currentTarget.dataset.index, 'sort', parseInt(e.detail.value, 10) || 0)
-  },
-
-  onSkuStatusChange(e) {
-    this.updateSkuField(e.currentTarget.dataset.index, 'status', e.detail.value ? 1 : 0)
   },
 
   async chooseDishImage() {
@@ -888,12 +868,6 @@ Page({
     const type = e.currentTarget.dataset.type
     this.setData({
       'currentTag.type': type
-    })
-  },
-
-  onTagRequiredChange(e) {
-    this.setData({
-      'currentTag.required': e.detail.value
     })
   },
 

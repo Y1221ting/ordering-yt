@@ -827,22 +827,6 @@ Page({
       return
     }
 
-    if (currentDish.tags && currentDish.tags.length > 0) {
-      for (let tag of currentDish.tags) {
-        if (tag.required) {
-          const selectedValue = selectedTags[tag.id]
-          if (!selectedValue ||
-              (Array.isArray(selectedValue) && selectedValue.length === 0)) {
-            wx.showToast({
-              title: `请选择${tag.name}`,
-              icon: 'none'
-            })
-            return
-          }
-        }
-      }
-    }
-
     const tagLabels = this.getTagLabels(currentDish, selectedTags)
     this.addCartItem(currentDish, selectedSku, selectedTags, tagLabels, modalDishCount)
     this.closeTagModal()
