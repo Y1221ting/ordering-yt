@@ -42,7 +42,9 @@ exports.main = async (event, context) => {
 
   const {
     orderGoods,
-    remark
+    remark,
+    taste,
+    avoidFoods
   } = event
 
   try {
@@ -58,6 +60,12 @@ exports.main = async (event, context) => {
 
       const user = userRes.data[0]
       const finalRemark = String(remark || '').trim().slice(0, 120)
+      // 家庭版：整单辣度与忌口（可选字段）
+      const finalTaste = String(taste || '').trim().slice(0, 10)
+      const finalAvoidFoods = (Array.isArray(avoidFoods) ? avoidFoods : [])
+        .map(item => String(item || '').trim())
+        .filter(Boolean)
+        .slice(0, 12)
 
       if (!Array.isArray(orderGoods) || orderGoods.length === 0) {
         throw new Error('订单商品不能为空')
@@ -134,7 +142,9 @@ exports.main = async (event, context) => {
         userNickName: user.nickName || '',
         userAvatar: user.avatarUrl || '',
         userPhone: user.phoneNumber || '',
-        remark: finalRemark
+        remark: finalRemark,
+        taste: finalTaste,
+        avoidFoods: finalAvoidFoods
       }
 
       const orderRes = await transaction.collection('order').add({

@@ -1,11 +1,35 @@
 <!--pages/settle/settle.wxml-->
 <view class="page">
+  <!-- 口味选择 -->
+  <view class="section" wx:if="{{tasteOptions.length > 0 || avoidOptions.length > 0}}">
+    <view class="section-title">口味</view>
+    <view class="taste-group">
+      <view class="taste-options" wx:if="{{tasteOptions.length > 0}}">
+        <view
+          class="taste-option {{selectedTaste === item ? 'selected' : ''}}"
+          wx:for="{{tasteOptions}}"
+          wx:key="*this"
+          bindtap="selectTaste"
+          data-taste="{{item}}">{{item}}</view>
+      </view>
+      <view class="avoid-label" wx:if="{{avoidOptions.length > 0}}">忌口（可多选）</view>
+      <view class="avoid-options" wx:if="{{avoidOptions.length > 0}}">
+        <view
+          class="avoid-option {{selectedAvoids.indexOf(item) > -1 ? 'selected' : ''}}"
+          wx:for="{{avoidOptions}}"
+          wx:key="*this"
+          bindtap="toggleAvoid"
+          data-avoid="{{item}}">{{item}}</view>
+      </view>
+    </view>
+  </view>
+
   <!-- 备注 -->
   <view class="section">
     <view class="section-title">备注（选填）</view>
     <textarea
       class="remark-input"
-      placeholder="想吃什么口味、有什么忌口，写在这里"
+      placeholder="还有什么想说的，写在这里"
       maxlength="120"
       value="{{remark}}"
       bindinput="onRemarkInput"

@@ -207,3 +207,73 @@ page {
 .control-pressed {
   opacity: 0.72;
 }
+
+/* 口味/忌口选项管理 */
+.form-section + .form-section {
+  margin-top: 20rpx;
+}
+
+.option-note {
+  margin: -12rpx 0 20rpx;
+  color: #9aa39d;
+  font-size: 23rpx;
+}
+
+.option-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14rpx;
+  margin-bottom: 22rpx;
+}
+
+.option-chip {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  padding: 12rpx 20rpx;
+  background: #faf7f0;
+  border: 1rpx solid #e3dbc9;
+  border-radius: 999rpx;
+  color: #2f3632;
+  font-size: 26rpx;
+}
+
+.option-chip-remove {
+  width: 32rpx;
+  height: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f0e8da;
+  color: #9aa39d;
+  font-size: 24rpx;
+  line-height: 1;
+}
+
+.option-add-row {
+  display: flex;
+  gap: 14rpx;
+}
+
+.option-input {
+  flex: 1;
+  height: 76rpx;
+  padding: 0 22rpx;
+  color: #2f3632;
+  font-size: 26rpx;
+  background: #faf7f0;
+  border: 1rpx solid #e3dbc9;
+  border-radius: 12rpx;
+}
+
+.option-add-btn {
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
+  padding: 0 26rpx;
+  color: #ffffff;
+  font-size: 26rpx;
+  background: #5fc4a3;
+  border-radius: 12rpx;
+}

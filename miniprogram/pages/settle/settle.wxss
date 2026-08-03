@@ -191,6 +191,48 @@
   color: #9aa39d;
 }
 
+/* 口味选择 */
+.taste-group {
+  padding: 6rpx 0 10rpx;
+}
+
+.taste-options,
+.avoid-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14rpx;
+}
+
+.taste-option,
+.avoid-option {
+  padding: 12rpx 28rpx;
+  border-radius: 999rpx;
+  font-size: 26rpx;
+  color: #6b7a72;
+  background: #faf7f0;
+  border: 1rpx solid #e3dbc9;
+}
+
+.taste-option.selected {
+  color: #fff;
+  background: #5fc4a3;
+  border-color: #5fc4a3;
+  font-weight: 600;
+}
+
+.avoid-label {
+  margin: 18rpx 0 14rpx;
+  font-size: 24rpx;
+  color: #9aa39d;
+}
+
+.avoid-option.selected {
+  color: #5fc4a3;
+  background: rgba(95, 196, 163, 0.12);
+  border-color: #5fc4a3;
+  font-weight: 600;
+}
+
 /* 支付方式卡片 */
 .pay-method-list {
   padding: 0 30rpx;

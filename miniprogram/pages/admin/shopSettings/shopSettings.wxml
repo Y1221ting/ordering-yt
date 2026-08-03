@@ -51,6 +51,70 @@
     </view>
   </view>
 
+  <!-- 辣味选项 -->
+  <view class="form-section">
+    <view class="section-heading">
+      <text class="heading-icon cuIcon-spicyfill"></text>
+      <text>辣味选项</text>
+    </view>
+    <view class="option-note">家人点菜时从中选择辣度（默认爆辣）</view>
+    <view class="option-chips">
+      <view class="option-chip" wx:for="{{tasteOptions}}" wx:key="*this">
+        <text class="option-chip-text">{{item}}</text>
+        <text
+          class="option-chip-remove"
+          catchtap="removeTasteOption"
+          data-index="{{index}}">×</text>
+      </view>
+    </view>
+    <view class="option-add-row">
+      <input
+        class="option-input"
+        placeholder="如：变态辣"
+        value="{{newTaste}}"
+        bindinput="onNewTasteInput"
+        confirm-type="done"
+        bindconfirm="addTasteOption"
+      />
+      <view class="option-add-btn" bindtap="addTasteOption" hover-class="control-pressed">
+        <text class="cuIcon-add"></text>
+        <text>添加</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 忌口选项 -->
+  <view class="form-section">
+    <view class="section-heading">
+      <text class="heading-icon cuIcon-close"></text>
+      <text>忌口选项</text>
+    </view>
+    <view class="option-note">家人点菜时可勾选不吃的配料，可多选</view>
+    <view class="option-chips">
+      <view class="option-chip" wx:for="{{avoidOptions}}" wx:key="*this">
+        <text class="option-chip-text">{{item}}</text>
+        <text
+          class="option-chip-remove"
+          catchtap="removeAvoidOption"
+          data-index="{{index}}">×</text>
+      </view>
+    </view>
+    <view class="option-add-row">
+      <input
+        class="option-input"
+        placeholder="如：花椒"
+        value="{{newAvoid}}"
+        bindinput="onNewAvoidInput"
+        confirm-type="done"
+        bindconfirm="addAvoidOption"
+      />
+      <view class="option-add-btn" bindtap="addAvoidOption" hover-class="control-pressed">
+        <text class="cuIcon-add"></text>
+        <text>添加</text>
+      </view>
+    </view>
+  </view>
+
   <view class="save-bar">
     <view
       class="save-btn {{saving ? 'is-saving' : ''}}"

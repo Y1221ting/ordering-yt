@@ -85,6 +85,9 @@
           <view class="order-time">
             {{item.createTimeText}}
           </view>
+          <view class="order-taste" wx:if="{{item.tasteText}}">
+            口味：{{item.tasteText}}
+          </view>
           <view class="order-table-code" wx:if="{{item.remark}}">
             备注：{{item.remark}}
           </view>

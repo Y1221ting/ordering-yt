@@ -154,9 +154,19 @@ Page({
 
       // 处理订单数据，格式化时间并处理标签显示
       const list = (res.data || []).map(order => {
+        // 拼口味文本：中辣 · 不吃葱、蒜
+        const tasteParts = []
+        if (order.taste) {
+          tasteParts.push(order.taste)
+        }
+        if (Array.isArray(order.avoidFoods) && order.avoidFoods.length > 0) {
+          tasteParts.push(`不吃${order.avoidFoods.join('、')}`)
+        }
+
         const orderData = {
           ...order,
-          createTimeText: order.createTime ? formatTime(order.createTime) : ''
+          createTimeText: order.createTime ? formatTime(order.createTime) : '',
+          tasteText: tasteParts.join(' · ')
         }
 
         // tags 现在直接是字符串数组，不需要额外处理

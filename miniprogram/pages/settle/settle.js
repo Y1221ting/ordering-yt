@@ -1,6 +1,7 @@
 // pages/settle/settle.js
 const app = getApp()
 const db = wx.cloud.database()
+const { loadShopSettings } = require('../../utils/shopSettings')
 
 Page({
   data: {
@@ -8,17 +9,63 @@ Page({
     remark: '',
     userInfo: null,
     submitting: false,
-    canSubmit: false
+    canSubmit: false,
+    // 口味选择
+    tasteOptions: [],
+    avoidOptions: [],
+    selectedTaste: '',
+    selectedAvoids: []
   },
 
   onLoad() {
     this.loadCartData()
     this.loadUserInfo()
+    this.loadSettings()
   },
 
   onShow() {
     this.loadUserInfo()
     this.updateCanSubmit()
+  },
+
+  async loadSettings() {
+    try {
+      const settings = await loadShopSettings(db)
+      const tasteOptions = settings.tasteOptions || []
+      const avoidOptions = settings.avoidOptions || []
+      // 默认爆辣；配置里没有爆辣时默认第一项
+      const defaultTaste = tasteOptions.indexOf('爆辣') > -1
+        ? '爆辣'
+        : (tasteOptions[0] || '')
+
+      this.setData({
+        tasteOptions,
+        avoidOptions,
+        selectedTaste: defaultTaste
+      })
+    } catch (err) {
+      console.error('加载口味设置失败', err)
+    }
+  },
+
+  // 选择辣度（单选）
+  selectTaste(e) {
+    this.setData({
+      selectedTaste: e.currentTarget.dataset.taste
+    })
+  },
+
+  // 勾选忌口（多选）
+  toggleAvoid(e) {
+    const avoid = e.currentTarget.dataset.avoid
+    const selectedAvoids = this.data.selectedAvoids.slice()
+    const index = selectedAvoids.indexOf(avoid)
+    if (index > -1) {
+      selectedAvoids.splice(index, 1)
+    } else {
+      selectedAvoids.push(avoid)
+    }
+    this.setData({ selectedAvoids })
   },
 
   loadCartData() {
@@ -165,7 +212,9 @@ Page({
         name: 'doBuy',
         data: {
           orderGoods: this.data.orderGoods,
-          remark: this.data.remark || ''
+          remark: this.data.remark || '',
+          taste: this.data.selectedTaste || '',
+          avoidFoods: this.data.selectedAvoids || []
         }
       })
 

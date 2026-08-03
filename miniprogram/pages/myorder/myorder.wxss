@@ -256,6 +256,13 @@
   font-weight: 500;
 }
 
+.order-taste {
+  font-size: 24rpx;
+  color: #38b2ac;
+  font-weight: 500;
+  margin-top: 5rpx;
+}
+
 .order-actions {
   display: flex;
   justify-content: flex-end;

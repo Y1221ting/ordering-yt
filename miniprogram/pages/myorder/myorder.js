@@ -104,10 +104,22 @@ Page({
         return `${y}-${m}-${d} ${hh}:${mm}`
       }
 
-      const list = (res.data || []).map(order => ({
-        ...order,
-        createTimeText: order.createTime ? formatTime(order.createTime) : ''
-      }))
+      const list = (res.data || []).map(order => {
+        // 拼口味文本：中辣 · 不吃葱、蒜
+        const tasteParts = []
+        if (order.taste) {
+          tasteParts.push(order.taste)
+        }
+        if (Array.isArray(order.avoidFoods) && order.avoidFoods.length > 0) {
+          tasteParts.push(`不吃${order.avoidFoods.join('、')}`)
+        }
+
+        return {
+          ...order,
+          createTimeText: order.createTime ? formatTime(order.createTime) : '',
+          tasteText: tasteParts.join(' · ')
+        }
+      })
       
       const newList = append ? this.data.orderList.concat(list) : list
       const hasMore = list.length === pageSize

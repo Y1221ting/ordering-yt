@@ -349,6 +349,13 @@
   margin-top: 5rpx;
 }
 
+.order-taste {
+  font-size: 24rpx;
+  color: #38b2ac;
+  font-weight: 500;
+  margin-top: 5rpx;
+}
+
 .action-btns {
   display: flex;
   gap: 15rpx;
