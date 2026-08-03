@@ -91,11 +91,6 @@
   margin-bottom: 5rpx;
 }
 
-.user-phone {
-  font-size: 24rpx;
-  color: #9aa39d;
-}
-
 .order-type {
   font-size: 30rpx;
   color: #2f3632;
@@ -388,7 +383,6 @@
   color: #2f3632;
 }
 
-.user-phone,
 .order-time,
 .goods-count {
   color: #9aa39d;

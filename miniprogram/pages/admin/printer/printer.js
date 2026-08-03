@@ -342,18 +342,6 @@ Page({
         return String(str).replace(/</g, '&lt;').replace(/>/g, '&gt;')
       }
       
-      // 隐藏电话号码中间4位
-      const hidePhoneNumber = (phone) => {
-        if (!phone) return ''
-        const phoneStr = String(phone)
-        // 如果是11位手机号，隐藏中间4位（第4-7位）
-        if (phoneStr.length === 11) {
-          return phoneStr.substring(0, 3) + '****' + phoneStr.substring(7)
-        }
-        // 如果不是11位，返回原值
-        return phoneStr
-      }
-      
       const date = new Date()
       const testOrderId = 'TEST_' + Date.now()
       
@@ -377,8 +365,7 @@ Page({
         ],
         totalPrice: 68.00,
         finalPrice: 68.00,
-        payWithBalance: false,
-        userPhone: '13800000000'
+        payWithBalance: false
       }
       
       // 生成打印内容
@@ -443,13 +430,7 @@ Page({
       }
       
       content += `<C>--------------------------------</C><BR>`
-      
-      // 用户信息
-      if (testOrder.userPhone) {
-        const hiddenPhone = hidePhoneNumber(testOrder.userPhone)
-        content += `<LEFT><font# bolder=1 height=1 width=1>客户电话: ${escapeHtml(hiddenPhone)}</font#></LEFT><BR>`
-      }
-      
+
       content += `<C>**************<font# bolder=1 height=2 width=1>完</font#><font# bolder=0 height=1 width=1>**************</font#></C><BR>`
 
       // 调用打印接口

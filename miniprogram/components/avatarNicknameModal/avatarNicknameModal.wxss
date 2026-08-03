@@ -101,37 +101,6 @@
 	height: 105rpx;
 }
 
-.super-phone-box {
-	height: 105rpx;
-	padding: 0rpx 25rpx;
-	margin-top: 15rpx;
-}
-
-.phone-label-box {
-	height: 100%;
-	flex: 1;
-}
-
-.phone-display {
-	font-size: 28rpx;
-	color: #9aa39d;
-}
-
-.phone-btn {
-	padding: 12rpx 30rpx;
-	background: linear-gradient(135deg, #3f9d81 0%, #8fd8bc 100%);
-	color: white;
-	font-size: 24rpx;
-	border-radius: 50rpx;
-	border: none;
-	line-height: 1.5;
-	width:250rpx !important;
-}
-
-.phone-btn::after {
-	border: none;
-}
-
 .apply-btn {
 	width: 450rpx;
 	height: 95rpx;

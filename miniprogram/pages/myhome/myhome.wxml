@@ -10,12 +10,11 @@
       <view class="profile-info">
         <view class="profile-kicker">{{userInfo && userInfo.nickName ? '门店会员' : '待授权'}}</view>
         <view class="profile-name">{{userInfo && userInfo.nickName ? userInfo.nickName : '授权头像昵称'}}</view>
-        <view class="profile-sub" wx:if="{{userInfo && userInfo.phoneNumber}}">{{userInfo.phoneNumber}}</view>
-        <view class="profile-sub" wx:else>{{userInfo && userInfo.nickName ? '请先完善个人信息' : '点击完善，授权头像昵称'}}</view>
+        <view class="profile-sub" wx:if="{{!userInfo || !userInfo.nickName}}">点击完善，授权头像昵称</view>
       </view>
       <view
         class="profile-edit"
-        wx:if="{{!userInfo || !userInfo.phoneNumber}}"
+        wx:if="{{!userInfo || !userInfo.nickName}}"
         bindtap="showAuthModal">
         {{userInfo && userInfo.nickName ? '完善' : '授权'}}
       </view>

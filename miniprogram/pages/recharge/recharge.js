@@ -167,7 +167,7 @@ Page({
 
     // 检查用户信息完整性
     const userInfo = this.data.userInfo
-    if (!userInfo || !userInfo.avatarUrl || !userInfo.nickName || !userInfo.phoneNumber) {
+    if (!userInfo || !userInfo.avatarUrl || !userInfo.nickName) {
       this.setData({
         showAuthModal: true,
         pendingRecharge: recharge // 保存待充值的套餐
@@ -218,8 +218,7 @@ Page({
           createTime: db.serverDate(),
           // 用户信息
           userNickName: userInfo ? (userInfo.nickName || '') : '',
-          userAvatar: userInfo ? (userInfo.avatarUrl || '') : '',
-          userPhone: userInfo ? (userInfo.phoneNumber || '') : ''
+          userAvatar: userInfo ? (userInfo.avatarUrl || '') : ''
         }
       })
 

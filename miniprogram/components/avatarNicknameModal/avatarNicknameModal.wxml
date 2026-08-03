@@ -29,17 +29,6 @@
 					</view>
 				</view>
 
-				<view class="super-phone-box flex-jb-ac">
-					<view class="phone-label-box flex-ac">
-						<view style="font-size: 28rpx; color: #222; width: 150rpx;">手机号</view>
-						<view class="phone-display">{{phoneNumber || '未获取'}}</view>
-					</view>
-					<button class="phone-btn" open-type="getPhoneNumber" bindgetphonenumber="getphonenumber">
-						{{phoneNumber ? '重新获取' : '获取手机号'}}
-					</button>
-				</view>
-
-
 			<view class="apply-btn flex-jc-ac" bindtap="saveUserInfo">保存</view>
 		</view>
 

@@ -22,7 +22,6 @@
           <image class="user-avatar" src="{{item.userAvatar || '/images/my.png'}}" mode="aspectFill"></image>
           <view class="user-info-text">
             <view class="user-name">{{item.userNickName || '未设置昵称'}}</view>
-            <view class="user-phone" wx:if="{{item.userPhone}}">{{item.userPhone}}</view>
           </view>
         </view>
         <view class="order-type">

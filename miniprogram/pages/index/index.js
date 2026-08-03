@@ -1191,14 +1191,13 @@ Page({
   },
 
   async onUserInfoSaved(e) {
-    const { avatarUrl, nickName, phoneNumber } = e.detail || {}
+    const { avatarUrl, nickName } = e.detail || {}
 
     this.setData({
       userInfo: {
         ...(this.data.userInfo || {}),
         avatarUrl,
-        nickName,
-        phoneNumber
+        nickName
       },
       showAuthModal: false
     })
