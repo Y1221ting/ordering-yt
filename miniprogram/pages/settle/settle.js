@@ -2,6 +2,7 @@
 const app = getApp()
 const db = wx.cloud.database()
 const { loadShopSettings } = require('../../utils/shopSettings')
+const { resolveImages } = require('../../utils/imageUrl')
 
 Page({
   data: {
@@ -68,7 +69,7 @@ Page({
     this.setData({ selectedAvoids })
   },
 
-  loadCartData() {
+  async loadCartData() {
     try {
       const cartData = wx.getStorageSync('settleCartData')
       if (!cartData) {
@@ -117,6 +118,9 @@ Page({
           tags: tagsArray
         })
       }
+
+      // 云存储图片换临时链接
+      await resolveImages(goodsList, ['dishImage'])
 
       this.setData({
         orderGoods: goodsList

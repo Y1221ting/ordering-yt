@@ -1,5 +1,6 @@
 // pages/myorder/myorder.js
 const db = wx.cloud.database()
+const { resolveImages } = require('../../utils/imageUrl')
 Page({
   data: {
     viewTabs: [
@@ -126,6 +127,9 @@ Page({
           orderUserAvatar: order.userAvatar || ''
         }
       })
+
+      // 云存储图片换临时链接（订单里的菜品图，家人共享可见）
+      await resolveImages(list, ['goods[].dishImage'])
 
       const newList = append ? this.data.orderList.concat(list) : list
       const hasMore = list.length === pageSize

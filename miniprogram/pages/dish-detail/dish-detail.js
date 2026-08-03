@@ -5,6 +5,7 @@ const {
   getStoredCart,
   saveStoredCart
 } = require('../../utils/cart')
+const { resolveImages } = require('../../utils/imageUrl')
 
 function clone(data) {
   return JSON.parse(JSON.stringify(data || {}))
@@ -91,6 +92,9 @@ Page({
 
       const selectedSku = dish.enabledSkus[0] || null
       const selectedTags = this.buildInitialTags(dish)
+
+      // 云存储图片换临时链接
+      await resolveImages([dish], ['image', 'images*'])
 
       this.setData({
         dish,

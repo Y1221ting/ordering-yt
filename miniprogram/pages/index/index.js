@@ -2,6 +2,7 @@
 const app = getApp()
 const db = wx.cloud.database()
 const { normalizeDish: normalizeDishData } = require('../../utils/dish')
+const { resolveImages } = require('../../utils/imageUrl')
 const {
   generateCartKey: createCartKey,
   getStoredCart,
@@ -431,6 +432,9 @@ Page({
         return normalized
       })
 
+      // 云存储图片换临时链接（绕开存储读权限，家人也能看到图）
+      await resolveImages(mapped, ['image'])
+
       const latestSections = this.data.goodsSections.slice()
       const currentSection = latestSections[index] || section
       const goods = append ? (currentSection.goods || []).concat(mapped) : mapped
@@ -722,7 +726,7 @@ Page({
     return selectedTags
   },
 
-  openDishModal(goods) {
+  async openDishModal(goods) {
     const dish = this.normalizeDish(goods)
     if (!dish.hasSaleSku) {
       wx.showToast({
@@ -733,6 +737,7 @@ Page({
     }
 
     const sku = dish.enabledSkus[0]
+    await resolveImages([dish], ['image'])
     this.setData({
       showTagModal: true,
       currentDish: dish,
@@ -1100,6 +1105,9 @@ Page({
           categoryName: menu ? menu.name : ''
         }
       })
+
+      // 云存储图片换临时链接
+      await resolveImages(results, ['image'])
 
       this.setData({
         searchResults: results,

@@ -1,5 +1,6 @@
 // pages/admin/dish/dish.js
 const db = wx.cloud.database()
+const { resolveImages } = require('../../utils/imageUrl')
 
 const MAX_DISH_IMAGES = 3
 const DEFAULT_SKU_NAME = '默认规格'
@@ -382,6 +383,10 @@ Page({
       }
 
       const list = (res.data || []).map(item => this.normalizeDishForView(item))
+
+      // 云存储图片换临时链接
+      await resolveImages(list, ['image'])
+
       const newDishes = append ? this.data.dishes.concat(list) : list
       const hasMore = list.length === pageSize
 
@@ -449,12 +454,14 @@ Page({
     })
   },
 
-  showEditDishModal(e) {
+  async showEditDishModal(e) {
     const dish = this.normalizeDishForView(e.currentTarget.dataset.dish)
     const editableDish = clone(dish)
     if (editableDish.skus && editableDish.skus.length === 1 && editableDish.skus[0].name === DEFAULT_SKU_NAME) {
       editableDish.skus[0].name = ''
     }
+    // 云存储图片换临时链接
+    await resolveImages([editableDish], ['image', 'images*'])
     this.setData({
       showDishModal: true,
       editDishMode: true,
