@@ -46,6 +46,7 @@ Page({
     // 明细
     records: [],
     // 弹窗与状态
+    isManager: false, // 当前用户是否为管理员（仅管理员可设置预算）
     showBudgetModal: false,
     budgetInput: '',
     saving: false,
@@ -113,6 +114,15 @@ Page({
       const lastRes = await db.collection('expense_budget').where({ month: this.getLastMonth(month) }).limit(1).get()
       const lastMonthBudget = lastRes.data.length > 0 ? Number(lastRes.data[0].budget) : null
 
+      // 识别管理员（admin 集合第一条记录的创建者 = 设置管理员密码的人；仅管理员可设置预算）
+      let isManager = false
+      try {
+        const adminRes = await db.collection('admin').limit(1).get()
+        isManager = adminRes.data.length === 0 || adminRes.data[0]._openid === this.openid
+      } catch (err) {
+        console.error('获取管理员身份失败', err)
+      }
+
       // 本月记录（按日期字符串范围过滤，家庭单月最多取 100 条）
       const recordRes = await db.collection('expense')
         .where({ date: _.gte(month + '-01').and(_.lte(month + '-31')) })
@@ -177,6 +187,7 @@ Page({
       const budgetPercent = budget > 0 ? Math.min(100, Math.round(spent / budget * 100)) : 0
 
       this.setData({
+        isManager,
         budget,
         budgetText: budget === null ? '' : fmtNum(budget),
         spentText: fmtMoney(spent),
@@ -308,6 +319,10 @@ Page({
   // ===== 预算 =====
 
   openBudgetModal() {
+    if (!this.data.isManager) {
+      wx.showToast({ title: '只有管理员可以设置预算', icon: 'none' })
+      return
+    }
     this.setData({
       showBudgetModal: true,
       budgetInput: this.data.budget === null ? '' : String(this.data.budget)
@@ -329,7 +344,7 @@ Page({
 
   // 卡片上：一键沿用上月预算（未设本月预算时显示）
   useLastMonthBudget() {
-    if (this.data.lastMonthBudget === null) return
+    if (!this.data.isManager || this.data.lastMonthBudget === null) return
     this.saveBudgetValue(this.data.lastMonthBudget, '已沿用上月预算')
   },
 
@@ -345,6 +360,10 @@ Page({
 
   // 保存预算（已有记录则更新，否则新增）
   async saveBudgetValue(value, toastTitle) {
+    if (!this.data.isManager) {
+      wx.showToast({ title: '只有管理员可以设置预算', icon: 'none' })
+      return
+    }
     try {
       const month = this.data.month
       const res = await db.collection('expense_budget').where({ month }).limit(1).get()

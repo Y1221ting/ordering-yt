@@ -8,7 +8,7 @@
         <view class="budget-tip" wx:if="{{budget === null}}">未设置</view>
         <view class="budget-tip" wx:else>¥{{budgetText}}</view>
       </view>
-      <view class="budget-set-btn" bindtap="openBudgetModal">设置预算</view>
+      <view class="budget-set-btn" wx:if="{{isManager}}" bindtap="openBudgetModal">设置预算</view>
     </view>
 
     <!-- 已设置预算：进度条 + 已花费/剩余 -->
@@ -30,8 +30,8 @@
 
     <!-- 未设置预算：提示 + 沿用上月 -->
     <view class="budget-none" wx:if="{{budget === null}}">
-      <text class="none-tip">设置预算后自动计算余额，超支会红色提醒</text>
-      <view class="copy-btn" wx:if="{{lastMonthBudget !== null}}" bindtap="useLastMonthBudget">沿用上月 ¥{{lastMonthBudgetText}}</view>
+      <text class="none-tip">{{isManager ? '设置预算后自动计算余额，超支会红色提醒' : '预算由管理员设置，设置后自动计算余额'}}</text>
+      <view class="copy-btn" wx:if="{{lastMonthBudget !== null && isManager}}" bindtap="useLastMonthBudget">沿用上月 ¥{{lastMonthBudgetText}}</view>
     </view>
   </view>
 
