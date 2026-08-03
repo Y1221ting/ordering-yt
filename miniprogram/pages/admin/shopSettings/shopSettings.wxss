@@ -74,7 +74,7 @@ page {
   flex-shrink: 0;
   color: #ffffff;
   font-size: 34rpx;
-  background: #d94335;
+  background: #5fc4a3;
   border-radius: 12rpx;
 }
 
@@ -118,7 +118,7 @@ page {
 }
 
 .heading-icon {
-  color: #d94335;
+  color: #5fc4a3;
   font-size: 30rpx;
 }
 
@@ -138,7 +138,7 @@ page {
 }
 
 .required {
-  color: #d94335;
+  color: #5fc4a3;
 }
 
 .form-input,
@@ -195,9 +195,9 @@ page {
   color: #ffffff;
   font-size: 29rpx;
   font-weight: 750;
-  background: #d94335;
+  background: #5fc4a3;
   border-radius: 12rpx;
-  box-shadow: 0 8rpx 18rpx rgba(217, 67, 53, 0.2);
+  box-shadow: 0 8rpx 18rpx rgba(95, 196, 163, 0.2);
 }
 
 .save-btn.is-saving {

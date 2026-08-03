@@ -48,7 +48,7 @@
           <view class="goods-sku" wx:if="{{item.skuName}}">{{item.skuName}}</view>
           <view class="goods-tags" wx:if="{{item.tags && item.tags.length > 0}}">
             <van-tag
-              type="danger"
+              type="success"
               wx:for="{{item.tags}}"
               wx:key="index"
               wx:for-item="tagVal">

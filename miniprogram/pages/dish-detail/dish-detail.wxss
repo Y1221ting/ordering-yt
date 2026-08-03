@@ -176,8 +176,8 @@
   margin-left: 12rpx;
   padding: 0 10rpx;
   border-radius: 5rpx;
-  color: #d94335;
-  background: #fff1ee;
+  color: #5fc4a3;
+  background: #eafaf3;
   font-size: 20rpx;
   font-weight: 500;
   vertical-align: 4rpx;
@@ -209,7 +209,7 @@
 }
 
 .sku-option.selected {
-  border-color: #d94335;
+  border-color: #5fc4a3;
   background: #fff6f3;
 }
 
@@ -224,7 +224,7 @@
   justify-content: center;
   border-radius: 0 10rpx 0 10rpx;
   color: #ffffff;
-  background: #d94335;
+  background: #5fc4a3;
 }
 
 .sku-name {
@@ -237,7 +237,7 @@
 }
 
 .sku-option.selected .sku-name {
-  color: #b9322a;
+  color: #3f9d81;
 }
 
 .tag-options {
@@ -261,8 +261,8 @@
 }
 
 .tag-option.selected {
-  border-color: #d94335;
-  color: #b9322a;
+  border-color: #5fc4a3;
+  color: #3f9d81;
   background: #fff6f3;
   font-weight: 600;
 }
@@ -301,9 +301,9 @@
 }
 
 .stepper-button.primary {
-  border-color: #d94335;
+  border-color: #5fc4a3;
   color: #ffffff;
-  background: #d94335;
+  background: #5fc4a3;
 }
 
 .stepper-button.disabled {
@@ -355,7 +355,7 @@
   min-width: 0;
   display: flex;
   align-items: baseline;
-  color: #d94335;
+  color: #5fc4a3;
 }
 
 .bottom-price-label {
@@ -472,24 +472,24 @@
 }
 
 .buy-button {
-  color: #c83b30;
-  background: #fff1ee;
-  border: 2rpx solid #f0b5ae;
+  color: #3f9d81;
+  background: #eafaf3;
+  border: 2rpx solid #b5e6d4;
 }
 
 .buy-button:active {
-  background: #ffe7e2;
+  background: #dff6ec;
 }
 
 .add-button {
   color: #ffffff;
-  background: #d94335;
-  box-shadow: 0 10rpx 24rpx rgba(217, 67, 53, 0.24);
+  background: #5fc4a3;
+  box-shadow: 0 10rpx 24rpx rgba(95, 196, 163, 0.24);
 }
 
 .add-button:active {
   transform: scale(0.99);
-  background: #c63a2f;
+  background: #3f9d81;
 }
 
 .add-button.disabled {
@@ -554,8 +554,8 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  color: #d94335;
-  background: #fff1ee;
+  color: #5fc4a3;
+  background: #eafaf3;
 }
 
 .error-title {
@@ -592,7 +592,7 @@
 
 .primary-button {
   color: #ffffff;
-  background: #d94335;
+  background: #5fc4a3;
 }
 
 .primary-button.compact {

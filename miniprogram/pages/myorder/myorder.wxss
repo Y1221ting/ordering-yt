@@ -28,7 +28,7 @@
 }
 
 .tab-item.active .tab-text {
-  color: #d94335;
+  color: #5fc4a3;
   font-weight: bold;
 }
 
@@ -39,7 +39,7 @@
   transform: translateX(-50%);
   width: 60rpx;
   height: 6rpx;
-  background: #d94335;
+  background: #5fc4a3;
   border-radius: 3rpx;
 }
 
@@ -104,7 +104,7 @@
 
 .order-status {
   font-size: 26rpx;
-  color: #d94335;
+  color: #5fc4a3;
   padding: 6rpx 20rpx;
   background: rgba(229, 77, 66, 0.1);
   border-radius: 20rpx;
@@ -154,7 +154,7 @@
 }
 
 .recharge-value.total {
-  color: #d94335;
+  color: #5fc4a3;
   font-size: 36rpx;
 }
 
@@ -213,7 +213,7 @@
 
 .tag-text {
   font-size: 22rpx;
-  color: #d94335;
+  color: #5fc4a3;
   background: rgba(229, 77, 66, 0.1);
   padding: 4rpx 12rpx;
   border-radius: 8rpx;
@@ -228,7 +228,7 @@
 
 .goods-price {
   font-size: 28rpx;
-  color: #d94335;
+  color: #5fc4a3;
   font-weight: bold;
 }
 
@@ -279,7 +279,7 @@
 
 .price-num {
   font-size: 36rpx;
-  color: #d94335;
+  color: #5fc4a3;
   font-weight: bold;
   margin-left: 10rpx;
 }
@@ -303,7 +303,7 @@
 
 .action-btn.cancel {
   background: rgba(229, 77, 66, 0.1);
-  color: #d94335;
+  color: #5fc4a3;
 }
 
 /* 空状态 */
@@ -326,7 +326,7 @@
 
 /* 高级版视觉覆盖 */
 .page {
-  background: linear-gradient(180deg, #fff7f3 0%, #f6f7f9 240rpx, #f6f7f9 100%);
+  background: linear-gradient(180deg, #f0faf6 0%, #f6f7f9 240rpx, #f6f7f9 100%);
 }
 
 .tabs {
@@ -348,12 +348,12 @@
 }
 
 .tab-item.active .tab-text {
-  color: #d94335;
+  color: #5fc4a3;
 }
 
 .tab-line {
   bottom: 8rpx;
-  background: #d94335;
+  background: #5fc4a3;
 }
 
 .order-list {
@@ -379,7 +379,7 @@
   padding: 8rpx 16rpx;
   border-radius: 999rpx;
   background: #fff4f0;
-  color: #d94335;
+  color: #5fc4a3;
   font-size: 24rpx;
 }
 
@@ -411,7 +411,7 @@
 .goods-price,
 .price-num,
 .recharge-value.total {
-  color: #d94335;
+  color: #5fc4a3;
 }
 
 .recharge-value.gift {

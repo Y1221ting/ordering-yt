@@ -1,10 +1,10 @@
 /* pages/admin/dish/dish.wxss */
 .page {
-  --menu-brand: #d94335;
-  --menu-brand-dark: #b52f26;
-  --menu-brand-header: #c93b32;
-  --menu-brand-soft: #fff3f1;
-  --menu-brand-pale: #f7d8d4;
+  --menu-brand: #5fc4a3;
+  --menu-brand-dark: #3f9d81;
+  --menu-brand-header: #4ab390;
+  --menu-brand-soft: #f0faf6;
+  --menu-brand-pale: #d9f2e8;
   --menu-ink: #242424;
   --menu-body: #555860;
   --menu-muted: #6f747d;

@@ -50,7 +50,7 @@
     <van-grid column-num="3" border="{{false}}" icon-size="56rpx" custom-class="menu-grid">
       <van-grid-item 
         icon="shop-o" 
-        icon-color="#d94335"
+        icon-color="#5fc4a3"
         text="菜品管理" 
         clickable
         bind:click="goToDish"
@@ -71,7 +71,7 @@
     <van-grid column-num="3" border="{{false}}" icon-size="56rpx" custom-class="menu-grid">
       <van-grid-item
         icon="setting-o"
-        icon-color="#d94335"
+        icon-color="#5fc4a3"
         text="店铺设置"
         clickable
         bind:click="goToShopSettings"

@@ -48,7 +48,7 @@
                 <!-- <text class="tag-text" wx:for="{{goods.tags}}" wx:key="index" wx:for-item="tagVal">
                   {{tagVal}}
                 </text> -->
-                <van-tag type="danger" wx:for="{{goods.tags}}" wx:key="index" wx:for-item="tagVal">{{tagVal}}</van-tag>
+                <van-tag type="success" wx:for="{{goods.tags}}" wx:key="index" wx:for-item="tagVal">{{tagVal}}</van-tag>
               </view>
               <view class="goods-detail">
                 <text class="goods-price">¥{{goods.price}}</text>

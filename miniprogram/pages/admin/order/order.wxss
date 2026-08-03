@@ -26,8 +26,8 @@
 .refresh-btn {
   padding: 8rpx 24rpx;
   border-radius: 999rpx;
-  border: 2rpx solid #d94335;
-  color: #d94335;
+  border: 2rpx solid #5fc4a3;
+  color: #5fc4a3;
   font-size: 24rpx;
 }
 
@@ -134,7 +134,7 @@
 }
 
 .recharge-value.total {
-  color: #d94335;
+  color: #5fc4a3;
   font-size: 36rpx;
 }
 
@@ -193,7 +193,7 @@
 
 .tag-text {
   font-size: 22rpx;
-  color: #d94335;
+  color: #5fc4a3;
   background: rgba(229, 77, 66, 0.1);
   padding: 4rpx 12rpx;
   border-radius: 8rpx;
@@ -208,7 +208,7 @@
 
 .goods-price {
   font-size: 28rpx;
-  color: #d94335;
+  color: #5fc4a3;
   font-weight: bold;
 }
 
@@ -285,7 +285,7 @@
 
 .price-num {
   font-size: 36rpx;
-  color: #d94335;
+  color: #5fc4a3;
   font-weight: bold;
   margin-left: 10rpx;
 }
@@ -310,7 +310,7 @@
 
 /* 高级版视觉覆盖 */
 .page {
-  background: linear-gradient(180deg, #fff7f3 0%, #f6f7f9 240rpx, #f6f7f9 100%);
+  background: linear-gradient(180deg, #f0faf6 0%, #f6f7f9 240rpx, #f6f7f9 100%);
   padding: 24rpx;
   padding-bottom: 48rpx;
 }
@@ -327,8 +327,8 @@
 }
 
 .refresh-btn {
-  border-color: rgba(217, 67, 53, 0.34);
-  color: #d94335;
+  border-color: rgba(95, 196, 163, 0.34);
+  color: #5fc4a3;
   background: #fff4f0;
 }
 
@@ -371,7 +371,7 @@
   padding: 8rpx 16rpx;
   border-radius: 999rpx;
   background: #fff4f0;
-  color: #d94335;
+  color: #5fc4a3;
   font-size: 24rpx;
 }
 
@@ -392,7 +392,7 @@
 .goods-price,
 .price-num,
 .recharge-value.total {
-  color: #d94335;
+  color: #5fc4a3;
 }
 
 .recharge-value.gift {
@@ -409,7 +409,7 @@
 }
 
 .print-status-text.failed {
-  color: #d94335;
+  color: #5fc4a3;
 }
 
 .print-status-text.not-printed {

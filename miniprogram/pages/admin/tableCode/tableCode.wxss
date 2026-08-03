@@ -45,7 +45,7 @@ page {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: #d94335;
+  color: #5fc4a3;
   font-size: 30rpx;
   background: #fff1ef;
   border-radius: 12rpx;
@@ -63,10 +63,10 @@ page {
   color: #ffffff;
   font-size: 28rpx;
   font-weight: 700;
-  background: #d94335;
-  border: 1rpx solid #d94335;
+  background: #5fc4a3;
+  border: 1rpx solid #5fc4a3;
   border-radius: 12rpx;
-  box-shadow: 0 8rpx 18rpx rgba(217, 67, 53, 0.18);
+  box-shadow: 0 8rpx 18rpx rgba(95, 196, 163, 0.18);
 }
 
 .add-btn .cuIcon-add {
@@ -96,7 +96,7 @@ page {
   left: 0;
   width: 6rpx;
   z-index: 2;
-  background: #d94335;
+  background: #5fc4a3;
 }
 
 .item-main {
@@ -149,7 +149,7 @@ page {
   position: absolute;
   width: 21rpx;
   height: 21rpx;
-  border-color: #d94335;
+  border-color: #5fc4a3;
   border-style: solid;
 }
 
@@ -298,7 +298,7 @@ page {
 }
 
 .action-btn.preview text:first-child {
-  color: #d94335;
+  color: #5fc4a3;
 }
 
 .action-btn.download {
@@ -364,7 +364,7 @@ page {
 }
 
 .modal-title .cuIcon-qr_code {
-  color: #d94335;
+  color: #5fc4a3;
   font-size: 32rpx;
 }
 
@@ -390,7 +390,7 @@ page {
 }
 
 .required {
-  color: #d94335;
+  color: #5fc4a3;
 }
 
 .input-shell {
@@ -405,7 +405,7 @@ page {
   z-index: 1;
   display: flex;
   align-items: center;
-  color: #d94335;
+  color: #5fc4a3;
   font-size: 28rpx;
 }
 
@@ -445,6 +445,6 @@ page {
 
 .modal-btn.confirm {
   color: #ffffff;
-  background: #d94335;
-  box-shadow: 0 8rpx 18rpx rgba(217, 67, 53, 0.18);
+  background: #5fc4a3;
+  box-shadow: 0 8rpx 18rpx rgba(95, 196, 163, 0.18);
 }

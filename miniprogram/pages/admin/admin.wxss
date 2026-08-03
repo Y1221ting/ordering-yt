@@ -1,7 +1,7 @@
 /* pages/admin/admin.wxss */
 .page {
-  --admin-brand: #c93b32;
-  --admin-brand-dark: #a82f28;
+  --admin-brand: #4ab390;
+  --admin-brand-dark: #2f8a6d;
   --admin-jade: #168a72;
   --admin-gold: #b27b2d;
   --admin-ink: #202726;

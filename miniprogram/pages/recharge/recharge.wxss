@@ -20,7 +20,7 @@ page {
   position: relative;
   padding: 26rpx 24rpx 30rpx;
   overflow: hidden;
-  background: #c93b32;
+  background: #4ab390;
 }
 
 .campaign-hero::after {
@@ -82,8 +82,8 @@ page {
   transform: rotate(24deg);
   background: repeating-linear-gradient(
     90deg,
-    #d94335 0,
-    #d94335 2rpx,
+    #5fc4a3 0,
+    #5fc4a3 2rpx,
     transparent 2rpx,
     transparent 12rpx
   );
@@ -100,7 +100,7 @@ page {
   flex-shrink: 0;
   color: #ffffff;
   font-size: 37rpx;
-  background: #d94335;
+  background: #5fc4a3;
   border-radius: 12rpx;
 }
 
@@ -152,7 +152,7 @@ page {
   display: flex;
   align-items: baseline;
   justify-content: flex-end;
-  color: #d94335;
+  color: #5fc4a3;
   line-height: 1;
 }
 
@@ -217,7 +217,7 @@ page {
   flex-shrink: 0;
   color: #ffffff;
   font-size: 25rpx;
-  background: #d94335;
+  background: #5fc4a3;
   border-radius: 10rpx;
 }
 
@@ -253,9 +253,9 @@ page {
 }
 
 .recharge-item.selected {
-  background: #fff3f1;
-  border-color: #d94335;
-  box-shadow: 0 14rpx 30rpx rgba(217, 67, 53, 0.16);
+  background: #f0faf6;
+  border-color: #5fc4a3;
+  box-shadow: 0 14rpx 30rpx rgba(95, 196, 163, 0.16);
 }
 
 .recommend-badge {
@@ -269,7 +269,7 @@ page {
   color: #ffffff;
   font-size: 21rpx;
   font-weight: 750;
-  background: #d94335;
+  background: #5fc4a3;
   border-radius: 0 0 10rpx 0;
 }
 
@@ -284,7 +284,7 @@ page {
   justify-content: center;
   color: #ffffff;
   font-size: 22rpx;
-  background: #d94335;
+  background: #5fc4a3;
   border-radius: 0 0 0 12rpx;
 }
 
@@ -358,7 +358,7 @@ page {
 .arrival-value {
   min-width: 0;
   overflow: hidden;
-  color: #d94335;
+  color: #5fc4a3;
   font-size: 25rpx;
   font-weight: 800;
   text-overflow: ellipsis;
@@ -404,7 +404,7 @@ page {
 }
 
 .rules-title .cuIcon-notice {
-  color: #d94335;
+  color: #5fc4a3;
   font-size: 29rpx;
 }
 
@@ -434,7 +434,7 @@ page {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: #d94335;
+  color: #5fc4a3;
   font-size: 28rpx;
   background: #fff0ed;
   border-radius: 12rpx;
@@ -489,7 +489,7 @@ page {
   margin-top: 3rpx;
   display: flex;
   align-items: baseline;
-  color: #d94335;
+  color: #5fc4a3;
   line-height: 1;
 }
 
@@ -532,9 +532,9 @@ page {
   color: #ffffff;
   font-size: 29rpx;
   font-weight: 800;
-  background: #d94335;
+  background: #5fc4a3;
   border-radius: 12rpx;
-  box-shadow: 0 10rpx 22rpx rgba(217, 67, 53, 0.24);
+  box-shadow: 0 10rpx 22rpx rgba(95, 196, 163, 0.24);
 }
 
 .checkout-btn .cuIcon-right {

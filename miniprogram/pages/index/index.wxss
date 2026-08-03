@@ -8,12 +8,12 @@
 
 /* 状态栏占位 */
 .status-bar {
-  background: linear-gradient(135deg, #d94335 0%, #f36a5d 100%);
+  background: linear-gradient(135deg, #5fc4a3 0%, #8fd8bc 100%);
 }
 
 /* 店名 */
 .shop-header {
-  background: linear-gradient(135deg, #d94335 0%, #f36a5d 100%);
+  background: linear-gradient(135deg, #5fc4a3 0%, #8fd8bc 100%);
   padding: 24rpx 30rpx 28rpx;
   text-align: center;
 }
@@ -62,7 +62,7 @@
 }
 
 .menu-item.active .menu-name {
-  color: #d94335;
+  color: #5fc4a3;
   font-weight: bold;
 }
 
@@ -73,7 +73,7 @@
   transform: translateY(-50%);
   width: 6rpx;
   height: 40rpx;
-  background: #d94335;
+  background: #5fc4a3;
   border-radius: 0 6rpx 6rpx 0;
 }
 
@@ -106,7 +106,7 @@
   padding: 8rpx 18rpx;
   border-radius: 6rpx;
   background: #fff3f0;
-  color: #d94335;
+  color: #5fc4a3;
 }
 
 .goods-item {
@@ -186,7 +186,7 @@
 }
 
 .goods-price {
-  color: #d94335;
+  color: #5fc4a3;
   display: flex;
   align-items: baseline;
   gap: 10rpx;
@@ -194,13 +194,13 @@
 
 .goods-price .price-symbol {
   font-size: 24rpx;
-  color: #d94335;
+  color: #5fc4a3;
   font-weight: bold;
 }
 
 .goods-price .price-num {
   font-size: 36rpx;
-  color: #d94335;
+  color: #5fc4a3;
   font-weight: bold;
 }
 
@@ -247,7 +247,7 @@
 }
 
 .action-btn.add {
-  background: #d94335;
+  background: #5fc4a3;
   color: white;
 }
 
@@ -313,7 +313,7 @@
   position: absolute;
   top: -5rpx;
   right: -5rpx;
-  background: #d94335;
+  background: #5fc4a3;
   color: white;
   border-radius: 50%;
   min-width: 36rpx;
@@ -337,20 +337,20 @@
 
 .price-label {
   font-size: 28rpx;
-  color: #d94335;
+  color: #5fc4a3;
   margin-right: 5rpx;
   font-weight: bold;
 }
 
 .cart-price .price-symbol {
   font-size: 24rpx;
-  color: #d94335;
+  color: #5fc4a3;
   font-weight: bold;
 }
 
 .cart-price .price-num {
   font-size: 32rpx;
-  color: #d94335;
+  color: #5fc4a3;
   font-weight: bold;
 }
 
@@ -375,7 +375,7 @@
 }
 
 .settle-btn.active {
-  background: #d94335;
+  background: #5fc4a3;
   color: white;
 }
 
@@ -433,7 +433,7 @@
 
 .cart-clear {
   font-size: 28rpx;
-  color: #d94335;
+  color: #5fc4a3;
 }
 
 .cart-content {
@@ -498,7 +498,7 @@
 
 .tag-text {
   font-size: 22rpx;
-  color: #d94335;
+  color: #5fc4a3;
   background: #fff3f0;
   padding: 2rpx 8rpx;
   border-radius: 4rpx;
@@ -554,13 +554,13 @@
 
 .cart-total-price .price-symbol {
   font-size: 24rpx;
-  color: #d94335;
+  color: #5fc4a3;
   font-weight: bold;
 }
 
 .cart-total-price .price-num {
   font-size: 36rpx;
-  color: #d94335;
+  color: #5fc4a3;
   font-weight: bold;
 }
 
@@ -570,7 +570,7 @@
 
 .cart-settle-btn {
   padding: 20rpx 50rpx;
-  background: linear-gradient(135deg, #d94335 0%, #f36a5d 100%);
+  background: linear-gradient(135deg, #5fc4a3 0%, #8fd8bc 100%);
   color: white;
   border-radius: 50rpx;
   font-size: 28rpx;
@@ -670,7 +670,7 @@
 
 .dish-detail-price {
   font-size: 40rpx;
-  color: #d94335;
+  color: #5fc4a3;
   font-weight: bold;
 }
 
@@ -709,7 +709,7 @@
 .tag-required-label {
   font-size: 22rpx;
   color: white;
-  background: #d94335;
+  background: #5fc4a3;
   padding: 2rpx 10rpx;
   border-radius: 6rpx;
   margin-left: 10rpx;
@@ -737,7 +737,7 @@
 }
 
 .sku-option.selected {
-  border-color: #d94335;
+  border-color: #5fc4a3;
   background: #fff3f0;
 }
 
@@ -748,13 +748,13 @@
 }
 
 .sku-option.selected .sku-option-name {
-  color: #d94335;
+  color: #5fc4a3;
   font-weight: 600;
 }
 
 .sku-option-price {
   font-size: 24rpx;
-  color: #d94335;
+  color: #5fc4a3;
   font-weight: 600;
 }
 
@@ -769,8 +769,8 @@
 }
 
 .tag-option.selected {
-  background: linear-gradient(135deg, #d94335 0%, #f36a5d 100%);
-  border-color: #d94335;
+  background: linear-gradient(135deg, #5fc4a3 0%, #8fd8bc 100%);
+  border-color: #5fc4a3;
   color: white;
   font-weight: bold;
 }
@@ -802,7 +802,7 @@
   width: 60rpx;
   height: 60rpx;
   border-radius: 50%;
-  background: linear-gradient(135deg, #d94335 0%, #f36a5d 100%);
+  background: linear-gradient(135deg, #5fc4a3 0%, #8fd8bc 100%);
   color: white;
   display: flex;
   align-items: center;
@@ -848,19 +848,19 @@
 
 .footer-price .price-symbol {
   font-size: 24rpx;
-  color: #d94335;
+  color: #5fc4a3;
   font-weight: bold;
 }
 
 .footer-price .price-num {
   font-size: 36rpx;
-  color: #d94335;
+  color: #5fc4a3;
   font-weight: bold;
 }
 
 .add-cart-btn {
   padding: 20rpx 60rpx;
-  background: linear-gradient(135deg, #d94335 0%, #f36a5d 100%);
+  background: linear-gradient(135deg, #5fc4a3 0%, #8fd8bc 100%);
   color: white;
   border-radius: 50rpx;
   font-size: 28rpx;
@@ -874,7 +874,7 @@
 
 .status-bar,
 .shop-header {
-  background: linear-gradient(135deg, #a82f28 0%, #d94335 58%, #f36a5d 100%);
+  background: linear-gradient(135deg, #2f8a6d 0%, #5fc4a3 58%, #8fd8bc 100%);
 }
 
 .shop-header {
@@ -912,15 +912,15 @@
 }
 
 .menu-item.active {
-  background: #fff7f3;
+  background: #f0faf6;
 }
 
 .menu-item.active .menu-name {
-  color: #d94335;
+  color: #5fc4a3;
 }
 
 .menu-indicator {
-  background: #d94335;
+  background: #5fc4a3;
 }
 
 .goods-list {
@@ -930,8 +930,8 @@
 
 .goods-section-title text {
   background: #fff4f0;
-  color: #d94335;
-  border: 1rpx solid rgba(217, 67, 53, 0.12);
+  color: #5fc4a3;
+  border: 1rpx solid rgba(95, 196, 163, 0.12);
 }
 
 .goods-item {
@@ -975,7 +975,7 @@
 .footer-price .price-symbol,
 .footer-price .price-num,
 .dish-detail-price {
-  color: #d94335;
+  color: #5fc4a3;
 }
 
 .action-btn.add,
@@ -984,8 +984,8 @@
 .quantity-btn,
 .add-cart-btn,
 .tag-option.selected {
-  background: linear-gradient(135deg, #b9322a 0%, #d94335 58%, #f36a5d 100%);
-  box-shadow: 0 10rpx 22rpx rgba(217, 67, 53, 0.2);
+  background: linear-gradient(135deg, #3f9d81 0%, #5fc4a3 58%, #8fd8bc 100%);
+  box-shadow: 0 10rpx 22rpx rgba(95, 196, 163, 0.2);
 }
 
 .action-btn.reduce {
@@ -1000,7 +1000,7 @@
 
 .cart-badge,
 .tag-required-label {
-  background: #d94335;
+  background: #5fc4a3;
 }
 
 .cart-detail {
@@ -1023,13 +1023,13 @@
 }
 
 .sku-option.selected {
-  border-color: #d94335;
+  border-color: #5fc4a3;
   background: #fff4f0;
 }
 
 .sku-option.selected .sku-option-name,
 .sku-option-price {
-  color: #d94335;
+  color: #5fc4a3;
 }
 
 /* 门店迎宾牌 */
@@ -1038,7 +1038,7 @@
   padding: 18rpx 20rpx 20rpx;
   overflow: hidden;
   flex-shrink: 0;
-  background: #c93b32;
+  background: #4ab390;
 }
 
 .storefront-header::after {
@@ -1081,7 +1081,7 @@
   flex-shrink: 0;
   color: #ffffff;
   font-size: 33rpx;
-  background: #d94335;
+  background: #5fc4a3;
   border-radius: 12rpx;
 }
 

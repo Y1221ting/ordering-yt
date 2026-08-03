@@ -2,7 +2,7 @@
 <view class="page">
   <!-- 筛选栏 -->
   <view class="filter-bar">
-    <van-tabs active="{{orderType}}" bind:change="onChange" color="#d94335" swipeable="{{false}}">
+    <van-tabs active="{{orderType}}" bind:change="onChange" color="#5fc4a3" swipeable="{{false}}">
       <van-tab title="全部订单" />
       <van-tab title="充值订单" />
       <van-tab title="点餐订单" />
@@ -64,7 +64,7 @@
                 <!-- <text class="tag-text" wx:for="{{goods.tags}}" wx:key="index" wx:for-item="tagVal">
                   {{tagVal}}
                 </text> -->
-                <van-tag type="danger" wx:for="{{goods.tags}}" wx:key="index" wx:for-item="tagVal">{{tagVal}}</van-tag>
+                <van-tag type="success" wx:for="{{goods.tags}}" wx:key="index" wx:for-item="tagVal">{{tagVal}}</van-tag>
               </view>
               <view class="goods-detail">
                 <text class="goods-price">¥{{goods.price}}</text>

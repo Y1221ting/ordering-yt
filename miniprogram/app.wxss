@@ -6,9 +6,9 @@
 
 /* 全局红色主题样式 */
 page {
-  --theme-color: #d94335;
-  --theme-color-dark: #a82f28;
-  --theme-color-light: #f36a5d;
+  --theme-color: #5fc4a3;
+  --theme-color-dark: #2f8a6d;
+  --theme-color-light: #8fd8bc;
   --theme-soft: #fff4f0;
   --theme-warm: #fff8f3;
   --accent-color: #1f9d8a;
@@ -21,8 +21,8 @@ page {
   --card-bg: #ffffff;
   --page-bg: #f6f7f9;
   --card-shadow: 0 12rpx 34rpx rgba(27, 36, 48, 0.07);
-  --soft-shadow: 0 8rpx 22rpx rgba(217, 67, 53, 0.16);
-  --theme-gradient: linear-gradient(135deg, #b9322a 0%, #d94335 56%, #f36a5d 100%);
+  --soft-shadow: 0 8rpx 22rpx rgba(95, 196, 163, 0.16);
+  --theme-gradient: linear-gradient(135deg, #3f9d81 0%, #5fc4a3 56%, #8fd8bc 100%);
   background-color: #f6f7f9;
   color: #22252b;
   font-size: 28rpx;
@@ -45,7 +45,7 @@ page {
 .btn-theme-plain {
   background: white;
   color: var(--theme-color);
-  border: 2rpx solid rgba(217, 67, 53, 0.26);
+  border: 2rpx solid rgba(95, 196, 163, 0.26);
   border-radius: 16rpx;
   padding: 20rpx 40rpx;
 }

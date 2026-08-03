@@ -119,7 +119,7 @@
 
 .phone-btn {
 	padding: 12rpx 30rpx;
-	background: linear-gradient(135deg, #e54d42 0%, #f37370 100%);
+	background: linear-gradient(135deg, #3f9d81 0%, #8fd8bc 100%);
 	color: white;
 	font-size: 24rpx;
 	border-radius: 50rpx;
@@ -136,7 +136,7 @@
 	width: 450rpx;
 	height: 95rpx;
 	border-radius: 20rpx;
-	background: linear-gradient(135deg, #e54d42 0%, #f37370 100%);
+	background: linear-gradient(135deg, #3f9d81 0%, #8fd8bc 100%);
 	color: #ffffff;
 	font-size: 28rpx;
 	font-weight: bold;
