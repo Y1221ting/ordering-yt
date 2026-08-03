@@ -105,8 +105,11 @@ Page({
   async loadAll() {
     if (this.data.loading) return
     this.setData({ loading: true })
+    // openid 可能还没就绪（onShow 抢跑在 onLoad 之前），加载时刷新一次，避免误判非管理员
+    if (app.globalData.openid) this.openid = app.globalData.openid
     try {
-      const month = this.data.month
+      // 月份兜底：onLoad 设置月份前 onShow 已抢跑加载，用当前日期算月份避免空月份查询
+      const month = this.data.month || this.fmtMonth(new Date())
 
       // 本月预算 + 上月预算（用于「沿用上月预算」）
       const budgetRes = await db.collection('expense_budget').where({ month }).limit(1).get()
