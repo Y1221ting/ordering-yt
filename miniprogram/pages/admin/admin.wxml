@@ -23,10 +23,10 @@
       <view class="header-copy">
         <view class="header-kicker">
           <view class="header-kicker-dot"></view>
-          <text>店铺运营</text>
+          <text>厨房日常</text>
         </view>
-        <view class="header-title">小店工作台</view>
-        <view class="header-subtitle">菜品、订单与系统设置</view>
+        <view class="header-title">家庭点菜台</view>
+        <view class="header-subtitle">菜品、订单与家庭设置</view>
       </view>
 
       <view class="header-ticket" aria-hidden="true">
@@ -72,7 +72,7 @@
       <van-grid-item
         icon="setting-o"
         icon-color="#5fc4a3"
-        text="店铺设置"
+        text="家庭设置"
         clickable
         bind:click="goToShopSettings"
       />

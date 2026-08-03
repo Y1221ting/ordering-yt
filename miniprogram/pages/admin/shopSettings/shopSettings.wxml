@@ -2,13 +2,13 @@
   <view class="preview-band">
     <view class="preview-label">
       <text class="cuIcon-attention"></text>
-      <text>顾客端预览</text>
+      <text>点餐端预览</text>
     </view>
     <view class="store-preview">
       <view class="store-mark cuIcon-shopfill"></view>
       <view class="store-copy">
-        <view class="store-name">{{shopName || '店铺名称'}}</view>
-        <view class="store-welcome">{{welcomeText || '欢迎光临本店'}}</view>
+        <view class="store-name">{{shopName || '家庭名称'}}</view>
+        <view class="store-welcome">{{welcomeText || '欢迎回家'}}</view>
       </view>
     </view>
   </view>
@@ -16,19 +16,19 @@
   <view class="form-section">
     <view class="section-heading">
       <text class="heading-icon cuIcon-shop"></text>
-      <text>门店信息</text>
+      <text>家庭信息</text>
     </view>
 
     <view class="form-item">
       <view class="form-label">
-        <text>店铺名称</text>
+        <text>家庭名称</text>
         <text class="required">*</text>
       </view>
       <input
         class="form-input"
         value="{{shopName}}"
         maxlength="20"
-        placeholder="请输入店铺名称"
+        placeholder="请输入家庭名称"
         bindinput="onShopNameInput"
         confirm-type="done"
       />
@@ -44,7 +44,7 @@
         class="form-textarea"
         value="{{welcomeText}}"
         maxlength="48"
-        placeholder="例如：欢迎光临本店，很高兴为您服务。"
+        placeholder="例如：欢迎回家，今天想吃什么？"
         bindinput="onWelcomeTextInput"
       ></textarea>
       <view class="field-counter">{{welcomeText.length}} / 48</view>

@@ -8,7 +8,7 @@
         <image src="{{userInfo && userInfo.avatarUrl ? userInfo.avatarUrl : '/images/tabBar/me.png'}}" mode="aspectFill"></image>
       </view>
       <view class="profile-info">
-        <view class="profile-kicker">{{userInfo && userInfo.nickName ? '门店会员' : '待授权'}}</view>
+        <view class="profile-kicker">{{userInfo && userInfo.nickName ? '家庭成员' : '待授权'}}</view>
         <view class="profile-name">{{userInfo && userInfo.nickName ? userInfo.nickName : '授权头像昵称'}}</view>
         <view class="profile-sub" wx:if="{{!userInfo || !userInfo.nickName}}">点击完善，授权头像昵称</view>
       </view>

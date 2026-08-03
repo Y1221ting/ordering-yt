@@ -21,7 +21,7 @@
     "backgroundColor": "#faf7f0",
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#2e4a40",
-    "navigationBarTitleText": "餐饮点餐",
+    "navigationBarTitleText": "家庭点餐",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
