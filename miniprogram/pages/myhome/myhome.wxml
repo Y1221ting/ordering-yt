@@ -1,9 +1,7 @@
 <!--pages/myhome/myhome.wxml-->
 <view class="page myhome-page">
   <view class="member-hero">
-    <view class="hero-bg-mark one"></view>
-    <view class="hero-bg-mark two"></view>
-    <image class="hero-illustration" src="/images/shopping.png" mode="aspectFit"></image>
+    <image class="hero-bamboo" src="/images/qingzhu.png" mode="aspectFill"></image>
 
     <view class="member-profile">
       <view class="user-avatar profile-avatar">

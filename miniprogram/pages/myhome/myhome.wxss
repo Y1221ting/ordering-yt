@@ -17,34 +17,14 @@
   box-shadow: 0 22rpx 50rpx rgba(95, 196, 163, 0.24);
 }
 
-.hero-bg-mark {
+/* 青竹淡印（右侧探出，呼应卷轴店招） */
+.hero-bamboo {
   position: absolute;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.hero-bg-mark.one {
-  top: -112rpx;
-  right: -110rpx;
-  width: 320rpx;
-  height: 320rpx;
-}
-
-.hero-bg-mark.two {
-  left: -130rpx;
-  bottom: -170rpx;
-  width: 360rpx;
-  height: 360rpx;
-  opacity: 0.72;
-}
-
-.hero-illustration {
-  position: absolute;
-  right: 12rpx;
-  bottom: 42rpx;
-  width: 230rpx;
-  height: 230rpx;
-  opacity: 0.14;
+  right: 0;
+  bottom: 0;
+  width: 260rpx;
+  height: 100%;
+  opacity: 0.3;
 }
 
 .member-profile,
@@ -110,14 +90,16 @@
 
 .profile-edit {
   height: 56rpx;
-  line-height: 56rpx;
+  line-height: 52rpx;
   padding: 0 24rpx;
   border-radius: 999rpx;
-  background: #ffffff;
-  color: #5fc4a3;
+  background: #fdfaf3;
+  border: 1rpx solid #2e4a40;
+  color: #2f7d63;
   font-size: 24rpx;
   font-weight: 700;
-  box-shadow: 0 10rpx 24rpx rgba(82, 20, 16, 0.12);
+  box-sizing: border-box;
+  box-shadow: 0 10rpx 24rpx rgba(46, 74, 64, 0.16);
   flex-shrink: 0;
 }
 
@@ -287,13 +269,14 @@ button.service-tile::after {
   width: 620rpx;
   overflow: hidden;
   border-radius: 16rpx;
-  background: #ffffff;
+  background: #fdfaf3;
+  border: 1rpx solid #e3dbc9;
   box-shadow: 0 30rpx 90rpx rgba(19, 24, 33, 0.24);
 }
 
 .modal-title {
   padding: 42rpx 34rpx 22rpx;
-  color: #22252b;
+  color: #2f3632;
   text-align: center;
   font-size: 34rpx;
   font-weight: 800;
@@ -316,7 +299,7 @@ button.service-tile::after {
 
 .password-hint {
   margin-top: 20rpx;
-  color: #5fc4a3;
+  color: #2f7d63;
   text-align: center;
   font-size: 24rpx;
 }
@@ -336,12 +319,12 @@ button.service-tile::after {
 }
 
 .modal-btn.cancel {
-  color: #9aa1ad;
+  color: #6b7a72;
   border-right: 2rpx solid #e3dbc9;
 }
 
 .modal-btn.confirm {
-  color: #5fc4a3;
+  color: #2f7d63;
   font-weight: 800;
 }
 
@@ -351,6 +334,6 @@ button.service-tile::after {
 }
 
 .version-text {
-  color: #b1b6bf;
+  color: #9aa39d;
   font-size: 24rpx;
 }
