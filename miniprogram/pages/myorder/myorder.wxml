@@ -26,32 +26,13 @@
           </view>
         </view>
         <view class="order-type">
-          <text wx:if="{{item.type === 'recharge'}}">充值订单</text>
-          <text wx:elif="{{item.orderType === 'dineIn'}}">堂食订单</text>
+          <text wx:if="{{item.orderType === 'dineIn'}}">堂食订单</text>
           <text wx:elif="{{item.orderType === 'takeOut'}}">打包订单</text>
           <text wx:else>点餐订单</text>
         </view>
         <!-- <view class="order-status {{item.status === 3 ? 'cancel' : ''}}">
           {{item.type === 'recharge' ? '已完成' : (item.status === 0 ? '待确认' : item.status === 1 ? '制作中' : item.status === 2 ? '已完成' : '已取消')}}
         </view> -->
-      </view>
-
-      <!-- 充值订单内容 -->
-      <view class="order-content" wx:if="{{item.type === 'recharge'}}">
-        <view class="recharge-info">
-          <view class="recharge-item">
-            <text class="recharge-label">充值金额：</text>
-            <text class="recharge-value">¥{{item.amount}}</text>
-          </view>
-          <view class="recharge-item">
-            <text class="recharge-label">赠送金额：</text>
-            <text class="recharge-value gift">¥{{item.giveAmount}}</text>
-          </view>
-          <view class="recharge-item">
-            <text class="recharge-label">到账金额：</text>
-            <text class="recharge-value total">¥{{item.totalGet}}</text>
-          </view>
-        </view>
       </view>
 
       <!-- 点餐订单内容 -->
@@ -94,7 +75,7 @@
         <view class="order-actions">
           <view class="order-price">
             <text class="price-label">实付：</text>
-            <text class="price-num">¥{{item.type === 'recharge' ? item.amount : item.finalPrice}}</text>
+            <text class="price-num">¥{{item.finalPrice}}</text>
           </view>
           <!-- 当前不需要详情、取消等按钮，保留结构方便后续扩展 -->
         </view>

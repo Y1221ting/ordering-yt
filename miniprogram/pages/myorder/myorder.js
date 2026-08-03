@@ -3,7 +3,7 @@ const app = getApp()
 const db = wx.cloud.database()
 Page({
   data: {
-    tabs: ['全部', '点餐订单', '充值订单'],
+    tabs: ['全部', '点餐订单'],
     currentTab: 0,
     orderList: [], // 订单列表
     // 分页相关
@@ -31,15 +31,6 @@ Page({
       
       if (res.data && res.data.length > 0) {
         const user = res.data[0]
-        // 初始化余额字段
-        if (typeof user.balance === 'undefined') {
-          await db.collection('user').doc(user._id).update({
-            data: {
-              balance: 0
-            }
-          })
-          user.balance = 0
-        }
 
         this.setData({
           userInfo: user
@@ -87,9 +78,6 @@ Page({
       if (this.data.currentTab === 1) {
         // 点餐订单
         query.type = 'order'
-      } else if (this.data.currentTab === 2) {
-        // 充值订单
-        query.type = 'recharge'
       }
       
       const pageSize = this.data.orderPageSize
@@ -148,9 +136,6 @@ Page({
   // 获取订单状态文本
   getOrderStatusText(order) {
     // 简化状态展示：只区分已完成 / 已取消，其它统称处理中
-    if (order.type === 'recharge') {
-      return '已完成'
-    }
     if (order.status === 2) {
       return '已完成'
     }
@@ -163,45 +148,31 @@ Page({
   // 查看订单详情
   viewOrderDetail(e) {
     const order = e.currentTarget.dataset.order
-    
-    if (order.type === 'recharge') {
-      // 充值订单详情
-      wx.showModal({
-        title: '充值订单详情',
-        content: `充值金额：¥${order.amount}\n赠送金额：¥${order.giveAmount}\n到账金额：¥${order.totalGet}\n状态：已完成`,
-        showCancel: false
-      })
-    } else {
-      // 点餐订单详情
-      let goodsInfo = ''
-      order.goods.forEach(item => {
-        const skuName = item.skuName && item.skuName !== '默认规格' ? `（${item.skuName}）` : ''
-        goodsInfo += `${item.dishName || item.goodsName || '未知菜品'}${skuName} x${item.count} ¥${item.price}\n`
-      })
-      
-      let content = `订单商品：\n${goodsInfo}\n合计：¥${order.totalPrice}`
-      content += `\n实付：¥${order.finalPrice}\n状态：${this.getOrderStatusText(order)}`
-      if (order.remark) {
-        content += `\n备注：${order.remark}`
-      }
-      
-      wx.showModal({
-        title: '订单详情',
-        content: content,
-        showCancel: false
-      })
+
+    // 点餐订单详情
+    let goodsInfo = ''
+    order.goods.forEach(item => {
+      const skuName = item.skuName && item.skuName !== '默认规格' ? `（${item.skuName}）` : ''
+      goodsInfo += `${item.dishName || item.goodsName || '未知菜品'}${skuName} x${item.count} ¥${item.price}\n`
+    })
+
+    let content = `订单商品：\n${goodsInfo}\n合计：¥${order.totalPrice}`
+    content += `\n实付：¥${order.finalPrice}\n状态：${this.getOrderStatusText(order)}`
+    if (order.remark) {
+      content += `\n备注：${order.remark}`
     }
+
+    wx.showModal({
+      title: '订单详情',
+      content: content,
+      showCancel: false
+    })
   },
 
   // 取消订单
   cancelOrder(e) {
     const order = e.currentTarget.dataset.order
-    
-    if (order.type === 'recharge') {
-      wx.showToast({ title: '充值订单无法取消', icon: 'none' })
-      return
-    }
-    
+
     if (order.status !== 0) {
       wx.showToast({ title: '该订单无法取消', icon: 'none' })
       return
