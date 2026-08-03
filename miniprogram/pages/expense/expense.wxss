@@ -1,0 +1,499 @@
+/* pages/expense/expense.wxss */
+/* 家庭记账页样式（薄荷绿主题） */
+
+.page {
+  min-height: 100vh;
+  background: #f0faf6;
+  padding: 24rpx 24rpx 60rpx;
+  box-sizing: border-box;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 28rpx 30rpx;
+  margin-bottom: 24rpx;
+  border: 1rpx solid #d9f2e8;
+  box-shadow: 0 6rpx 20rpx rgba(95, 196, 163, 0.08);
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #2f8a6d;
+  margin-bottom: 24rpx;
+}
+
+/* ===== 预算卡 ===== */
+.budget-card {
+  background: linear-gradient(135deg, #3f9d81 0%, #5fc4a3 56%, #8fd8bc 100%);
+  border: none;
+  box-shadow: 0 10rpx 26rpx rgba(63, 157, 129, 0.28);
+}
+
+.budget-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.budget-month {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 24rpx;
+}
+
+.budget-tip {
+  margin-top: 10rpx;
+  color: #ffffff;
+  font-size: 44rpx;
+  font-weight: 800;
+}
+
+.budget-set-btn {
+  height: 56rpx;
+  line-height: 56rpx;
+  padding: 0 26rpx;
+  border-radius: 999rpx;
+  background: #ffffff;
+  color: #3f9d81;
+  font-size: 24rpx;
+  font-weight: 700;
+  box-shadow: 0 6rpx 14rpx rgba(47, 138, 109, 0.2);
+}
+
+.progress-track {
+  margin-top: 30rpx;
+  height: 14rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.28);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999rpx;
+  background: #ffffff;
+  transition: width 0.3s;
+}
+
+.progress-fill.over {
+  background: #f56c6c;
+}
+
+.budget-nums {
+  display: flex;
+  margin-top: 26rpx;
+}
+
+.budget-num-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.num-label {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 22rpx;
+}
+
+.num-value {
+  margin-top: 8rpx;
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: 700;
+}
+
+.num-label.danger,
+.num-value.danger {
+  color: #ffe1dc;
+}
+
+.budget-none {
+  margin-top: 26rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.none-tip {
+  flex: 1;
+  margin-right: 20rpx;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 24rpx;
+}
+
+.copy-btn {
+  flex-shrink: 0;
+  height: 56rpx;
+  line-height: 56rpx;
+  padding: 0 24rpx;
+  border-radius: 999rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.7);
+  color: #ffffff;
+  font-size: 24rpx;
+}
+
+/* ===== 记账表单 ===== */
+.form-row {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #eaf7f1;
+}
+
+.form-row:last-of-type {
+  border-bottom: none;
+}
+
+.form-label {
+  width: 100rpx;
+  flex-shrink: 0;
+  font-size: 28rpx;
+  color: #2f8a6d;
+  font-weight: 600;
+}
+
+.form-field {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.form-input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.money-input {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #2f8a6d;
+}
+
+.unit {
+  margin-left: 8rpx;
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.ph {
+  color: #c2d9cf;
+}
+
+.category-grid {
+  flex: 1;
+  display: flex;
+}
+
+.category-item {
+  flex: 1;
+  margin-right: 14rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #5f9b86;
+  background: #f0faf6;
+  border: 1rpx solid #d9f2e8;
+  border-radius: 12rpx;
+}
+
+.category-item:last-child {
+  margin-right: 0;
+}
+
+.category-item.active {
+  background: #eafaf3;
+  border-color: #5fc4a3;
+  color: #3f9d81;
+  font-weight: 700;
+}
+
+.date-field {
+  color: #333333;
+  font-size: 28rpx;
+}
+
+.date-arrow {
+  margin-left: 12rpx;
+  color: #8fd8bc;
+  font-size: 24rpx;
+}
+
+.form-actions {
+  display: flex;
+  margin-top: 26rpx;
+}
+
+.cancel-btn {
+  width: 180rpx;
+  height: 84rpx;
+  line-height: 84rpx;
+  text-align: center;
+  border-radius: 999rpx;
+  background: #f0faf6;
+  border: 1rpx solid #d9f2e8;
+  color: #5f9b86;
+  font-size: 28rpx;
+  margin-right: 20rpx;
+}
+
+.save-btn {
+  flex: 1;
+  height: 84rpx;
+  line-height: 84rpx;
+  text-align: center;
+  border-radius: 999rpx;
+  background: linear-gradient(135deg, #3f9d81 0%, #5fc4a3 100%);
+  color: #ffffff;
+  font-size: 30rpx;
+  font-weight: 700;
+  box-shadow: 0 8rpx 20rpx rgba(95, 196, 163, 0.32);
+}
+
+.save-btn.disabled {
+  opacity: 0.6;
+}
+
+/* ===== 本月统计 ===== */
+.stats-total {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 22rpx;
+}
+
+.stats-total-label {
+  font-size: 26rpx;
+  color: #7a9c8e;
+  margin-right: 16rpx;
+}
+
+.stats-total-num {
+  font-size: 52rpx;
+  font-weight: 800;
+  color: #3f9d81;
+}
+
+.stats-grid {
+  display: flex;
+  margin-bottom: 22rpx;
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx 0;
+  background: #f0faf6;
+  border-radius: 14rpx;
+  margin-right: 14rpx;
+  border: 1rpx solid #d9f2e8;
+}
+
+.stat-item:last-child {
+  margin-right: 0;
+}
+
+.stat-name {
+  display: block;
+  font-size: 24rpx;
+  color: #5f9b86;
+}
+
+.stat-amount {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 26rpx;
+  font-weight: 700;
+  color: #2f8a6d;
+}
+
+.person-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16rpx 0;
+  border-top: 1rpx solid #eaf7f1;
+}
+
+.person-name {
+  font-size: 26rpx;
+  color: #333333;
+}
+
+.person-amount {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #2f8a6d;
+}
+
+/* ===== 本月明细 ===== */
+.list-count {
+  margin-left: 12rpx;
+  font-size: 22rpx;
+  color: #9db8ad;
+  font-weight: 400;
+}
+
+.record-item {
+  display: flex;
+  align-items: center;
+  padding: 22rpx 0;
+  border-bottom: 1rpx solid #eaf7f1;
+}
+
+.record-item:last-child {
+  border-bottom: none;
+}
+
+.record-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 96rpx;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+
+.record-date {
+  font-size: 22rpx;
+  color: #8aa79b;
+}
+
+.record-cat {
+  margin-top: 8rpx;
+  height: 38rpx;
+  line-height: 38rpx;
+  padding: 0 14rpx;
+  border-radius: 8rpx;
+  background: #eafaf3;
+  border: 1rpx solid #b5e6d4;
+  color: #3f9d81;
+  font-size: 20rpx;
+}
+
+.record-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.record-note {
+  font-size: 28rpx;
+  color: #333333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.record-person {
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: #9db8ad;
+}
+
+.record-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: 16rpx;
+  flex-shrink: 0;
+}
+
+.record-amount {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #2f8a6d;
+}
+
+.record-ops {
+  margin-top: 10rpx;
+}
+
+.op-btn {
+  height: 44rpx;
+  line-height: 44rpx;
+  padding: 0 18rpx;
+  border-radius: 999rpx;
+  background: #fdf0ef;
+  color: #f56c6c;
+  font-size: 22rpx;
+}
+
+/* ===== 预算设置弹窗 ===== */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-dialog {
+  width: 600rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.modal-title {
+  padding: 34rpx 30rpx 10rpx;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #2f8a6d;
+  text-align: center;
+}
+
+.modal-content {
+  padding: 30rpx;
+}
+
+.modal-input {
+  height: 88rpx;
+  padding: 0 24rpx;
+  border-radius: 12rpx;
+  background: #f0faf6;
+  border: 1rpx solid #d9f2e8;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #2f8a6d;
+  box-sizing: border-box;
+}
+
+.modal-copy {
+  margin-top: 18rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #3f9d81;
+  text-decoration: underline;
+  padding: 8rpx 0;
+}
+
+.modal-footer {
+  display: flex;
+  border-top: 1rpx solid #eaf7f1;
+}
+
+.modal-btn {
+  flex: 1;
+  height: 96rpx;
+  line-height: 96rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.modal-btn.cancel {
+  color: #8aa79b;
+  border-right: 1rpx solid #eaf7f1;
+}
+
+.modal-btn.confirm {
+  color: #3f9d81;
+  font-weight: 700;
+}

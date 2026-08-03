@@ -1,0 +1,133 @@
+<!--pages/expense/expense.wxml-->
+<view class="page expense-page">
+  <!-- 顶部预算卡 -->
+  <view class="card budget-card">
+    <view class="budget-top">
+      <view class="budget-meta">
+        <view class="budget-month">{{monthLabel}}预算</view>
+        <view class="budget-tip" wx:if="{{budget === null}}">未设置</view>
+        <view class="budget-tip" wx:else>¥{{budgetText}}</view>
+      </view>
+      <view class="budget-set-btn" bindtap="openBudgetModal">设置预算</view>
+    </view>
+
+    <!-- 已设置预算：进度条 + 已花费/剩余 -->
+    <block wx:if="{{budget !== null}}">
+      <view class="progress-track">
+        <view class="progress-fill {{overspent ? 'over' : ''}}" style="width: {{budgetPercent}}%"></view>
+      </view>
+      <view class="budget-nums">
+        <view class="budget-num-item">
+          <text class="num-label">已花费</text>
+          <text class="num-value">¥{{spentText}}</text>
+        </view>
+        <view class="budget-num-item">
+          <text class="num-label {{overspent ? 'danger' : ''}}">{{overspent ? '已超支' : '本月剩余'}}</text>
+          <text class="num-value {{overspent ? 'danger' : ''}}">{{overspent ? '¥' + overText : '¥' + remainingText}}</text>
+        </view>
+      </view>
+    </block>
+
+    <!-- 未设置预算：提示 + 沿用上月 -->
+    <view class="budget-none" wx:if="{{budget === null}}">
+      <text class="none-tip">设置预算后自动计算余额，超支会红色提醒</text>
+      <view class="copy-btn" wx:if="{{lastMonthBudget !== null}}" bindtap="useLastMonthBudget">沿用上月 ¥{{lastMonthBudgetText}}</view>
+    </view>
+  </view>
+
+  <!-- 记账表单 -->
+  <view class="card form-card">
+    <view class="card-title">{{editingId ? '修改记录' : '记一笔'}}</view>
+    <view class="form-row">
+      <view class="form-label">金额</view>
+      <view class="form-field">
+        <input class="form-input money-input" type="digit" placeholder="0.00" placeholder-class="ph" value="{{formAmount}}" bindinput="onAmountInput" />
+        <text class="unit">元</text>
+      </view>
+    </view>
+    <view class="form-row">
+      <view class="form-label">分类</view>
+      <view class="category-grid">
+        <view
+          wx:for="{{categories}}"
+          wx:key="*this"
+          class="category-item {{formCategory === item ? 'active' : ''}}"
+          bindtap="onCategoryTap"
+          data-category="{{item}}">{{item}}</view>
+      </view>
+    </view>
+    <view class="form-row">
+      <view class="form-label">日期</view>
+      <picker mode="date" value="{{formDate}}" bindchange="onDateChange">
+        <view class="form-field date-field">{{formDate}}<text class="date-arrow">▾</text></view>
+      </picker>
+    </view>
+    <view class="form-row">
+      <view class="form-label">备注</view>
+      <view class="form-field">
+        <input class="form-input" placeholder="备注（可选）" placeholder-class="ph" value="{{formNote}}" bindinput="onNoteInput" />
+      </view>
+    </view>
+    <view class="form-actions">
+      <view class="cancel-btn" wx:if="{{editingId}}" bindtap="cancelEdit">取消</view>
+      <view class="save-btn {{saving ? 'disabled' : ''}}" bindtap="saveRecord">{{saving ? '保存中...' : (editingId ? '保存修改' : '保存')}}</view>
+    </view>
+  </view>
+
+  <!-- 本月统计 -->
+  <view class="card stats-card">
+    <view class="card-title">本月统计</view>
+    <view class="stats-total">
+      <text class="stats-total-label">总支出</text>
+      <text class="stats-total-num">¥{{totalSpentText}}</text>
+    </view>
+    <view class="stats-grid">
+      <view class="stat-item" wx:for="{{categoryStats}}" wx:key="category">
+        <text class="stat-name">{{item.category}}</text>
+        <text class="stat-amount">¥{{item.amount}}</text>
+      </view>
+    </view>
+    <view class="person-row" wx:for="{{personStats}}" wx:key="name">
+      <text class="person-name">{{item.name}}</text>
+      <text class="person-amount">¥{{item.amount}}</text>
+    </view>
+    <van-empty wx:if="{{records.length === 0}}" description="本月还没有记账，记一笔吧" />
+  </view>
+
+  <!-- 本月明细 -->
+  <view class="card list-card">
+    <view class="card-title">本月明细<text class="list-count">{{records.length}} 笔</text></view>
+    <view class="record-item" wx:for="{{records}}" wx:key="_id" bindtap="onRecordTap" data-id="{{item._id}}">
+      <view class="record-left">
+        <view class="record-date">{{item.dateText}}</view>
+        <view class="record-cat">{{item.category}}</view>
+      </view>
+      <view class="record-main">
+        <view class="record-note">{{item.note || '（无备注）'}}</view>
+        <view class="record-person">{{item.userName}}</view>
+      </view>
+      <view class="record-right">
+        <text class="record-amount">¥{{item.amountText}}</text>
+        <view class="record-ops" wx:if="{{item.isMine}}" catchtap="stopPropagation">
+          <text class="op-btn" bindtap="deleteRecord" data-id="{{item._id}}">删除</text>
+        </view>
+      </view>
+    </view>
+    <van-empty wx:if="{{records.length === 0}}" description="本月还没有记账" />
+  </view>
+
+  <!-- 预算设置弹窗 -->
+  <view class="modal-mask" wx:if="{{showBudgetModal}}" catchtap="closeBudgetModal">
+    <view class="modal-dialog" catchtap="stopPropagation">
+      <view class="modal-title">设置{{monthLabel}}预算</view>
+      <view class="modal-content">
+        <input class="modal-input" type="digit" placeholder="输入本月预算金额" placeholder-class="ph" value="{{budgetInput}}" bindinput="onBudgetInput" focus="{{true}}" />
+        <view class="modal-copy" wx:if="{{lastMonthBudget !== null}}" bindtap="fillLastMonthBudget">沿用上月 ¥{{lastMonthBudgetText}}</view>
+      </view>
+      <view class="modal-footer">
+        <view class="modal-btn cancel" bindtap="closeBudgetModal">取消</view>
+        <view class="modal-btn confirm" bindtap="saveBudget">保存</view>
+      </view>
+    </view>
+  </view>
+</view>
