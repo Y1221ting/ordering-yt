@@ -139,7 +139,10 @@ Page({
       const result = res.result || {}
       const categories = result.success ? (result.data || []) : []
 
-      if (categories.length > 0 && !this.data.currentCategoryId) {
+      // 当前选中分类已不存在（被删除）或尚未选中时，自动选中第一个分类
+      const currentExists = categories.some(category => category._id === this.data.currentCategoryId)
+
+      if (categories.length > 0 && !currentExists) {
         this.setData({
           categories,
           currentCategoryId: categories[0]._id
@@ -236,9 +239,12 @@ Page({
           }
         })
 
-        this.setData({
-          currentCategoryId: addRes._id
-        })
+        // 已有选中分类时保持现状，避免列表被切换到空的新分类
+        if (!this.data.currentCategoryId) {
+          this.setData({
+            currentCategoryId: addRes._id
+          })
+        }
       }
 
       wx.hideLoading()
@@ -266,37 +272,69 @@ Page({
       title: '确认删除',
       content: `确定要删除分类"${category.name}"吗？`,
       success: async (res) => {
-        if (res.confirm) {
-          try {
-            wx.showLoading({ title: '删除中...' })
-
-            await db.collection('dishCategory').doc(category._id).remove()
-
-            wx.hideLoading()
-            wx.showToast({
-              title: '删除成功',
-              icon: 'success'
-            })
-
-            if (this.data.currentCategoryId === category._id) {
-              this.setData({
-                currentCategoryId: '',
-                dishes: []
-              })
-            }
-
-            this.loadCategories()
-          } catch (err) {
-            wx.hideLoading()
-            console.error('删除失败', err)
-            wx.showToast({
-              title: '删除失败',
-              icon: 'none'
-            })
-          }
+        if (!res.confirm) {
+          return
         }
+
+        // 删除前检查该分类下的菜品数量，防止菜品变孤儿（任何页面都查不到）
+        try {
+          const countRes = await db.collection('dish').where({
+            categoryId: category._id
+          }).count()
+          const dishCount = countRes.total || 0
+
+          if (dishCount > 0) {
+            wx.showModal({
+              title: '该分类下有菜品',
+              content: `分类"${category.name}"下还有 ${dishCount} 道菜，删除后这些菜将无法显示。确定仍要删除吗？`,
+              confirmText: '仍要删除',
+              confirmColor: '#f56c6c',
+              cancelText: '取消',
+              success: (res2) => {
+                if (res2.confirm) {
+                  this.performDeleteCategory(category)
+                }
+              }
+            })
+            return
+          }
+        } catch (err) {
+          console.error('检查分类菜品失败', err)
+        }
+
+        this.performDeleteCategory(category)
       }
     })
+  },
+
+  async performDeleteCategory(category) {
+    try {
+      wx.showLoading({ title: '删除中...' })
+
+      await db.collection('dishCategory').doc(category._id).remove()
+
+      wx.hideLoading()
+      wx.showToast({
+        title: '删除成功',
+        icon: 'success'
+      })
+
+      if (this.data.currentCategoryId === category._id) {
+        this.setData({
+          currentCategoryId: '',
+          dishes: []
+        })
+      }
+
+      this.loadCategories()
+    } catch (err) {
+      wx.hideLoading()
+      console.error('删除失败', err)
+      wx.showToast({
+        title: '删除失败',
+        icon: 'none'
+      })
+    }
   },
 
   // ==================== 菜品管理 ====================
@@ -321,7 +359,8 @@ Page({
   },
 
   async loadDishes(append = false) {
-    if (!this.data.currentCategoryId) {
+    const categoryId = this.data.currentCategoryId
+    if (!categoryId) {
       this.setData({
         dishes: [],
         dishPage: 0,
@@ -330,24 +369,32 @@ Page({
       return
     }
 
-    try {
-      if (this.data.loadingDishes) {
-        return
-      }
-      this.setData({ loadingDishes: true })
+    // 有请求在途时记录最新请求，等当前请求完成后补发，避免切换分类时被吞掉
+    if (this.data.loadingDishes) {
+      this.pendingDishLoad = { append, categoryId }
+      return
+    }
 
+    this.setData({ loadingDishes: true })
+
+    try {
       const pageSize = this.data.dishPageSize
       const page = append ? this.data.dishPage + 1 : 0
       const skip = page * pageSize
 
       const res = await db.collection('dish')
         .where({
-          categoryId: this.data.currentCategoryId
+          categoryId
         })
         .orderBy('sort', 'asc')
         .skip(skip)
         .limit(pageSize)
         .get()
+
+      // 竞态保护：加载期间分类被切换，丢弃本次旧结果
+      if (this.data.currentCategoryId !== categoryId) {
+        return
+      }
 
       const list = (res.data || []).map(item => this.normalizeDishForView(item))
       const newDishes = append ? this.data.dishes.concat(list) : list
@@ -359,6 +406,9 @@ Page({
         dishHasMore: hasMore
       })
     } catch (err) {
+      if (this.data.currentCategoryId !== categoryId) {
+        return
+      }
       console.error('加载菜品失败', err)
       wx.showToast({
         title: '加载失败',
@@ -366,6 +416,13 @@ Page({
       })
     } finally {
       this.setData({ loadingDishes: false })
+
+      // 补发在途的最新请求（分类已变化时用当前分类重新加载）
+      const pending = this.pendingDishLoad
+      this.pendingDishLoad = null
+      if (pending) {
+        this.loadDishes(pending.categoryId === this.data.currentCategoryId ? pending.append : false)
+      }
     }
   },
 
