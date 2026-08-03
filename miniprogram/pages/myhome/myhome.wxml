@@ -28,6 +28,11 @@
         <view class="metric-label">订单记录</view>
         <view class="metric-value small">查看</view>
       </view>
+      <view class="metric-divider"></view>
+      <view class="metric-item" bindtap="goToExpense">
+        <view class="metric-label">家庭记账</view>
+        <view class="metric-value small">查看</view>
+      </view>
     </view>
   </view>
 

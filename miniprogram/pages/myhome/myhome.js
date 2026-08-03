@@ -100,6 +100,13 @@ Page({
     })
   },
 
+  // 跳转到记账页面
+  goToExpense() {
+    wx.navigateTo({
+      url: '/pages/expense/expense'
+    })
+  },
+
   // 管理员入口触发
   onAdminTrigger() {
     this.data.clickCount++

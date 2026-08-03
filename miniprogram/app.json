@@ -4,6 +4,7 @@
     "pages/dish-detail/dish-detail",
     "pages/myorder/myorder",
     "pages/myhome/myhome",
+    "pages/expense/expense",
     "pages/settle/settle",
     "pages/admin/admin",
     "pages/admin/dishCategory/dishCategory",
