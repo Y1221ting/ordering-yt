@@ -114,10 +114,10 @@ Page({
       this.data.clickCount = 0
       this.checkAdminFirstTime()
     } else {
-      // 1秒内未继续点击则重置计数
+      // 3秒内未继续点击则重置计数（家庭版放宽间隔，方便触发）
       this.data.clickTimer = setTimeout(() => {
         this.data.clickCount = 0
-      }, 1000)
+      }, 3000)
     }
   },
 
