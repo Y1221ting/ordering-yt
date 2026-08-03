@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/dish-detail/dish-detail",
-    "pages/recharge/recharge",
     "pages/myorder/myorder",
     "pages/myhome/myhome",
     "pages/settle/settle",
@@ -34,12 +33,6 @@
         "iconPath": "images/tabBar/buy.png",
         "selectedIconPath": "images/tabBar/buy-active.png",
         "text": "点餐"
-      },
-      {
-        "pagePath": "pages/recharge/recharge",
-        "iconPath": "images/tabBar/recharge.png",
-        "selectedIconPath": "images/tabBar/recharge-active.png",
-        "text": "充值"
       },
       {
         "pagePath": "pages/myorder/myorder",
