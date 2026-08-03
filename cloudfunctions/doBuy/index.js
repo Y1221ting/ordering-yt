@@ -63,7 +63,7 @@ exports.main = async (event, context) => {
         throw new Error('订单商品不能为空')
       }
 
-      const validatedGoods = []
+      let validatedGoods = []
 
       for (const item of orderGoods) {
         const dishId = item && item.dishId
