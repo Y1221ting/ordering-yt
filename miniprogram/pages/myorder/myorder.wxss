@@ -91,6 +91,11 @@
   margin-bottom: 5rpx;
 }
 
+.user-sub {
+  font-size: 24rpx;
+  color: #9aa39d;
+}
+
 .order-type {
   font-size: 30rpx;
   color: #2f3632;
@@ -183,12 +188,6 @@
   align-items: center;
 }
 
-.goods-price {
-  font-size: 28rpx;
-  color: #5fc4a3;
-  font-weight: bold;
-}
-
 .goods-count {
   font-size: 26rpx;
   color: #9aa39d;
@@ -206,18 +205,6 @@
   margin-bottom: 15rpx;
 }
 
-.order-time {
-  font-size: 24rpx;
-  color: #9aa39d;
-  margin-bottom: 8rpx;
-}
-
-.order-table-code {
-  font-size: 24rpx;
-  color: #38b2ac;
-  font-weight: 500;
-}
-
 .order-taste {
   font-size: 24rpx;
   color: #38b2ac;
@@ -225,67 +212,11 @@
   margin-top: 5rpx;
 }
 
-.order-actions {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.order-price {
-  display: flex;
-  align-items: baseline;
-}
-
-.price-label {
-  font-size: 26rpx;
-  color: #6b7a72;
-}
-
-.price-num {
-  font-size: 36rpx;
-  color: #5fc4a3;
-  font-weight: bold;
-  margin-left: 10rpx;
-}
-
-.action-btns {
-  display: flex;
-  gap: 15rpx;
-}
-
-.action-btn {
-  padding: 12rpx 30rpx;
-  border-radius: 50rpx;
-  font-size: 26rpx;
-  text-align: center;
-}
-
-.action-btn.detail {
-  background: #fdfaf3;
-  color: #6b7a72;
-}
-
-.action-btn.cancel {
-  background: rgba(229, 77, 66, 0.1);
-  color: #5fc4a3;
-}
-
-/* 空状态 */
-.empty-state {
-  text-align: center;
-  padding: 150rpx 0;
-}
-
-.empty-image {
-  width: 200rpx;
-  height: 200rpx;
-  opacity: 0.3;
-  margin-bottom: 30rpx;
-}
-
-.empty-text {
-  font-size: 28rpx;
-  color: #9aa39d;
+.order-remark {
+  font-size: 24rpx;
+  color: #38b2ac;
+  font-weight: 500;
+  margin-top: 5rpx;
 }
 
 /* 高级版视觉覆盖 */
@@ -352,14 +283,9 @@
   color: #2f3632;
 }
 
-.order-time,
+.user-sub,
 .goods-count {
   color: #9aa39d;
-}
-
-.recharge-info {
-  background: #fdfaf3;
-  border: 1rpx solid #e3dbc9;
 }
 
 .goods-image {
@@ -367,18 +293,8 @@
 }
 
 .goods-sku,
-.order-table-code {
+.order-remark {
   color: #1f9d8a;
-}
-
-.goods-price,
-.price-num,
-.recharge-value.total {
-  color: #5fc4a3;
-}
-
-.recharge-value.gift {
-  color: #c77a18;
 }
 
 .order-footer {

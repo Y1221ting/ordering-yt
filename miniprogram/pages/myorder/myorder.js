@@ -1,10 +1,12 @@
 // pages/myorder/myorder.js
-const app = getApp()
 const db = wx.cloud.database()
 Page({
   data: {
-    tabs: ['全部', '点餐订单'],
-    currentTab: 0,
+    viewTabs: [
+      { name: '今天', mode: 'today' },
+      { name: '全部', mode: 'all' }
+    ],
+    viewMode: 'today', // today=今天全家点的（默认，即共享菜单），all=全部历史
     orderList: [], // 订单列表
     // 分页相关
     orderPage: 0,
@@ -18,34 +20,18 @@ Page({
   },
 
   onShow() {
-    this.loadUserInfo()
     this.loadOrders()
   },
-  // 加载用户信息
-  async loadUserInfo() {
-    try {
-      const openid = app.globalData.openid
-      const res = await db.collection('user').where({
-        _openid: openid
-      }).get()
-      
-      if (res.data && res.data.length > 0) {
-        const user = res.data[0]
 
-        this.setData({
-          userInfo: user
-        })
-      }
-    } catch (err) {
-      console.error('获取用户信息失败', err)
+  // 切换视图：今天 / 全部
+  switchView(e) {
+    const mode = e.currentTarget.dataset.mode
+    if (mode === this.data.viewMode) {
+      return
     }
-  },
-  // 切换标签
-  switchTab(e) {
-    const index = e.currentTarget.dataset.index
+
     this.setData({
-      currentTab: index,
-      // 重置分页状态
+      viewMode: mode,
       orderPage: 0,
       orderHasMore: true,
       orderList: []
@@ -53,7 +39,13 @@ Page({
     this.loadOrders()
   },
 
-  // 加载订单列表
+  // 获取今天 0 点的时间
+  getTodayStart() {
+    const now = new Date()
+    return new Date(now.getFullYear(), now.getMonth(), now.getDate())
+  },
+
+  // 加载订单列表（家庭共享：全家人点的都能看到）
   async loadOrders(append = false) {
     if (this.data.loadingOrders) {
       return
@@ -62,28 +54,26 @@ Page({
     if (!append) {
       wx.showLoading({ title: '加载中...' })
     }
-    
+
     try {
       this.setData({ loadingOrders: true })
 
-      const openid = app.globalData.openid
       const _ = db.command
-      
+      // 不按人过滤，只看点餐订单
       let query = {
-        _openid: openid,
-        pay_status: true // 只展示已支付成功的订单
+        type: 'order',
+        pay_status: true
       }
-      
-      // 根据标签筛选
-      if (this.data.currentTab === 1) {
-        // 点餐订单
-        query.type = 'order'
+
+      // 「今天」视图：只看今天 0 点之后的订单
+      if (this.data.viewMode === 'today') {
+        query.createTime = _.gte(this.getTodayStart())
       }
-      
+
       const pageSize = this.data.orderPageSize
       const page = append ? this.data.orderPage + 1 : 0
       const skip = page * pageSize
-      
+
       const res = await db.collection('order')
         .where(query)
         .orderBy('createTime', 'desc')
@@ -117,13 +107,16 @@ Page({
         return {
           ...order,
           createTimeText: order.createTime ? formatTime(order.createTime) : '',
-          tasteText: tasteParts.join(' · ')
+          tasteText: tasteParts.join(' · '),
+          // 点单人信息（共享菜单：区分是谁点的）
+          orderUserNickName: order.userNickName || '家人',
+          orderUserAvatar: order.userAvatar || ''
         }
       })
-      
+
       const newList = append ? this.data.orderList.concat(list) : list
       const hasMore = list.length === pageSize
-      
+
       this.setData({
         orderList: newList,
         orderPage: page,
@@ -142,88 +135,6 @@ Page({
   onReachBottom() {
     if (this.data.orderHasMore && !this.data.loadingOrders) {
       this.loadOrders(true)
-    }
-  },
-
-  // 获取订单状态文本
-  getOrderStatusText(order) {
-    // 简化状态展示：只区分已完成 / 已取消，其它统称处理中
-    if (order.status === 2) {
-      return '已完成'
-    }
-    if (order.status === 3) {
-      return '已取消'
-    }
-    return '处理中'
-  },
-
-  // 查看订单详情
-  viewOrderDetail(e) {
-    const order = e.currentTarget.dataset.order
-
-    // 点餐订单详情
-    let goodsInfo = ''
-    order.goods.forEach(item => {
-      const skuName = item.skuName && item.skuName !== '默认规格' ? `（${item.skuName}）` : ''
-      goodsInfo += `${item.dishName || item.goodsName || '未知菜品'}${skuName} x${item.count}\n`
-    })
-
-    let content = `订单商品：\n${goodsInfo}\n状态：${this.getOrderStatusText(order)}`
-    if (order.remark) {
-      content += `\n备注：${order.remark}`
-    }
-
-    wx.showModal({
-      title: '订单详情',
-      content: content,
-      showCancel: false
-    })
-  },
-
-  // 取消订单
-  cancelOrder(e) {
-    const order = e.currentTarget.dataset.order
-
-    if (order.status !== 0) {
-      wx.showToast({ title: '该订单无法取消', icon: 'none' })
-      return
-    }
-    
-    wx.showModal({
-      title: '确认取消',
-      content: '确定要取消这个订单吗？',
-      success: async (res) => {
-        if (res.confirm) {
-          await this.doCancelOrder(order)
-        }
-      }
-    })
-  },
-
-  // 执行取消订单
-  async doCancelOrder(order) {
-    wx.showLoading({ title: '处理中...' })
-
-    try {
-      // 更新订单状态
-      await db.collection('order').doc(order._id).update({
-        data: {
-          status: 3 // 已取消
-        }
-      })
-
-      wx.hideLoading()
-      wx.showToast({ title: '订单已取消', icon: 'success' })
-      
-      // 刷新订单列表
-      setTimeout(() => {
-        this.loadOrders()
-      }, 1500)
-      
-    } catch (err) {
-      console.error('取消订单失败', err)
-      wx.hideLoading()
-      wx.showToast({ title: '取消失败', icon: 'none' })
     }
   }
 })

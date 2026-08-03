@@ -1,27 +1,28 @@
 <!--pages/myorder/myorder.wxml-->
 <view class="page">
-  <!-- 顶部标签栏 -->
+  <!-- 顶部切换：今天（共享菜单） / 全部（历史） -->
   <view class="tabs">
-    <view 
-      class="tab-item {{currentTab === index ? 'active' : ''}}"
-      wx:for="{{tabs}}"
+    <view
+      class="tab-item {{viewMode === item.mode ? 'active' : ''}}"
+      wx:for="{{viewTabs}}"
       wx:key="index"
-      bindtap="switchTab"
-      data-index="{{index}}">
-      <text class="tab-text">{{item}}</text>
-      <view class="tab-line" wx:if="{{currentTab === index}}"></view>
+      bindtap="switchView"
+      data-mode="{{item.mode}}">
+      <text class="tab-text">{{item.name}}</text>
+      <view class="tab-line" wx:if="{{viewMode === item.mode}}"></view>
     </view>
   </view>
 
-  <!-- 订单列表 -->
+  <!-- 订单列表（全家共享） -->
   <view class="order-list">
     <view class="order-item" wx:for="{{orderList}}" wx:key="_id">
-      <!-- 订单头部 -->
+      <!-- 订单头部：谁点的 -->
       <view class="order-header">
-        <view class="order-user-info" wx:if="{{userInfo}}">
-          <image class="user-avatar" src="{{userInfo.avatarUrl || '/images/my.png'}}" mode="aspectFill"></image>
+        <view class="order-user-info">
+          <image class="user-avatar" src="{{item.orderUserAvatar || '/images/my.png'}}" mode="aspectFill"></image>
           <view class="user-info-text">
-            <view class="user-name">{{userInfo.nickName || '未设置昵称'}}</view>
+            <view class="user-name">{{item.orderUserNickName}}</view>
+            <view class="user-sub">{{item.createTimeText}}</view>
           </view>
         </view>
         <view class="order-type">
@@ -29,8 +30,8 @@
         </view>
       </view>
 
-      <!-- 点餐订单内容 -->
-      <view class="order-content" wx:if="{{item.type === 'order'}}">
+      <!-- 点餐内容 -->
+      <view class="order-content">
         <view class="goods-list">
           <view class="goods-item" wx:for="{{item.goods}}" wx:for-item="goods" wx:key="index">
             <image class="goods-image" src="{{goods.dishImage}}" mode="aspectFill"></image>
@@ -39,9 +40,6 @@
               <view class="goods-sku" wx:if="{{goods.skuName}}">{{goods.skuName}}</view>
               <!-- 显示标签 -->
               <view class="goods-tags" wx:if="{{goods.tags && goods.tags.length > 0}}">
-                <!-- <text class="tag-text" wx:for="{{goods.tags}}" wx:key="index" wx:for-item="tagVal">
-                  {{tagVal}}
-                </text> -->
                 <van-tag type="success" wx:for="{{goods.tags}}" wx:key="index" wx:for-item="tagVal">{{tagVal}}</van-tag>
               </view>
               <view class="goods-detail">
@@ -52,30 +50,20 @@
         </view>
       </view>
 
-      <!-- 订单底部 -->
+      <!-- 订单底部：口味与备注 -->
       <view class="order-footer">
         <view class="order-info">
-          <view class="order-time">
-            {{item.createTimeText}}
-          </view>
           <view class="order-taste" wx:if="{{item.tasteText}}">
             口味：{{item.tasteText}}
           </view>
-          <view class="order-table-code" wx:if="{{item.remark}}">
+          <view class="order-remark" wx:if="{{item.remark}}">
             备注：{{item.remark}}
           </view>
         </view>
-        <!-- 当前不需要详情、取消等按钮，保留结构方便后续扩展 -->
       </view>
     </view>
 
     <!-- 空状态 -->
-    <van-empty wx:if="{{orderList.length === 0}}" description="暂无订单" />
-    
-    <!-- 加载更多提示 -->
-    <!-- <view class="load-more" wx:if="{{orderList.length > 0}}">
-      <text wx:if="{{!orderHasMore && !loadingOrders}}">没有更多了</text>
-      <text wx:if="{{loadingOrders}}">加载中...</text>
-    </view> -->
+    <van-empty wx:if="{{orderList.length === 0}}" description="{{viewMode === 'today' ? '今天还没人点菜哦' : '还没有订单'}}" />
   </view>
 </view>
