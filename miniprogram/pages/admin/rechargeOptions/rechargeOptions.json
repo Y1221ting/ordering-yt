@@ -1,8 +1,8 @@
 {
   "navigationBarTitleText": "充值选项管理",
-  "navigationBarBackgroundColor": "#4ab390",
+  "navigationBarBackgroundColor": "#2e4a40",
   "navigationBarTextStyle": "white",
-  "backgroundColor": "#f5f6f7",
+  "backgroundColor": "#faf7f0",
   "usingComponents": {}
 }
 

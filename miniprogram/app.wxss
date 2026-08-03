@@ -22,8 +22,15 @@ page {
   --page-bg: #f6f7f9;
   --card-shadow: 0 12rpx 34rpx rgba(27, 36, 48, 0.07);
   --soft-shadow: 0 8rpx 22rpx rgba(95, 196, 163, 0.16);
-  --theme-gradient: linear-gradient(135deg, #3f9d81 0%, #5fc4a3 56%, #8fd8bc 100%);
-  background-color: #f6f7f9;
+  --theme-gradient: linear-gradient(135deg, #2e4a40 0%, #3f9d81 56%, #5fc4a3 100%);
+  /* 「青竹晚山」主题变量 */
+  --ink: #2f3632;          /* 墨色：标题、主要文字 */
+  --ink-deep: #2e4a40;     /* 墨青：导航栏、分类选中、侧边栏 */
+  --paper: #faf7f0;        /* 宣纸：页面底色 */
+  --paper-card: #fdfaf3;   /* 宣纸：卡片面 */
+  --hair: #e3dbc9;         /* 淡墨：描边、分隔线 */
+  --seal: #b03a2e;         /* 朱砂：印章、点缀 */
+  background-color: #faf7f0;
   color: #22252b;
   font-size: 28rpx;
 }

@@ -1,8 +1,8 @@
 {
   "navigationBarTitleText": "菜品管理",
-  "navigationBarBackgroundColor": "#4ab390",
+  "navigationBarBackgroundColor": "#2e4a40",
   "navigationBarTextStyle": "white",
-  "backgroundColor": "#F6F6F7",
+  "backgroundColor": "#faf7f0",
   "usingComponents": {}
 }
 
