@@ -46,7 +46,7 @@
       <!-- 订单头部 -->
       <view class="order-header">
         <view class="order-user-info" wx:if="{{item.userAvatar}}">
-          <image class="user-avatar" src="{{item.userAvatar || '/images/my.png'}}" mode="aspectFill"></image>
+          <image class="user-avatar" src="{{item.userAvatar || '/images/tabBar/me.png'}}" mode="aspectFill"></image>
           <view class="user-info-text">
             <view class="user-name">{{item.userNickName || '未设置昵称'}}</view>
           </view>
@@ -93,7 +93,7 @@
           </view>
         </view>
         <view class="action-btns">
-          <!-- <view class="action-btn delete" bindtap="deleteOrder" data-order="{{item}}" catchtap="stopPropagation">删除</view> -->
+          <view class="action-btn delete" bindtap="deleteOrder" data-order="{{item}}" catchtap="stopPropagation">删除</view>
         </view>
       </view>
     </view>

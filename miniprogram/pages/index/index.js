@@ -1184,7 +1184,16 @@ Page({
   },
 
   clearCart() {
-    this.updateCart({})
+    wx.showModal({
+      title: '清空菜篮',
+      content: '确定把菜篮里的菜都清空吗？',
+      confirmColor: '#5fc4a3',
+      success: (res) => {
+        if (res.confirm) {
+          this.updateCart({})
+        }
+      }
+    })
   },
 
   goToSettle() {

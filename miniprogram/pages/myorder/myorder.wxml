@@ -19,7 +19,7 @@
       <!-- 订单头部：谁点的 -->
       <view class="order-header">
         <view class="order-user-info">
-          <image class="user-avatar" src="{{item.orderUserAvatar || '/images/my.png'}}" mode="aspectFill"></image>
+          <image class="user-avatar" src="{{item.orderUserAvatar || '/images/tabBar/me.png'}}" mode="aspectFill"></image>
           <view class="user-info-text">
             <view class="user-name">{{item.orderUserNickName}}</view>
             <view class="user-sub">{{item.createTimeText}}</view>

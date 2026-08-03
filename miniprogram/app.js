@@ -89,22 +89,38 @@ App({
     
     this.globalData.openidPromise = new Promise(async (resolve, reject) => {
       try {
-        const res = await wx.cloud.callFunction({
-          name: 'login'
-        });
-        const openid = res.result && res.result.openid;
+        // 获取 openid：失败自动重试最多 3 次，网络抖动也能恢复
+        let openid = ''
+        for (let i = 0; i < 3; i++) {
+          try {
+            const res = await wx.cloud.callFunction({
+              name: 'login'
+            })
+            openid = res.result && res.result.openid
+            if (openid) {
+              break
+            }
+          } catch (err) {
+            console.error(`获取openid第${i + 1}次失败`, err)
+          }
+          if (i < 2) {
+            await new Promise(r => setTimeout(r, 500))
+          }
+        }
         if (!openid) {
           throw new Error('获取openid失败')
         }
         that.globalData.openid = openid;
         await that.syncUserRecord()
-        
+
         // 标记openid已准备好
         that.globalData.openidReady = true;
         that.globalData.userInfoReady = true;
         resolve(openid);
       } catch (error) {
         console.error('获取openid失败', error);
+        // 重置promise，下次页面加载会重新尝试（否则一次失败整站永久卡死）
+        that.globalData.openidPromise = null;
         reject(error);
       }
     });
