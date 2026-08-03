@@ -54,6 +54,7 @@ Page({
     searchLoading: false,
     statusBarHeight: 0,
     storefrontTop: 68,
+    storefrontBrandTop: 20,
     tableNumber: '',
     goodsPageSize: 20,
     goodsLoading: false,
@@ -65,11 +66,13 @@ Page({
     const systemInfo = wx.getSystemInfoSync()
     const statusBarHeight = systemInfo.statusBarHeight || 0
     let storefrontTop = statusBarHeight + 44
+    let storefrontBrandTop = statusBarHeight + 8
 
     try {
       const menuButton = wx.getMenuButtonBoundingClientRect()
       if (menuButton && menuButton.bottom) {
         storefrontTop = menuButton.bottom + 8
+        storefrontBrandTop = menuButton.top + (menuButton.height - 34) / 2
       }
     } catch (err) {
       console.warn('获取胶囊位置失败，使用默认顶部间距', err)
@@ -77,7 +80,8 @@ Page({
 
     this.setData({
       statusBarHeight,
-      storefrontTop
+      storefrontTop,
+      storefrontBrandTop
     })
     this.updateCart(getStoredCart())
 
