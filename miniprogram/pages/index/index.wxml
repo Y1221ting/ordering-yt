@@ -3,7 +3,8 @@
 <view class="page">
   <view class="storefront-header" style="padding-top: {{storefrontTop}}px;">
     <view class="storefront-card">
-      <view class="storefront-mark cuIcon-shopfill"></view>
+      <image class="storefront-mountain" src="/images/wanshan.png" mode="aspectFill"></image>
+      <image class="storefront-bamboo" src="/images/qingzhu.png" mode="aspectFill"></image>
       <view class="storefront-copy">
         <view class="storefront-name">{{shopName}}</view>
         <view class="storefront-welcome">
@@ -11,6 +12,7 @@
           <text class="welcome-text">{{welcomeText}}</text>
         </view>
       </view>
+      <view class="storefront-colophon">丙午年 · 夏</view>
     </view>
   </view>
 
@@ -77,12 +79,15 @@
               wx:for="{{section.goods}}"
               wx:for-index="goodsIndex"
               wx:key="_id">
-              <image
-                wx:if="{{item.image}}"
-                class="goods-image"
-                src="{{item.image}}"
-                mode="aspectFill"></image>
-              <view wx:else class="goods-image goods-image-placeholder">暂无图片</view>
+              <view class="goods-image-wrap">
+                <image
+                  wx:if="{{item.image}}"
+                  class="goods-image"
+                  src="{{item.image}}"
+                  mode="aspectFill"></image>
+                <view wx:else class="goods-image goods-image-placeholder">暂无图片</view>
+                <view class="goods-seal" wx:if="{{item.image}}">杨</view>
+              </view>
               <view class="goods-info">
                 <view class="goods-name">{{item.name}}</view>
                 <view class="goods-desc" wx:if="{{item.description || item.desc}}">{{item.description || item.desc}}</view>
@@ -137,7 +142,7 @@
             <text class="price-num">{{cartTotalPriceText}}</text>
           </view>
           <view class="cart-tip" wx:if="{{tableNumber}}">{{tableNumber}}号桌</view>
-          <view class="cart-tip" wx:else>想吃啥就点啥</view>
+          <view class="cart-tip" wx:else>想吃啥就点啥，姐给你做</view>
         </view>
       </view>
       <view class="cart-right">

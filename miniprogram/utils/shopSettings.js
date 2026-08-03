@@ -1,6 +1,6 @@
 const DEFAULT_SHOP_SETTINGS = {
-  shopName: '小店点餐',
-  welcomeText: '欢迎光临本店，很高兴为您服务。'
+  shopName: '杨氏御膳房',
+  welcomeText: '想吃啥就点啥，姐给你做'
 }
 
 function normalizeText(value, fallback, maxLength) {
