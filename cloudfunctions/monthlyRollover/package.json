@@ -1,0 +1,9 @@
+{
+  "name": "monthlyRollover",
+  "version": "1.0.0",
+  "description": "记账月度自动结转：每月1日把上月预算复制到本月",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}
