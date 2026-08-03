@@ -843,8 +843,7 @@ Page({
         info: goods,
         sku: {
           id: sku.id,
-          name: sku.name,
-          price: sku.price
+          name: sku.name
         },
         count,
         tags: clone(tags),

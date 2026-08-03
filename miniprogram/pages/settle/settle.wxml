@@ -60,7 +60,7 @@
               {{tagVal}}
             </van-tag>
           </view>
-          <view class="goods-price-count">
+          <view class="goods-count-row">
             <text class="goods-count">×{{item.count}}</text>
           </view>
         </view>

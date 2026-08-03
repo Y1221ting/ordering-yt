@@ -62,7 +62,6 @@
   line-height: 1.5;
 }
 
-/* 桌码显示 */
 .table-code-wrapper {
   padding: 0 30rpx;
   display: flex;
@@ -180,7 +179,7 @@
   margin-bottom: 10rpx;
 }
 
-.goods-price-count {
+.goods-count-row {
   display: flex;
   align-items: center;
   gap: 15rpx;

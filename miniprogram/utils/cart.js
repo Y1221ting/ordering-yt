@@ -54,8 +54,7 @@ function addCartItem(cart, goods, sku, tags, tagLabels, count = 1) {
       info: goods,
       sku: {
         id: sku.id,
-        name: sku.name,
-        price: sku.price
+        name: sku.name
       },
       count,
       tags: JSON.parse(JSON.stringify(tags || {})),
@@ -67,32 +66,9 @@ function addCartItem(cart, goods, sku, tags, tagLabels, count = 1) {
   return nextCart
 }
 
-function getCartSummary(cart) {
-  let count = 0
-  let totalPrice = 0
-
-  Object.keys(cart || {}).forEach(cartKey => {
-    const item = cart[cartKey]
-    if (!item || !item.count) {
-      return
-    }
-
-    const unitPrice = item.sku ? Number(item.sku.price) : Number(item.info.price)
-    count += Number(item.count)
-    totalPrice += (Number.isNaN(unitPrice) ? 0 : unitPrice) * Number(item.count)
-  })
-
-  return {
-    count,
-    totalPrice,
-    totalPriceText: totalPrice.toFixed(2)
-  }
-}
-
 module.exports = {
   addCartItem,
   generateCartKey,
-  getCartSummary,
   getStoredCart,
   saveStoredCart
 }
