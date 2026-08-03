@@ -4,7 +4,6 @@
   <view class="filter-bar">
     <van-tabs active="{{orderType}}" bind:change="onChange" color="#5fc4a3" swipeable="{{false}}">
       <van-tab title="全部订单" />
-      <van-tab title="充值订单" />
       <van-tab title="点餐订单" />
     </van-tabs>
 
@@ -53,26 +52,7 @@
           </view>
         </view>
         <view class="order-type">
-          <text wx:if="{{item.type === 'recharge'}}">充值</text>
-          <text wx:else>点餐</text>
-        </view>
-      </view>
-
-      <!-- 充值订单内容 -->
-      <view class="order-content" wx:if="{{item.type === 'recharge'}}">
-        <view class="recharge-info">
-          <view class="recharge-item">
-            <text class="recharge-label">充值金额：</text>
-            <text class="recharge-value">¥{{item.amount}}</text>
-          </view>
-          <view class="recharge-item">
-            <text class="recharge-label">赠送金额：</text>
-            <text class="recharge-value gift">¥{{item.giveAmount}}</text>
-          </view>
-          <view class="recharge-item">
-            <text class="recharge-label">到账金额：</text>
-            <text class="recharge-value total">¥{{item.totalGet}}</text>
-          </view>
+          <text>点餐</text>
         </view>
       </view>
 
@@ -108,21 +88,9 @@
           <view class="order-table-code" wx:if="{{item.remark}}">
             备注：{{item.remark}}
           </view>
-          <!-- 打印状态 -->
-          <view class="order-print-status">
-            <text class="print-status-text {{item.printStatus === 2 ? 'printed' : item.printStatus === 3 ? 'failed' : item.printStatus === 4 ? 'cancelled' : 'not-printed'}}">
-              {{item.printStatus === 2 ? '已打印小票' : item.printStatus === 3 ? '打印失败' : item.printStatus === 4 ? '打印已取消' : '未打印小票'}}
-            </text>
-          </view>
         </view>
-        <view class="order-actions">
-          <view class="order-price" wx:if="{{item.type === 'recharge'}}">
-            <text class="price-label">实付：</text>
-            <text class="price-num">¥{{item.amount}}</text>
-          </view>
-          <view class="action-btns">
-            <!-- <view class="action-btn delete" bindtap="deleteOrder" data-order="{{item}}" catchtap="stopPropagation">删除</view> -->
-          </view>
+        <view class="action-btns">
+          <!-- <view class="action-btn delete" bindtap="deleteOrder" data-order="{{item}}" catchtap="stopPropagation">删除</view> -->
         </view>
       </view>
     </view>

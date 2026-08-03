@@ -4,11 +4,10 @@ const db = wx.cloud.database()
 Page({
   data: {
     orders: [],
-    orderType: 0, // 0: 全部, 1: 充值订单, 2: 点餐订单
+    orderType: 0, // 0: 全部, 1: 点餐订单
     typeOptions: [
       { text: '全部订单', value: 0 },
-      { text: '充值订单', value: 1 },
-      { text: '点餐订单', value: 2 }
+      { text: '点餐订单', value: 1 }
     ],
     // 时间段筛选：0全部 1今天 2昨天 3本周 4本月 5自定义
     timeRange: 0,
@@ -118,10 +117,8 @@ Page({
         pay_status: true // 只获取已支付成功的订单
       }
 
-      // 按类型筛选
+      // 按类型筛选（家庭版只有点餐订单）
       if (this.data.orderType === 1) {
-        where.type = 'recharge'
-      } else if (this.data.orderType === 2) {
         where.type = 'order'
       }
 

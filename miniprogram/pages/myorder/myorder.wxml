@@ -25,11 +25,8 @@
           </view>
         </view>
         <view class="order-type">
-          <text>{{item.type === 'recharge' ? '充值' : '点餐'}}</text>
+          <text>点餐</text>
         </view>
-        <!-- <view class="order-status {{item.status === 3 ? 'cancel' : ''}}">
-          {{item.type === 'recharge' ? '已完成' : (item.status === 0 ? '待确认' : item.status === 1 ? '制作中' : item.status === 2 ? '已完成' : '已取消')}}
-        </view> -->
       </view>
 
       <!-- 点餐订单内容 -->

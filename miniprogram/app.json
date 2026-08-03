@@ -7,14 +7,9 @@
     "pages/expense/expense",
     "pages/settle/settle",
     "pages/admin/admin",
-    "pages/admin/dishCategory/dishCategory",
     "pages/admin/dish/dish",
-    "pages/admin/user/user",
     "pages/admin/order/order",
-    "pages/admin/shopSettings/shopSettings",
-    "pages/admin/rechargeOptions/rechargeOptions",
-    "pages/admin/tableCode/tableCode",
-    "pages/admin/printer/printer"
+    "pages/admin/shopSettings/shopSettings"
   ],
 
   "window": {

@@ -251,44 +251,6 @@
   padding: 30rpx;
 }
 
-/* 充值订单信息 */
-.recharge-info {
-  padding: 20rpx;
-  background: #fdfaf3;
-  border-radius: 12rpx;
-}
-
-.recharge-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15rpx;
-}
-
-.recharge-item:last-child {
-  margin-bottom: 0;
-}
-
-.recharge-label {
-  font-size: 28rpx;
-  color: #6b7a72;
-}
-
-.recharge-value {
-  font-size: 30rpx;
-  color: #2f3632;
-  font-weight: bold;
-}
-
-.recharge-value.gift {
-  color: #ff6b6b;
-}
-
-.recharge-value.total {
-  color: #5fc4a3;
-  font-size: 36rpx;
-}
-
 /* 点餐订单商品列表 */
 .goods-list {
   margin-bottom: 20rpx;
@@ -357,12 +319,6 @@
   align-items: center;
 }
 
-.goods-price {
-  font-size: 28rpx;
-  color: #5fc4a3;
-  font-weight: bold;
-}
-
 .goods-count {
   font-size: 26rpx;
   color: #9aa39d;
@@ -391,54 +347,6 @@
   color: #38b2ac;
   font-weight: 500;
   margin-top: 5rpx;
-}
-
-.order-print-status {
-  margin-top: 8rpx;
-}
-
-.print-status-text {
-  font-size: 24rpx;
-  font-weight: 500;
-}
-
-.print-status-text.printed {
-  color: #07c160;
-}
-
-.print-status-text.failed {
-  color: #ee0a24;
-}
-
-.print-status-text.cancelled {
-  color: #9aa39d;
-}
-
-.print-status-text.not-printed {
-  color: #ff9500;
-}
-
-.order-actions {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.order-price {
-  display: flex;
-  align-items: baseline;
-}
-
-.price-label {
-  font-size: 26rpx;
-  color: #6b7a72;
-}
-
-.price-num {
-  font-size: 36rpx;
-  color: #5fc4a3;
-  font-weight: bold;
-  margin-left: 10rpx;
 }
 
 .action-btns {
@@ -525,11 +433,6 @@
   font-size: 24rpx;
 }
 
-.recharge-info {
-  background: #fdfaf3;
-  border: 1rpx solid #e3dbc9;
-}
-
 .goods-image {
   background: #fdfaf3;
 }
@@ -539,31 +442,9 @@
   color: #1f9d8a;
 }
 
-.goods-price,
-.price-num,
-.recharge-value.total {
-  color: #5fc4a3;
-}
-
-.recharge-value.gift {
-  color: #c77a18;
-}
-
 .order-footer {
   border-top-color: #e3dbc9;
   background: #fdfaf3;
-}
-
-.print-status-text.printed {
-  color: #2f9e5b;
-}
-
-.print-status-text.failed {
-  color: #5fc4a3;
-}
-
-.print-status-text.not-printed {
-  color: #c77a18;
 }
 
 
