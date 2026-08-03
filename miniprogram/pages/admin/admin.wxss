@@ -1,15 +1,15 @@
 /* pages/admin/admin.wxss */
 .page {
-  --admin-brand: #4ab390;
-  --admin-brand-dark: #2f8a6d;
-  --admin-jade: #168a72;
+  --admin-brand: #3f9d81;
+  --admin-brand-dark: #2e4a40;
+  --admin-jade: #2f7d63;
   --admin-gold: #b27b2d;
-  --admin-ink: #202726;
-  --admin-body: #56605d;
-  --admin-muted: #7e8985;
-  --admin-line: #dfe5e1;
-  --admin-canvas: #f4f6f4;
-  --admin-surface: #ffffff;
+  --admin-ink: #2f3632;
+  --admin-body: #6b7a72;
+  --admin-muted: #9aa39d;
+  --admin-line: #e3dbc9;
+  --admin-canvas: #faf7f0;
+  --admin-surface: #fdfaf3;
   min-height: 100vh;
   padding-bottom: calc(32rpx + env(safe-area-inset-bottom));
   box-sizing: border-box;
@@ -228,11 +228,11 @@
 .menu-grid .van-grid-item__content {
   min-height: 164rpx;
   padding: 24rpx 8rpx !important;
-  background: #ffffff !important;
+  background: #fdfaf3 !important;
 }
 
 .menu-grid .van-grid-item__content--clickable:active {
-  background: #f1f4f2 !important;
+  background: #faf7f0 !important;
 }
 
 .menu-grid .van-grid-item__icon {
@@ -294,7 +294,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  background: #ffffff;
+  background: #fdfaf3;
   border-radius: 16rpx !important;
   box-shadow: 0 30rpx 80rpx rgba(16, 22, 20, 0.22);
 }
@@ -319,7 +319,7 @@
   padding: 0 20rpx;
   box-sizing: border-box;
   color: var(--admin-ink);
-  background: #f8faf8 !important;
+  background: #faf7f0 !important;
   border: 2rpx solid var(--admin-line) !important;
   border-radius: 10rpx !important;
   font-size: 28rpx;
@@ -334,8 +334,8 @@
   display: flex;
   gap: 14rpx;
   flex-shrink: 0;
-  background: #ffffff;
-  border-top: 2rpx solid #e8ece9;
+  background: #fdfaf3;
+  border-top: 2rpx solid #e3dbc9;
 }
 
 .modal-btn {
@@ -351,14 +351,14 @@
 
 .modal-btn.cancel {
   color: var(--admin-body);
-  background: #f0f3f1;
-  border: 2rpx solid #e0e5e2;
+  background: #faf7f0;
+  border: 2rpx solid #e3dbc9;
 }
 
 .modal-btn.confirm {
   color: #ffffff;
-  background: var(--admin-brand);
-  border: 2rpx solid var(--admin-brand);
+  background: linear-gradient(135deg, #2e4a40 0%, #3f9d81 56%, #5fc4a3 100%);
+  border: 2rpx solid rgba(255, 255, 255, 0.18);
 }
 
 .control-pressed {
@@ -367,7 +367,7 @@
 
 .soft-control-pressed {
   opacity: 0.72;
-  background: #e9eeeb !important;
+  background: #faf7f0 !important;
 }
 
 @media (min-width: 600px) {

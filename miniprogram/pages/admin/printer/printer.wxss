@@ -94,7 +94,7 @@
 }
 
 .action-btn.query {
-  background: linear-gradient(135deg, #1989fa 0%, #2d8cf0 100%);
+  background: linear-gradient(135deg, #2e4a40 0%, #3f9d81 56%, #5fc4a3 100%);
   color: white;
 }
 
