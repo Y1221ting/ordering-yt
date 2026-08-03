@@ -36,6 +36,8 @@ Page({
       orderHasMore: true,
       orderList: []
     })
+    // 若旧请求在途，强制发起新请求（旧结果返回时会被序号机制丢弃）
+    this._forceReload = true
     this.loadOrders()
   },
 
@@ -47,13 +49,19 @@ Page({
 
   // 加载订单列表（家庭共享：全家人点的都能看到）
   async loadOrders(append = false) {
-    if (this.data.loadingOrders) {
+    // 请求在途时仅允许切换视图触发的新请求（_forceReload），否则跳过
+    if (this.data.loadingOrders && !this._forceReload) {
       return
     }
+    this._forceReload = false
 
     if (!append) {
       wx.showLoading({ title: '加载中...' })
     }
+
+    // 请求序号：返回时若已不是最新请求则丢弃（防止旧数据覆盖新视图）
+    const seq = (this._orderSeq || 0) + 1
+    this._orderSeq = seq
 
     try {
       this.setData({ loadingOrders: true })
@@ -80,6 +88,11 @@ Page({
         .skip(skip)
         .limit(pageSize)
         .get()
+
+      // 视图已切换，这次是过期请求，直接丢弃
+      if (this._orderSeq !== seq) {
+        return
+      }
 
       // 格式化时间，避免界面显示 [object Object]
       const formatTime = (time) => {
@@ -126,8 +139,11 @@ Page({
       console.error('加载订单失败', err)
       wx.showToast({ title: '加载失败', icon: 'none' })
     } finally {
-      wx.hideLoading()
-      this.setData({ loadingOrders: false })
+      // 只有最新请求负责收尾（过期请求不干扰新请求的加载状态）
+      if (this._orderSeq === seq) {
+        wx.hideLoading()
+        this.setData({ loadingOrders: false })
+      }
     }
   },
 

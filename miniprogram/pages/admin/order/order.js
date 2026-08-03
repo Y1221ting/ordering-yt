@@ -102,13 +102,19 @@ Page({
 
   // 加载订单列表
   async loadOrders(append = false) {
-    if (this.data.loadingOrders) {
+    // 请求在途时仅允许筛选条件切换触发的新请求（_forceReload），否则跳过
+    if (this.data.loadingOrders && !this._forceReload) {
       return
     }
+    this._forceReload = false
 
     if (!append) {
       wx.showLoading({ title: '加载中...' })
     }
+
+    // 请求序号：返回时若已不是最新请求则丢弃（防止旧数据覆盖新筛选）
+    const seq = (this._orderSeq || 0) + 1
+    this._orderSeq = seq
 
     this.setData({ loadingOrders: true })
 
@@ -138,6 +144,11 @@ Page({
         .skip(skip)
         .limit(pageSize)
         .get()
+
+      // 筛选条件已切换，这次是过期请求，直接丢弃
+      if (this._orderSeq !== seq) {
+        return
+      }
 
       // 格式化时间，避免界面显示 [object Object]
       const formatTime = (time) => {
@@ -191,10 +202,13 @@ Page({
         })
       }
     } finally {
-      if (!append) {
-        wx.hideLoading()
+      // 只有最新请求负责收尾（过期请求不干扰新请求的加载状态）
+      if (this._orderSeq === seq) {
+        if (!append) {
+          wx.hideLoading()
+        }
+        this.setData({ loadingOrders: false })
       }
-      this.setData({ loadingOrders: false })
     }
   },
 
@@ -264,11 +278,13 @@ Page({
     })
   },
 
-  // 按当前视图加载
+  // 按当前视图加载（强制：切换时丢弃在途的旧请求结果）
   reloadByViewMode() {
     if (this.data.viewMode === 'summary') {
+      this._forceSummaryReload = true
       this.loadSummary()
     } else {
+      this._forceReload = true
       this.loadOrders()
     }
   },
@@ -285,11 +301,17 @@ Page({
   // ==================== 分类汇总视图 ====================
   // 加载时间段内全部点餐订单（家庭订单量小，本地聚合）
   async loadSummary() {
-    if (this.data.summaryLoading) {
+    // 请求在途时仅允许筛选条件切换触发的新请求（_forceSummaryReload），否则跳过
+    if (this.data.summaryLoading && !this._forceSummaryReload) {
       return
     }
+    this._forceSummaryReload = false
     this.setData({ summaryLoading: true })
     wx.showLoading({ title: '汇总中...' })
+
+    // 请求序号：返回时若已不是最新请求则丢弃（防止旧数据覆盖新筛选）
+    const seq = (this._summarySeq || 0) + 1
+    this._summarySeq = seq
 
     try {
       let where = {
@@ -320,6 +342,11 @@ Page({
         skip += pageSize
       }
 
+      // 筛选条件已切换，这次是过期请求，直接丢弃
+      if (this._summarySeq !== seq) {
+        return
+      }
+
       const { summaryList, stats } = this.buildSummary(allOrders)
       this.setData({
         summaryList,
@@ -332,8 +359,11 @@ Page({
         icon: 'none'
       })
     } finally {
-      wx.hideLoading()
-      this.setData({ summaryLoading: false })
+      // 只有最新请求负责收尾（过期请求不干扰新请求的加载状态）
+      if (this._summarySeq === seq) {
+        wx.hideLoading()
+        this.setData({ summaryLoading: false })
+      }
     }
   },
 
