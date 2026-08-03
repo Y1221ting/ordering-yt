@@ -1,6 +1,6 @@
 page {
   min-height: 100%;
-  background: #f5f6f7;
+  background: #faf7f0;
   color: #262626;
 }
 
@@ -119,7 +119,7 @@ page {
   width: 26rpx;
   height: 26rpx;
   z-index: 3;
-  background: #f5f6f7;
+  background: #faf7f0;
   border-radius: 50%;
 }
 

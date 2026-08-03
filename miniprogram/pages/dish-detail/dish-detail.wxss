@@ -22,7 +22,7 @@
 .detail-page {
   position: relative;
   min-height: 100vh;
-  background: #f6f7f9;
+  background: #faf7f0;
   color: #22252b;
 }
 
@@ -99,7 +99,7 @@
 
 .product-band {
   padding: 30rpx 32rpx;
-  border-bottom: 14rpx solid #f6f7f9;
+  border-bottom: 14rpx solid #faf7f0;
 }
 
 .product-heading {
@@ -401,7 +401,7 @@
   flex-shrink: 0;
   border: 1rpx solid #e2e5e9;
   border-radius: 12rpx;
-  background: #f7f8fa;
+  background: #fdfaf3;
 }
 
 .buy-slot {

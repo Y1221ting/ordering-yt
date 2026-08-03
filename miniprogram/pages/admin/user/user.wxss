@@ -1,7 +1,7 @@
 /* pages/admin/user/user.wxss */
 .page {
   min-height: 100vh;
-  background: #f7f7f7;
+  background: #faf7f0;
   padding: 20rpx;
   padding-bottom: 40rpx;
 }
@@ -54,7 +54,7 @@
   padding: 30rpx;
   display: flex;
   align-items: center;
-  border-bottom: 2rpx solid #f5f5f5;
+  border-bottom: 2rpx solid #e3dbc9;
 }
 
 .user-item:last-child {
@@ -186,7 +186,7 @@
   align-items: center;
   margin-bottom: 30rpx;
   padding-bottom: 30rpx;
-  border-bottom: 2rpx solid #f5f5f5;
+  border-bottom: 2rpx solid #e3dbc9;
 }
 
 .preview-avatar {
@@ -280,7 +280,7 @@
 
 /* 高级版视觉覆盖 */
 .page {
-  background: linear-gradient(180deg, #f0faf6 0%, #f6f7f9 240rpx, #f6f7f9 100%);
+  background: linear-gradient(180deg, #f0faf6 0%, #faf7f0 240rpx, #faf7f0 100%);
   padding: 24rpx;
   padding-bottom: 48rpx;
 }
@@ -309,7 +309,7 @@
 }
 
 .clear-btn {
-  background: #eef1f5;
+  background: #fdfaf3;
   color: #69707d;
 }
 
@@ -320,7 +320,7 @@
 }
 
 .user-item {
-  border-bottom-color: #ebeef3;
+  border-bottom-color: #e3dbc9;
 }
 
 .user-avatar {
@@ -368,7 +368,7 @@
 }
 
 .user-preview {
-  border-bottom-color: #ebeef3;
+  border-bottom-color: #e3dbc9;
 }
 
 .form-label {
@@ -378,16 +378,16 @@
 
 .form-input {
   height: 88rpx;
-  border-color: #e6e9ef;
-  background: #fbfcfd;
+  border-color: #e3dbc9;
+  background: #fdfaf3;
 }
 
 .modal-footer {
-  border-top-color: #ebeef3;
+  border-top-color: #e3dbc9;
 }
 
 .modal-btn.cancel {
-  border-right-color: #ebeef3;
+  border-right-color: #e3dbc9;
 }
 
 .modal-btn.confirm {

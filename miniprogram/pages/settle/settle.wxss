@@ -1,7 +1,7 @@
 /* pages/settle/settle.wxss */
 .page {
   min-height: 100vh;
-  background: #f7f7f7;
+  background: #faf7f0;
   box-sizing: border-box;
   padding-bottom: calc(164rpx + env(safe-area-inset-bottom));
 }
@@ -63,7 +63,7 @@
   text-align: center;
   font-size: 28rpx;
   color: #666;
-  background: #f5f5f5;
+  background: #fdfaf3;
   border-radius: 12rpx;
   border: 2rpx solid transparent;
   transition: all 0.3s;
@@ -167,7 +167,7 @@
   height: 140rpx;
   border-radius: 16rpx;
   flex-shrink: 0;
-  background: #f5f5f5;
+  background: #fdfaf3;
   overflow: hidden;
 }
 
@@ -428,7 +428,7 @@
 /* 高级版视觉覆盖 */
 .page {
   padding-top: 20rpx;
-  background: linear-gradient(180deg, #f0faf6 0%, #f6f7f9 260rpx, #f6f7f9 100%);
+  background: linear-gradient(180deg, #f0faf6 0%, #faf7f0 260rpx, #faf7f0 100%);
 }
 
 .section {
@@ -452,8 +452,8 @@
 }
 
 .order-type-item {
-  background: #f7f8fa;
-  border-color: #ebeef3;
+  background: #fdfaf3;
+  border-color: #e3dbc9;
   color: #69707d;
 }
 
@@ -466,8 +466,8 @@
 
 .remark-input,
 .pay-method-item {
-  background: #fbfcfd;
-  border: 1rpx solid #ebeef3;
+  background: #fdfaf3;
+  border: 1rpx solid #e3dbc9;
 }
 
 .table-code-bold,
@@ -484,7 +484,7 @@
 
 .goods-image {
   border-radius: 14rpx;
-  background: #f0f2f5;
+  background: #fdfaf3;
 }
 
 .goods-sku {
@@ -513,7 +513,7 @@
 }
 
 .footer {
-  border-top-color: #ebeef3;
+  border-top-color: #e3dbc9;
   box-shadow: 0 -12rpx 34rpx rgba(27, 36, 48, 0.1);
 }
 

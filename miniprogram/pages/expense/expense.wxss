@@ -3,7 +3,7 @@
 
 .page {
   min-height: 100vh;
-  background: #f0faf6;
+  background: #faf7f0;
   padding: 24rpx 24rpx 60rpx;
   box-sizing: border-box;
 }
@@ -13,7 +13,7 @@
   border-radius: 20rpx;
   padding: 28rpx 30rpx;
   margin-bottom: 24rpx;
-  border: 1rpx solid #d9f2e8;
+  border: 1rpx solid #e3dbc9;
   box-shadow: 0 6rpx 20rpx rgba(95, 196, 163, 0.08);
 }
 
@@ -196,8 +196,8 @@
   text-align: center;
   font-size: 26rpx;
   color: #5f9b86;
-  background: #f0faf6;
-  border: 1rpx solid #d9f2e8;
+  background: #faf7f0;
+  border: 1rpx solid #e3dbc9;
   border-radius: 12rpx;
 }
 
@@ -234,8 +234,8 @@
   line-height: 84rpx;
   text-align: center;
   border-radius: 999rpx;
-  background: #f0faf6;
-  border: 1rpx solid #d9f2e8;
+  background: #faf7f0;
+  border: 1rpx solid #e3dbc9;
   color: #5f9b86;
   font-size: 28rpx;
   margin-right: 20rpx;
@@ -286,10 +286,10 @@
   flex: 1;
   text-align: center;
   padding: 20rpx 0;
-  background: #f0faf6;
+  background: #faf7f0;
   border-radius: 14rpx;
   margin-right: 14rpx;
-  border: 1rpx solid #d9f2e8;
+  border: 1rpx solid #e3dbc9;
 }
 
 .stat-item:last-child {
@@ -458,8 +458,8 @@
   height: 88rpx;
   padding: 0 24rpx;
   border-radius: 12rpx;
-  background: #f0faf6;
-  border: 1rpx solid #d9f2e8;
+  background: #faf7f0;
+  border: 1rpx solid #e3dbc9;
   font-size: 32rpx;
   font-weight: 700;
   color: #2f8a6d;

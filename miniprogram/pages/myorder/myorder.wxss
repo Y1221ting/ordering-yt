@@ -3,7 +3,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #f7f7f7;
+  background: #faf7f0;
 }
 
 /* 标签栏 */
@@ -63,7 +63,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 30rpx;
-  border-bottom: 1rpx solid #f5f5f5;
+  border-bottom: 1rpx solid #e3dbc9;
 }
 
 .order-user-info {
@@ -77,7 +77,7 @@
   height: 80rpx;
   border-radius: 50%;
   margin-right: 20rpx;
-  background: #f5f5f5;
+  background: #fdfaf3;
 }
 
 .user-info-text {
@@ -112,7 +112,7 @@
 
 .order-status.cancel {
   color: #999;
-  background: #f5f5f5;
+  background: #fdfaf3;
 }
 
 /* 订单内容 */
@@ -123,7 +123,7 @@
 /* 充值订单信息 */
 .recharge-info {
   padding: 20rpx;
-  background: #f9f9f9;
+  background: #fdfaf3;
   border-radius: 12rpx;
 }
 
@@ -167,7 +167,7 @@
   display: flex;
   margin-bottom: 20rpx;
   padding-bottom: 20rpx;
-  border-bottom: 1rpx solid #f5f5f5;
+  border-bottom: 1rpx solid #e3dbc9;
 }
 
 .goods-item:last-child {
@@ -240,7 +240,7 @@
 /* 订单底部 */
 .order-footer {
   padding: 20rpx 30rpx;
-  border-top: 1rpx solid #f5f5f5;
+  border-top: 1rpx solid #e3dbc9;
   text-align: right;
 }
 
@@ -297,7 +297,7 @@
 }
 
 .action-btn.detail {
-  background: #f5f5f5;
+  background: #fdfaf3;
   color: #666;
 }
 
@@ -326,7 +326,7 @@
 
 /* 高级版视觉覆盖 */
 .page {
-  background: linear-gradient(180deg, #f0faf6 0%, #f6f7f9 240rpx, #f6f7f9 100%);
+  background: linear-gradient(180deg, #f0faf6 0%, #faf7f0 240rpx, #faf7f0 100%);
 }
 
 .tabs {
@@ -367,7 +367,7 @@
 }
 
 .order-header {
-  border-bottom-color: #ebeef3;
+  border-bottom-color: #e3dbc9;
 }
 
 .user-avatar {
@@ -395,12 +395,12 @@
 }
 
 .recharge-info {
-  background: #fbfcfd;
-  border: 1rpx solid #ebeef3;
+  background: #fdfaf3;
+  border: 1rpx solid #e3dbc9;
 }
 
 .goods-image {
-  background: #f0f2f5;
+  background: #fdfaf3;
 }
 
 .goods-sku,
@@ -419,6 +419,6 @@
 }
 
 .order-footer {
-  border-top-color: #ebeef3;
-  background: #fbfcfd;
+  border-top-color: #e3dbc9;
+  background: #fdfaf3;
 }

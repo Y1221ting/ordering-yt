@@ -1,7 +1,7 @@
 /* pages/admin/printer/printer.wxss */
 .page {
   min-height: 100vh;
-  background: #f7f7f7;
+  background: #faf7f0;
   padding: 20rpx;
   padding-bottom: 40rpx;
 }
@@ -21,7 +21,7 @@
   align-items: center;
   margin-bottom: 30rpx;
   padding-bottom: 20rpx;
-  border-bottom: 1rpx solid #f5f5f5;
+  border-bottom: 1rpx solid #e3dbc9;
 }
 
 .printer-name {
@@ -76,7 +76,7 @@
   display: flex;
   gap: 20rpx;
   padding-top: 20rpx;
-  border-top: 1rpx solid #f5f5f5;
+  border-top: 1rpx solid #e3dbc9;
 }
 
 .action-btn {
@@ -156,7 +156,7 @@
   color: #333;
   margin-bottom: 30rpx;
   padding-bottom: 20rpx;
-  border-bottom: 1rpx solid #f5f5f5;
+  border-bottom: 1rpx solid #e3dbc9;
 }
 
 .setting-item {
@@ -280,7 +280,7 @@
 
 /* 高级版视觉覆盖 */
 .page {
-  background: linear-gradient(180deg, #f0faf6 0%, #f6f7f9 240rpx, #f6f7f9 100%);
+  background: linear-gradient(180deg, #f0faf6 0%, #faf7f0 240rpx, #faf7f0 100%);
   padding: 24rpx;
   padding-bottom: 48rpx;
 }
@@ -296,7 +296,7 @@
 .card-header,
 .card-actions,
 .section-title {
-  border-color: #ebeef3;
+  border-color: #e3dbc9;
 }
 
 .printer-name,
@@ -352,7 +352,7 @@
 }
 
 .option-btn {
-  border-color: #e6e9ef;
+  border-color: #e3dbc9;
   color: #69707d;
 }
 
@@ -379,16 +379,16 @@
 
 .form-input {
   height: 88rpx;
-  border-color: #e6e9ef;
-  background: #fbfcfd;
+  border-color: #e3dbc9;
+  background: #fdfaf3;
 }
 
 .modal-footer {
-  border-top-color: #ebeef3;
+  border-top-color: #e3dbc9;
 }
 
 .modal-btn.cancel {
-  border-right-color: #ebeef3;
+  border-right-color: #e3dbc9;
 }
 
 .modal-btn.confirm {

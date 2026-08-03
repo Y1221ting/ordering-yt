@@ -3,7 +3,7 @@
   min-height: 100vh;
   box-sizing: border-box;
   padding: 24rpx 24rpx calc(34rpx + env(safe-area-inset-bottom));
-  background: linear-gradient(180deg, #f0faf6 0%, #f6f7f9 360rpx, #f6f7f9 100%);
+  background: linear-gradient(180deg, #f0faf6 0%, #faf7f0 360rpx, #faf7f0 100%);
 }
 
 .member-hero {
@@ -308,9 +308,9 @@ button.service-tile::after {
   height: 88rpx;
   box-sizing: border-box;
   padding: 0 22rpx;
-  border: 2rpx solid #e6e9ef;
+  border: 2rpx solid #e3dbc9;
   border-radius: 12rpx;
-  background: #fbfcfd;
+  background: #fdfaf3;
   font-size: 28rpx;
 }
 
@@ -323,7 +323,7 @@ button.service-tile::after {
 
 .modal-footer {
   display: flex;
-  border-top: 2rpx solid #ebeef3;
+  border-top: 2rpx solid #e3dbc9;
 }
 
 .modal-btn {
@@ -337,7 +337,7 @@ button.service-tile::after {
 
 .modal-btn.cancel {
   color: #9aa1ad;
-  border-right: 2rpx solid #ebeef3;
+  border-right: 2rpx solid #e3dbc9;
 }
 
 .modal-btn.confirm {
