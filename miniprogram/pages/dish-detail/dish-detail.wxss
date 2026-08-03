@@ -23,7 +23,7 @@
   position: relative;
   min-height: 100vh;
   background: #faf7f0;
-  color: #22252b;
+  color: #2f3632;
 }
 
 .detail-navigation {
@@ -94,7 +94,7 @@
 .product-band,
 .selection-band,
 .detail-band {
-  background: #ffffff;
+  background: #fdfaf3;
 }
 
 .product-band {
@@ -204,7 +204,7 @@
   padding: 16rpx 24rpx;
   border: 2rpx solid #e4e7eb;
   border-radius: 12rpx;
-  background: #ffffff;
+  background: #fdfaf3;
   box-sizing: border-box;
 }
 
@@ -223,7 +223,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 0 10rpx 0 10rpx;
-  color: #ffffff;
+  color: #fdfaf3;
   background: #5fc4a3;
 }
 
@@ -256,7 +256,7 @@
   border: 2rpx solid #e4e7eb;
   border-radius: 12rpx;
   color: #555c66;
-  background: #ffffff;
+  background: #fdfaf3;
   font-size: 26rpx;
 }
 
@@ -302,7 +302,7 @@
 
 .stepper-button.primary {
   border-color: #5fc4a3;
-  color: #ffffff;
+  color: #fdfaf3;
   background: #5fc4a3;
 }
 
@@ -482,7 +482,7 @@
 }
 
 .add-button {
-  color: #ffffff;
+  color: #fdfaf3;
   background: #5fc4a3;
   box-shadow: 0 10rpx 24rpx rgba(95, 196, 163, 0.24);
 }
@@ -500,7 +500,7 @@
 
 .loading-state {
   min-height: 100vh;
-  background: #ffffff;
+  background: #fdfaf3;
 }
 
 .skeleton {
@@ -587,11 +587,11 @@
 .secondary-button {
   border: 1rpx solid #d9dde2;
   color: #555c66;
-  background: #ffffff;
+  background: #fdfaf3;
 }
 
 .primary-button {
-  color: #ffffff;
+  color: #fdfaf3;
   background: #5fc4a3;
 }
 

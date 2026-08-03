@@ -33,7 +33,7 @@
 
 .refresh-tip {
   font-size: 22rpx;
-  color: #999;
+  color: #9aa39d;
 }
 
 /* 订单列表 */
@@ -79,19 +79,19 @@
 
 .user-name {
   font-size: 28rpx;
-  color: #333;
+  color: #2f3632;
   font-weight: bold;
   margin-bottom: 5rpx;
 }
 
 .user-phone {
   font-size: 24rpx;
-  color: #999;
+  color: #9aa39d;
 }
 
 .order-type {
   font-size: 30rpx;
-  color: #333;
+  color: #2f3632;
   font-weight: bold;
 }
 
@@ -120,12 +120,12 @@
 
 .recharge-label {
   font-size: 28rpx;
-  color: #666;
+  color: #6b7a72;
 }
 
 .recharge-value {
   font-size: 30rpx;
-  color: #333;
+  color: #2f3632;
   font-weight: bold;
 }
 
@@ -173,7 +173,7 @@
 
 .goods-name {
   font-size: 28rpx;
-  color: #333;
+  color: #2f3632;
   margin-bottom: 10rpx;
 }
 
@@ -214,7 +214,7 @@
 
 .goods-count {
   font-size: 26rpx;
-  color: #999;
+  color: #9aa39d;
 }
 
 /* 订单底部 */
@@ -231,7 +231,7 @@
 
 .order-time {
   font-size: 24rpx;
-  color: #999;
+  color: #9aa39d;
   margin-bottom: 8rpx;
 }
 
@@ -260,7 +260,7 @@
 }
 
 .print-status-text.cancelled {
-  color: #999;
+  color: #9aa39d;
 }
 
 .print-status-text.not-printed {
@@ -280,7 +280,7 @@
 
 .price-label {
   font-size: 26rpx;
-  color: #666;
+  color: #6b7a72;
 }
 
 .price-num {
@@ -333,7 +333,7 @@
 }
 
 .refresh-tip {
-  color: #9aa1ad;
+  color: #9aa39d;
 }
 
 .order-list {
@@ -359,12 +359,12 @@
 .user-name,
 .order-type,
 .goods-name {
-  color: #22252b;
+  color: #2f3632;
 }
 
 .user-phone,
 .order-time {
-  color: #9aa1ad;
+  color: #9aa39d;
 }
 
 .order-type {

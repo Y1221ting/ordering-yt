@@ -14,9 +14,9 @@ page {
   --accent-color: #1f9d8a;
   --warning-color: #c77a18;
   --success-color: #2f9e5b;
-  --text-main: #22252b;
-  --text-sub: #69707d;
-  --text-muted: #9aa1ad;
+  --text-main: #2f3632;
+  --text-sub: #6b7a72;
+  --text-muted: #9aa39d;
   --line-color: #e3dbc9;
   --card-bg: #ffffff;
   --page-bg: #faf7f0;
@@ -31,7 +31,7 @@ page {
   --hair: #e3dbc9;         /* 淡墨：描边、分隔线 */
   --seal: #b03a2e;         /* 朱砂：印章、点缀 */
   background-color: #faf7f0;
-  color: #22252b;
+  color: #2f3632;
   font-size: 28rpx;
 }
 

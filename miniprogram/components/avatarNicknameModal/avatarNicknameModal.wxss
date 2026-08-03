@@ -30,7 +30,7 @@
 }
 
 .super-modal-body-box {
-	background-color: #ffffff;
+	background-color: #fdfaf3;
 	border-top-left-radius: 30rpx;
 	border-top-right-radius: 30rpx;
 	height: 100%;
@@ -114,7 +114,7 @@
 
 .phone-display {
 	font-size: 28rpx;
-	color: #999;
+	color: #9aa39d;
 }
 
 .phone-btn {
@@ -137,7 +137,7 @@
 	height: 95rpx;
 	border-radius: 20rpx;
 	background: linear-gradient(135deg, #3f9d81 0%, #8fd8bc 100%);
-	color: #ffffff;
+	color: #fdfaf3;
 	font-size: 28rpx;
 	font-weight: bold;
 	margin: 35rpx auto 30rpx;

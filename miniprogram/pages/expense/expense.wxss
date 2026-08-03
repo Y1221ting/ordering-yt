@@ -9,7 +9,7 @@
 }
 
 .card {
-  background: #ffffff;
+  background: #fdfaf3;
   border-radius: 20rpx;
   padding: 28rpx 30rpx;
   margin-bottom: 24rpx;
@@ -199,7 +199,7 @@
 .form-input {
   flex: 1;
   font-size: 28rpx;
-  color: #333333;
+  color: #2f3632;
 }
 
 .money-input {
@@ -211,7 +211,7 @@
 .unit {
   margin-left: 8rpx;
   font-size: 24rpx;
-  color: #999999;
+  color: #9aa39d;
 }
 
 .ph {
@@ -248,7 +248,7 @@
 }
 
 .date-field {
-  color: #333333;
+  color: #2f3632;
   font-size: 28rpx;
 }
 
@@ -283,7 +283,7 @@
   text-align: center;
   border-radius: 999rpx;
   background: linear-gradient(135deg, #3f9d81 0%, #5fc4a3 100%);
-  color: #ffffff;
+  color: #fdfaf3;
   font-size: 30rpx;
   font-weight: 700;
   box-shadow: 0 8rpx 20rpx rgba(95, 196, 163, 0.32);
@@ -355,7 +355,7 @@
 
 .person-name {
   font-size: 26rpx;
-  color: #333333;
+  color: #2f3632;
 }
 
 .person-amount {
@@ -416,7 +416,7 @@
 
 .record-note {
   font-size: 28rpx;
-  color: #333333;
+  color: #2f3632;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -472,7 +472,7 @@
 
 .modal-dialog {
   width: 600rpx;
-  background: #ffffff;
+  background: #fdfaf3;
   border-radius: 20rpx;
   overflow: hidden;
 }

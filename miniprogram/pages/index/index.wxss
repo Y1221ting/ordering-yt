@@ -26,7 +26,7 @@
 
 /* 搜索框 */
 .search-wrapper {
-  background: white;
+  background: #fdfaf3;
   padding: 10rpx 0;
 }
 
@@ -95,7 +95,7 @@
 
 .goods-section-title {
   padding: 8rpx 0 18rpx;
-  color: #333;
+  color: #2f3632;
   font-size: 28rpx;
   font-weight: 700;
 }
@@ -111,7 +111,7 @@
 }
 
 .goods-item {
-  background: white;
+  background: #fdfaf3;
   border-radius: 16rpx;
   padding: 20rpx;
   margin-bottom: 20rpx;
@@ -158,8 +158,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f1f1f1;
-  color: #999;
+  background: #fdfaf3;
+  border: 1rpx solid #e3dbc9;
+  box-sizing: border-box;
+  color: #9aa39d;
   font-size: 24rpx;
 }
 
@@ -174,14 +176,14 @@
 .goods-name {
   font-size: 30rpx;
   font-weight: bold;
-  color: #333;
+  color: #2f3632;
   margin-bottom: 10rpx;
 }
 
 
 .goods-desc {
   font-size: 24rpx;
-  color: #999;
+  color: #9aa39d;
   line-height: 1.5;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -231,7 +233,7 @@
 
 .price-prefix {
   font-size: 22rpx;
-  color: #999;
+  color: #9aa39d;
 }
 
 .goods-actions {
@@ -245,12 +247,12 @@
 .section-end {
   padding: 34rpx 20rpx;
   text-align: center;
-  color: #999;
+  color: #9aa39d;
   font-size: 24rpx;
 }
 
 .section-empty {
-  background: white;
+  background: #fdfaf3;
   border-radius: 12rpx;
   margin-bottom: 20rpx;
 }
@@ -268,7 +270,7 @@
 
 .action-btn.reduce {
   background: #fdfaf3;
-  color: #666;
+  color: #6b7a72;
 }
 
 .action-btn.add {
@@ -280,14 +282,14 @@
   min-width: 40rpx;
   text-align: center;
   font-size: 28rpx;
-  color: #333;
+  color: #2f3632;
   font-weight: bold;
 }
 
 .empty-tip {
   text-align: center;
   padding: 100rpx 0;
-  color: #999;
+  color: #9aa39d;
   font-size: 28rpx;
 }
 
@@ -301,7 +303,7 @@
 }
 
 .float-cart-card {
-  background: white;
+  background: #fdfaf3;
   border-radius: 60rpx;
   display: flex;
   align-items: center;
@@ -381,7 +383,7 @@
 
 .cart-tip {
   font-size: 22rpx;
-  color: #999;
+  color: #9aa39d;
   margin-top: 4rpx;
 }
 
@@ -392,8 +394,8 @@
 .settle-btn {
   padding: 22rpx 45rpx;
   border-radius: 50rpx;
-  background: #e0e0e0;
-  color: #999;
+  background: #e3dbc9;
+  color: #9aa39d;
   font-size: 28rpx;
   font-weight: bold;
   transition: all 0.3s;
@@ -429,7 +431,7 @@
   right: 0;
   bottom: 0;
   max-height: 70vh;
-  background: white;
+  background: #fdfaf3;
   border-radius: 20rpx 20rpx 0 0;
   z-index: 101;
   transform: translateY(100%);
@@ -453,7 +455,7 @@
 .cart-title {
   font-size: 32rpx;
   font-weight: bold;
-  color: #333;
+  color: #2f3632;
 }
 
 .cart-clear {
@@ -495,7 +497,7 @@
 
 .cart-goods-name {
   font-size: 28rpx;
-  color: #333;
+  color: #2f3632;
   margin-bottom: 5rpx;
 }
 
@@ -531,7 +533,7 @@
 
 .cart-goods-price {
   font-size: 26rpx;
-  color: #666;
+  color: #6b7a72;
 }
 
 .cart-goods-actions {
@@ -545,7 +547,7 @@
   min-width: 60rpx;
   text-align: center;
   font-size: 28rpx;
-  color: #333;
+  color: #2f3632;
   font-weight: bold;
 }
 
@@ -555,7 +557,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 25rpx 30rpx;
-  background: white;
+  background: #fdfaf3;
   border-top: 2rpx solid #e3dbc9;
   flex-shrink: 0;
 }
@@ -568,7 +570,7 @@
 
 .cart-total-label {
   font-size: 28rpx;
-  color: #666;
+  color: #6b7a72;
   margin-right: 10rpx;
 }
 
@@ -620,7 +622,7 @@
 .modal-dialog.dish-detail-modal {
   width: 90%;
   max-height: 85vh;
-  background: white;
+  background: #fdfaf3;
   border-radius: 24rpx;
   overflow: hidden;
   display: flex;
@@ -668,8 +670,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f1f1f1;
-  color: #999;
+  background: #fdfaf3;
+  border: 1rpx solid #e3dbc9;
+  box-sizing: border-box;
+  color: #9aa39d;
   font-size: 26rpx;
 }
 
@@ -679,14 +683,14 @@
 
 .dish-detail-name {
   font-size: 36rpx;
-  color: #333;
+  color: #2f3632;
   font-weight: bold;
   margin-bottom: 15rpx;
 }
 
 .dish-detail-desc {
   font-size: 26rpx;
-  color: #999;
+  color: #9aa39d;
   line-height: 1.6;
   margin-bottom: 15rpx;
 }
@@ -717,7 +721,7 @@
 
 .tag-title {
   font-size: 28rpx;
-  color: #333;
+  color: #2f3632;
   margin-bottom: 20rpx;
   font-weight: bold;
   display: flex;
@@ -726,7 +730,7 @@
 
 .tag-type-label {
   font-size: 22rpx;
-  color: #999;
+  color: #9aa39d;
   font-weight: normal;
   margin-left: 8rpx;
 }
@@ -756,7 +760,7 @@
 .sku-option {
   min-width: 180rpx;
   padding: 18rpx 22rpx;
-  background: white;
+  background: #fdfaf3;
   border: 2rpx solid #e5e5e5;
   border-radius: 12rpx;
 }
@@ -768,7 +772,7 @@
 
 .sku-option-name {
   font-size: 26rpx;
-  color: #333;
+  color: #2f3632;
   margin-bottom: 8rpx;
 }
 
@@ -785,11 +789,11 @@
 
 .tag-option {
   padding: 16rpx 30rpx;
-  background: white;
+  background: #fdfaf3;
   border: 2rpx solid #e5e5e5;
   border-radius: 12rpx;
   font-size: 26rpx;
-  color: #666;
+  color: #6b7a72;
   transition: all 0.3s;
 }
 
@@ -813,7 +817,7 @@
 
 .quantity-label {
   font-size: 28rpx;
-  color: #333;
+  color: #2f3632;
   font-weight: bold;
 }
 
@@ -838,12 +842,12 @@
 
 .quantity-btn.disabled {
   background: #e5e5e5;
-  color: #999;
+  color: #9aa39d;
 }
 
 .quantity-num {
   font-size: 32rpx;
-  color: #333;
+  color: #2f3632;
   font-weight: bold;
   min-width: 60rpx;
   text-align: center;
@@ -855,7 +859,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 20rpx 30rpx;
-  background: white;
+  background: #fdfaf3;
   border-top: 2rpx solid #e3dbc9;
   flex-shrink: 0;
 }
@@ -867,7 +871,7 @@
 
 .total-label {
   font-size: 26rpx;
-  color: #666;
+  color: #6b7a72;
   margin-right: 10rpx;
 }
 
@@ -973,13 +977,13 @@
 
 .goods-name,
 .dish-detail-name {
-  color: #22252b;
+  color: #2f3632;
 }
 
 .goods-desc,
 .dish-detail-desc,
 .cart-tip {
-  color: #9aa1ad;
+  color: #9aa39d;
 }
 
 .sku-summary,
@@ -1015,7 +1019,7 @@
 
 .action-btn.reduce {
   background: #fdfaf3;
-  color: #69707d;
+  color: #6b7a72;
 }
 
 .float-cart-card {

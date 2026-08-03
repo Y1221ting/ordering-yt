@@ -27,7 +27,7 @@
 .printer-name {
   font-size: 36rpx;
   font-weight: bold;
-  color: #333;
+  color: #2f3632;
 }
 
 .printer-status {
@@ -44,7 +44,7 @@
 
 .printer-status.offline {
   background: rgba(153, 153, 153, 0.1);
-  color: #999;
+  color: #9aa39d;
 }
 
 .card-content {
@@ -63,12 +63,12 @@
 }
 
 .info-label {
-  color: #666;
+  color: #6b7a72;
   min-width: 160rpx;
 }
 
 .info-value {
-  color: #333;
+  color: #2f3632;
   font-weight: 500;
 }
 
@@ -129,7 +129,7 @@
 
 .empty-text {
   font-size: 32rpx;
-  color: #999;
+  color: #9aa39d;
   margin-bottom: 40rpx;
 }
 
@@ -153,7 +153,7 @@
 .section-title {
   font-size: 32rpx;
   font-weight: bold;
-  color: #333;
+  color: #2f3632;
   margin-bottom: 30rpx;
   padding-bottom: 20rpx;
   border-bottom: 1rpx solid #e3dbc9;
@@ -169,7 +169,7 @@
 
 .setting-label {
   font-size: 28rpx;
-  color: #333;
+  color: #2f3632;
   margin-bottom: 20rpx;
   font-weight: 500;
 }
@@ -185,7 +185,7 @@
   border: 2rpx solid #e5e5e5;
   border-radius: 50rpx;
   font-size: 26rpx;
-  color: #666;
+  color: #6b7a72;
   background: white;
   transition: all 0.3s;
 }
@@ -222,7 +222,7 @@
   text-align: center;
   font-size: 36rpx;
   font-weight: bold;
-  color: #333;
+  color: #2f3632;
 }
 
 .modal-content {
@@ -239,7 +239,7 @@
 
 .form-label {
   font-size: 28rpx;
-  color: #333;
+  color: #2f3632;
   margin-bottom: 15rpx;
   display: block;
 }
@@ -269,7 +269,7 @@
 }
 
 .modal-btn.cancel {
-  color: #999;
+  color: #9aa39d;
   border-right: 2rpx solid #e5e5e5;
 }
 
@@ -303,12 +303,12 @@
 .info-value,
 .section-title,
 .setting-label {
-  color: #22252b;
+  color: #2f3632;
 }
 
 .info-label,
 .empty-text {
-  color: #9aa1ad;
+  color: #9aa39d;
 }
 
 .printer-status {
@@ -353,7 +353,7 @@
 
 .option-btn {
   border-color: #e3dbc9;
-  color: #69707d;
+  color: #6b7a72;
 }
 
 .modal-mask {
@@ -368,12 +368,12 @@
 }
 
 .modal-title {
-  color: #22252b;
+  color: #2f3632;
   font-size: 34rpx;
 }
 
 .form-label {
-  color: #69707d;
+  color: #6b7a72;
   font-weight: 600;
 }
 

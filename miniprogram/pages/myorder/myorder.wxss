@@ -8,7 +8,7 @@
 
 /* 标签栏 */
 .tabs {
-  background: white;
+  background: #fdfaf3;
   display: flex;
   padding: 0 30rpx;
   border-bottom: 1rpx solid #f0f0f0;
@@ -23,7 +23,7 @@
 
 .tab-text {
   font-size: 30rpx;
-  color: #666;
+  color: #6b7a72;
   transition: all 0.3s;
 }
 
@@ -50,7 +50,7 @@
 }
 
 .order-item {
-  background: white;
+  background: #fdfaf3;
   border-radius: 16rpx;
   margin-bottom: 20rpx;
   overflow: hidden;
@@ -86,19 +86,19 @@
 
 .user-name {
   font-size: 28rpx;
-  color: #333;
+  color: #2f3632;
   font-weight: bold;
   margin-bottom: 5rpx;
 }
 
 .user-phone {
   font-size: 24rpx;
-  color: #999;
+  color: #9aa39d;
 }
 
 .order-type {
   font-size: 30rpx;
-  color: #333;
+  color: #2f3632;
   font-weight: bold;
 }
 
@@ -111,7 +111,7 @@
 }
 
 .order-status.cancel {
-  color: #999;
+  color: #9aa39d;
   background: #fdfaf3;
 }
 
@@ -140,12 +140,12 @@
 
 .recharge-label {
   font-size: 28rpx;
-  color: #666;
+  color: #6b7a72;
 }
 
 .recharge-value {
   font-size: 30rpx;
-  color: #333;
+  color: #2f3632;
   font-weight: bold;
 }
 
@@ -193,7 +193,7 @@
 
 .goods-name {
   font-size: 28rpx;
-  color: #333;
+  color: #2f3632;
   margin-bottom: 10rpx;
 }
 
@@ -234,7 +234,7 @@
 
 .goods-count {
   font-size: 26rpx;
-  color: #999;
+  color: #9aa39d;
 }
 
 /* 订单底部 */
@@ -251,7 +251,7 @@
 
 .order-time {
   font-size: 24rpx;
-  color: #999;
+  color: #9aa39d;
   margin-bottom: 8rpx;
 }
 
@@ -274,7 +274,7 @@
 
 .price-label {
   font-size: 26rpx;
-  color: #666;
+  color: #6b7a72;
 }
 
 .price-num {
@@ -298,7 +298,7 @@
 
 .action-btn.detail {
   background: #fdfaf3;
-  color: #666;
+  color: #6b7a72;
 }
 
 .action-btn.cancel {
@@ -321,7 +321,7 @@
 
 .empty-text {
   font-size: 28rpx;
-  color: #999;
+  color: #9aa39d;
 }
 
 /* 高级版视觉覆盖 */
@@ -371,7 +371,7 @@
 }
 
 .user-avatar {
-  border: 4rpx solid #ffffff;
+  border: 4rpx solid #fdfaf3;
   box-shadow: 0 8rpx 18rpx rgba(27, 36, 48, 0.08);
 }
 
@@ -385,13 +385,13 @@
 
 .user-name,
 .goods-name {
-  color: #22252b;
+  color: #2f3632;
 }
 
 .user-phone,
 .order-time,
 .goods-count {
-  color: #9aa1ad;
+  color: #9aa39d;
 }
 
 .recharge-info {

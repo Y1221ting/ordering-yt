@@ -39,7 +39,7 @@
 }
 
 .clear-btn {
-  background: #999;
+  background: #9aa39d;
 }
 
 /* 用户列表 */
@@ -93,7 +93,7 @@
 
 .user-name {
   font-size: 32rpx;
-  color: #333;
+  color: #2f3632;
   font-weight: bold;
   margin-bottom: 10rpx;
   display: flex;
@@ -107,7 +107,7 @@
 
 .user-detail {
   font-size: 24rpx;
-  color: #999;
+  color: #9aa39d;
   margin-bottom: 5rpx;
 }
 
@@ -117,7 +117,7 @@
 
 .user-arrow {
   font-size: 28rpx;
-  color: #999;
+  color: #9aa39d;
 }
 
 .user-actions {
@@ -143,7 +143,7 @@
 .empty-tip {
   padding: 100rpx 0;
   text-align: center;
-  color: #999;
+  color: #9aa39d;
   font-size: 28rpx;
 }
 
@@ -173,7 +173,7 @@
   text-align: center;
   font-size: 36rpx;
   font-weight: bold;
-  color: #333;
+  color: #2f3632;
 }
 
 .modal-content {
@@ -204,7 +204,7 @@
 
 .preview-name {
   font-size: 32rpx;
-  color: #333;
+  color: #2f3632;
   font-weight: bold;
 }
 
@@ -218,7 +218,7 @@
 
 .form-label {
   font-size: 28rpx;
-  color: #666;
+  color: #6b7a72;
   margin-bottom: 15rpx;
 }
 
@@ -269,7 +269,7 @@
 }
 
 .modal-btn.cancel {
-  color: #999;
+  color: #9aa39d;
   border-right: 2rpx solid #e5e5e5;
 }
 
@@ -310,7 +310,7 @@
 
 .clear-btn {
   background: #fdfaf3;
-  color: #69707d;
+  color: #6b7a72;
 }
 
 .user-list {
@@ -335,11 +335,11 @@
 
 .user-name,
 .preview-name {
-  color: #22252b;
+  color: #2f3632;
 }
 
 .user-detail {
-  color: #9aa1ad;
+  color: #9aa39d;
 }
 
 .action-btn {
@@ -363,7 +363,7 @@
 }
 
 .modal-title {
-  color: #22252b;
+  color: #2f3632;
   font-size: 34rpx;
 }
 
@@ -372,7 +372,7 @@
 }
 
 .form-label {
-  color: #69707d;
+  color: #6b7a72;
   font-weight: 600;
 }
 
