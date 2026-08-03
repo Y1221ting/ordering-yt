@@ -1,6 +1,6 @@
 const cloud = require('wx-server-sdk')
 cloud.init({
-  env: '填写你的环境ID'
+  env: 'cloud1-5gofagc634ff0959'
 })
 
 exports.main = async (event, context) => {
@@ -11,7 +11,7 @@ exports.main = async (event, context) => {
     "spbillCreateIp" : "127.0.0.1", //就是这个值，不要改
     "subMchId" : "填写你的微信支付商户号",
     "totalFee" : parseFloat(event.totalFee)*100,  //单位为分
-    "envId": "填写你的环境ID",
+    "envId": "cloud1-5gofagc634ff0959",
     "functionName": "pay_success",  //支付成功的回调云函数
     "nonceStr":event.nonceStr,  //随便弄的32位字符串，建议自己生成
     "tradeType":"JSAPI"   //默认是JSAPI

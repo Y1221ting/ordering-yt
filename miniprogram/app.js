@@ -16,7 +16,7 @@ App({
       this.userInfoListeners = []
 
       wx.cloud.init({
-        env: '填写你的环境ID',
+        env: 'cloud1-5gofagc634ff0959',
         traceUser: true,
       })
       

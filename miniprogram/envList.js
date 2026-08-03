@@ -1,4 +1,4 @@
-const envList = [{"envId":"填写你的环境ID","alias":"填写你的环境别名"}]
+const envList = [{"envId":"cloud1-5gofagc634ff0959","alias":"cloud1"}]
 const isMac = false
 module.exports = {
     envList,

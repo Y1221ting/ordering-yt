@@ -76,8 +76,8 @@
     "ignore": [],
     "include": []
   },
-  "appid": "填写你的小程序AppID",
+  "appid": "wx0dd35860a0517364",
   "cloud": true,
-  "libVersion": "3.12.1",
+  "libVersion": "3.14.2",
   "simulatorPluginLibVersion": {}
 }
