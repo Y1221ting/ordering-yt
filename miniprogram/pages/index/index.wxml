@@ -16,6 +16,14 @@
     </view>
   </view>
 
+  <!-- 搜索入口 -->
+  <view class="search-entry" bindtap="openSearch">
+    <view class="search-entry-box">
+      <text class="cuIcon-search search-entry-icon"></text>
+      <text class="search-entry-placeholder">搜索菜品</text>
+    </view>
+  </view>
+
   <!-- 主内容区 -->
   <view class="main-content">
     <!-- 左侧分类菜单 -->
@@ -302,6 +310,53 @@
         <view class="add-cart-btn" bindtap="confirmAddToCart">加入购物车</view>
       </view>
     </view>
+  </view>
+
+  <!-- 菜品搜索层 -->
+  <view class="search-mask {{searchVisible ? 'show' : ''}}" bindtap="closeSearch"></view>
+  <view class="search-panel {{searchVisible ? 'show' : ''}}">
+    <view class="search-panel-header">
+      <view class="search-input-wrap">
+        <text class="cuIcon-search search-input-icon"></text>
+        <input
+          class="search-input"
+          focus="{{searchVisible}}"
+          placeholder="输入菜品名称"
+          placeholder-class="search-input-placeholder"
+          value="{{searchKeyword}}"
+          confirm-type="search"
+          bindinput="onSearchInput"
+          bindconfirm="onSearchConfirm"
+        />
+        <text class="search-input-clear" wx:if="{{searchKeyword}}" catchtap="clearSearchKeyword">×</text>
+      </view>
+      <text class="search-cancel" bindtap="closeSearch">取消</text>
+    </view>
+
+    <scroll-view class="search-result-list" scroll-y>
+      <view
+        class="search-result-item"
+        wx:for="{{searchResults}}"
+        wx:key="_id"
+        bindtap="onSearchResultTap"
+        data-goods="{{item}}">
+        <image wx:if="{{item.image}}" class="search-result-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view wx:else class="search-result-image search-result-placeholder">暂无图片</view>
+        <view class="search-result-info">
+          <view class="search-result-name">{{item.name}}</view>
+          <view class="search-result-cat" wx:if="{{item.categoryName}}">{{item.categoryName}}</view>
+          <view class="search-result-price">
+            <text class="price-symbol">¥</text>
+            <text class="price-num">{{item.priceText}}</text>
+            <text class="price-prefix" wx:if="{{item.hasMultipleSkus}}">起</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="search-result-empty" wx:if="{{searchSearched && searchResults.length === 0}}">
+        没有找到相关菜品
+      </view>
+    </scroll-view>
   </view>
 
   <!-- 用户授权组件 -->

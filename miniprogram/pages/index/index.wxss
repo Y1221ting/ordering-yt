@@ -1172,3 +1172,211 @@
   letter-spacing: 2rpx;
 }
 
+/* 搜索入口（卷轴店招下方） */
+.search-entry {
+  padding: 0 20rpx 16rpx;
+  flex-shrink: 0;
+  background: #faf7f0;
+}
+
+.search-entry-box {
+  height: 68rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 26rpx;
+  background: #fdfaf3;
+  border: 1rpx solid #e3dbc9;
+  border-radius: 999rpx;
+  box-shadow: 0 6rpx 16rpx rgba(47, 54, 50, 0.06);
+}
+
+.search-entry-icon {
+  font-size: 30rpx;
+  color: #9aa39d;
+  margin-right: 14rpx;
+}
+
+.search-entry-placeholder {
+  font-size: 26rpx;
+  color: #9aa39d;
+}
+
+/* 菜品搜索层 */
+.search-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(19, 24, 33, 0.58);
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.search-mask.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.search-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 201;
+  background: #faf7f0;
+  transform: translateY(100%);
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-panel.show {
+  transform: translateY(0);
+}
+
+.search-panel-header {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 24rpx 20rpx;
+  background: #fdfaf3;
+  border-bottom: 1rpx solid #e3dbc9;
+  flex-shrink: 0;
+}
+
+.search-input-wrap {
+  flex: 1;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 24rpx;
+  background: #faf7f0;
+  border: 1rpx solid #e3dbc9;
+  border-radius: 999rpx;
+}
+
+.search-input-icon {
+  font-size: 30rpx;
+  color: #9aa39d;
+  margin-right: 14rpx;
+}
+
+.search-input {
+  flex: 1;
+  height: 100%;
+  font-size: 28rpx;
+  color: #2f3632;
+}
+
+.search-input-placeholder {
+  color: #9aa39d;
+}
+
+.search-input-clear {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 10rpx;
+  border-radius: 50%;
+  background: #e3dbc9;
+  color: #6b7a72;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.search-cancel {
+  margin-left: 24rpx;
+  font-size: 28rpx;
+  color: #2f7d63;
+  flex-shrink: 0;
+}
+
+/* 搜索结果 */
+.search-result-list {
+  flex: 1;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  background: #fdfaf3;
+  border: 1rpx solid #e3dbc9;
+  border-radius: 16rpx;
+  padding: 18rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 8rpx 24rpx rgba(27, 36, 48, 0.05);
+}
+
+.search-result-image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 12rpx;
+  flex-shrink: 0;
+  background: #fdfaf3;
+}
+
+.search-result-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1rpx solid #e3dbc9;
+  box-sizing: border-box;
+  color: #9aa39d;
+  font-size: 22rpx;
+}
+
+.search-result-info {
+  flex: 1;
+  min-width: 0;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-result-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #2f3632;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.search-result-cat {
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: #9aa39d;
+}
+
+.search-result-price {
+  margin-top: 10rpx;
+  display: flex;
+  align-items: baseline;
+}
+
+.search-result-price .price-symbol {
+  font-size: 22rpx;
+  color: #2f7d63;
+  font-weight: bold;
+}
+
+.search-result-price .price-num {
+  font-size: 32rpx;
+  color: #2f7d63;
+  font-weight: bold;
+}
+
+.search-result-empty {
+  padding: 120rpx 0;
+  text-align: center;
+  color: #9aa39d;
+  font-size: 26rpx;
+}
+

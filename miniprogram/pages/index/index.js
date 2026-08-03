@@ -47,6 +47,11 @@ Page({
     modalDishCount: 1,
     modalTotalPrice: 0,
     showAuthModal: false,
+    searchVisible: false,
+    searchKeyword: '',
+    searchResults: [],
+    searchSearched: false,
+    searchLoading: false,
     statusBarHeight: 0,
     storefrontTop: 68,
     tableNumber: '',
@@ -1056,6 +1061,130 @@ Page({
   },
 
   stopPropagation() {},
+
+  openSearch() {
+    this.setData({
+      searchVisible: true,
+      searchKeyword: '',
+      searchResults: [],
+      searchSearched: false
+    })
+  },
+
+  closeSearch() {
+    this.setData({
+      searchVisible: false
+    })
+  },
+
+  clearSearchKeyword() {
+    this.setData({
+      searchKeyword: '',
+      searchResults: [],
+      searchSearched: false
+    })
+  },
+
+  onSearchInput(e) {
+    const keyword = e.detail.value || ''
+    this.setData({
+      searchKeyword: keyword,
+      searchSearched: false
+    })
+
+    if (this.searchTimer) {
+      clearTimeout(this.searchTimer)
+      this.searchTimer = null
+    }
+
+    const trimmed = keyword.trim()
+    if (!trimmed) {
+      this.setData({
+        searchResults: []
+      })
+      return
+    }
+
+    this.searchTimer = setTimeout(() => {
+      this.doSearch(trimmed)
+    }, 300)
+  },
+
+  onSearchConfirm() {
+    const keyword = (this.data.searchKeyword || '').trim()
+    if (!keyword) return
+
+    if (this.searchTimer) {
+      clearTimeout(this.searchTimer)
+      this.searchTimer = null
+    }
+
+    this.doSearch(keyword)
+  },
+
+  async doSearch(keyword) {
+    if (this.data.searchLoading) return
+
+    this.setData({
+      searchLoading: true
+    })
+
+    try {
+      const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+      const res = await db.collection('dish')
+        .where({
+          status: 1,
+          name: db.RegExp({
+            regexp: escaped,
+            options: 'i'
+          })
+        })
+        .orderBy('sort', 'asc')
+        .limit(30)
+        .get()
+
+      const results = (res.data || []).map(goods => {
+        const normalized = this.normalizeDish(goods)
+        const menu = this.data.menuList.find(category => category._id === normalized.categoryId)
+        return {
+          ...normalized,
+          categoryName: menu ? menu.name : ''
+        }
+      })
+
+      this.setData({
+        searchResults: results,
+        searchSearched: true
+      })
+    } catch (err) {
+      console.error('搜索菜品失败', err)
+      this.setData({
+        searchSearched: true
+      })
+      wx.showToast({
+        title: '搜索失败',
+        icon: 'none'
+      })
+    } finally {
+      this.setData({
+        searchLoading: false
+      })
+    }
+  },
+
+  onSearchResultTap(e) {
+    const goods = e.currentTarget.dataset.goods
+    if (!goods || !goods._id) return
+
+    this.openDishModal(goods)
+  },
+
+  onUnload() {
+    if (this.searchTimer) {
+      clearTimeout(this.searchTimer)
+      this.searchTimer = null
+    }
+  },
 
   async onUserInfoSaved(e) {
     const { avatarUrl, nickName, phoneNumber } = e.detail || {}
