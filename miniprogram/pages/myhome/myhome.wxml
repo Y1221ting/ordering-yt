@@ -24,35 +24,10 @@
     </view>
 
     <view class="hero-metrics">
-      <view class="metric-item">
-        <view class="metric-label">账户余额</view>
-        <view class="metric-value">¥{{userInfo.balance || 0}}</view>
-      </view>
-      <view class="metric-divider"></view>
       <view class="metric-item" bindtap="goToOrder">
         <view class="metric-label">订单记录</view>
         <view class="metric-value small">查看</view>
       </view>
-    </view>
-  </view>
-
-  <view class="service-section">
-    <view class="section-heading">常用服务</view>
-    <view class="service-grid">
-      <view class="service-tile" bindtap="goToOrder">
-        <view class="service-icon-wrap red">
-          <image src="/images/tabBar/myOrder-active.png" mode="aspectFit"></image>
-        </view>
-        <view class="service-title">我的订单</view>
-        <view class="service-desc">消费记录</view>
-      </view>
-      <button class="service-tile contact-tile" open-type="contact">
-        <view class="service-icon-wrap amber">
-          <van-icon name="service-o" size="44rpx" color="#d94335" />
-        </view>
-        <view class="service-title">联系客服</view>
-        <view class="service-desc">问题反馈</view>
-      </button>
     </view>
   </view>
 

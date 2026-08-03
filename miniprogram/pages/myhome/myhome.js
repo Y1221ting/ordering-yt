@@ -47,8 +47,7 @@ Page({
     this.setData({
       userInfo: {
         ...(this.data.userInfo || {}),
-        ...userInfo,
-        balance: typeof userInfo.balance === 'undefined' ? 0 : userInfo.balance
+        ...userInfo
       }
     })
   },
@@ -63,15 +62,6 @@ Page({
       
       if (res.data && res.data.length > 0) {
         const user = res.data[0]
-        // 初始化余额字段
-        if (typeof user.balance === 'undefined') {
-          await db.collection('user').doc(user._id).update({
-            data: {
-              balance: 0
-            }
-          })
-          user.balance = 0
-        }
 
         this.applyUserInfo(user)
         
@@ -102,34 +92,12 @@ Page({
     this.loadUserInfo()
   },
 
-  // 跳转到充值页面
-  goToRecharge() {
-    if (!this.data.userInfo || !this.data.userInfo.phoneNumber) {
-      wx.showToast({
-        title: '请先登录',
-        icon: 'none'
-      })
-      return
-    }
-
-    wx.switchTab({
-      url: '/pages/recharge/recharge'
-    })
-  },
-
   // 跳转到订单页面
   goToOrder(e) {
     const status = e.currentTarget.dataset.status
     wx.switchTab({
       url: '/pages/myorder/myorder'
     })
-  },
-
-  // 联系客服
-  // 联系客服
-  contactService() {
-    // 使用button的open-type="contact"功能
-    // 这里可以添加额外的逻辑，比如统计点击次数等
   },
 
   // 管理员入口触发
