@@ -137,7 +137,7 @@
             <text class="price-num">{{cartTotalPriceText}}</text>
           </view>
           <view class="cart-tip" wx:if="{{tableNumber}}">{{tableNumber}}号桌</view>
-          <view class="cart-tip" wx:else>请微信扫桌码点餐</view>
+          <view class="cart-tip" wx:else>想吃啥就点啥</view>
         </view>
       </view>
       <view class="cart-right">
