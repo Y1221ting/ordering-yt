@@ -46,23 +46,28 @@ App({
         wx.showLoading({
           title: '加载中...',
         });
-        
+
+        let openidOk = true
         try {
           // 等待openid获取完成
           await that.checkOpenid();
-          wx.hideLoading();
-          
-          // 调用原来的onLoad
-          if (originalOnLoad) {
-            originalOnLoad.call(this, options);
-          }
         } catch (error) {
-          console.error('获取用户信息失败', error);
-          wx.hideLoading();
+          console.error('获取openid失败', error);
+          openidOk = false
+        }
+        wx.hideLoading();
+
+        if (!openidOk) {
           wx.showToast({
-            title: '加载失败，请重试',
+            title: '网络不稳定，数据加载中',
             icon: 'none'
           });
+        }
+
+        // 无论openid是否获取成功，都照常执行页面onLoad：
+        // 页面自身加载数据时会重试，避免"数据被清空"的假象
+        if (originalOnLoad) {
+          originalOnLoad.call(this, options);
         }
       }
       
