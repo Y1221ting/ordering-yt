@@ -294,16 +294,15 @@ exports.main = async (event, context) => {
       const finalTableNumber = String(tableNumber || '').trim()
       const finalRemark = String(remark || '').trim().slice(0, 120)
 
-      if (!finalTableNumber) {
-        throw new Error('下单前请先扫描桌码')
-      }
+      // 家庭版：桌码可选，填了才校验
+      if (finalTableNumber) {
+        const tableCodeRes = await transaction.collection('tableCode').where({
+          tableNumber: finalTableNumber
+        }).limit(1).get()
 
-      const tableCodeRes = await transaction.collection('tableCode').where({
-        tableNumber: finalTableNumber
-      }).limit(1).get()
-
-      if (!tableCodeRes.data || tableCodeRes.data.length === 0) {
-        throw new Error('桌码无效，请重新扫描')
+        if (!tableCodeRes.data || tableCodeRes.data.length === 0) {
+          throw new Error('桌码无效，请重新扫描')
+        }
       }
 
       if (!Array.isArray(orderGoods) || orderGoods.length === 0) {
@@ -389,7 +388,8 @@ exports.main = async (event, context) => {
         finalPrice: recalculatedFinalPrice,
         orderType: finalOrderType,
         // status: 0, // 0-待确认
-        pay_status: !!payWithBalance,
+        // 家庭版：下单即生效，一律标记已支付（订单列表只显示已支付订单）
+        pay_status: true,
         createTime: db.serverDate(),
         _openid: openid,
         // 用户信息
