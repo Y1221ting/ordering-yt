@@ -7,14 +7,42 @@
       <van-tab title="充值订单" />
       <van-tab title="点餐订单" />
     </van-tabs>
+
+    <!-- 时间段筛选 -->
+    <view class="time-filter">
+      <view class="time-tabs">
+        <view
+          class="time-tab {{timeRange === index ? 'active' : ''}}"
+          wx:for="{{timeOptions}}"
+          wx:key="index"
+          bindtap="onTimeRangeChange"
+          data-index="{{index}}">{{item}}</view>
+      </view>
+      <view class="custom-picker" wx:if="{{timeRange === 5}}">
+        <picker mode="date" value="{{customStart}}" bindchange="onCustomStartChange">
+          <view class="picker-box {{customStart ? '' : 'empty'}}">{{customStart || '开始日期'}}</view>
+        </picker>
+        <text class="picker-sep">至</text>
+        <picker mode="date" value="{{customEnd}}" bindchange="onCustomEndChange">
+          <view class="picker-box {{customEnd ? '' : 'empty'}}">{{customEnd || '结束日期'}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <!-- 视图切换 -->
+    <view class="view-switch">
+      <view class="view-btn {{viewMode === 'list' ? 'active' : ''}}" bindtap="onViewModeChange" data-mode="list">流水</view>
+      <view class="view-btn {{viewMode === 'summary' ? 'active' : ''}}" bindtap="onViewModeChange" data-mode="summary">分类汇总</view>
+    </view>
+
     <view class="refresh-bar">
       <view class="refresh-btn" bindtap="refreshOrders">刷新</view>
       <text class="refresh-tip">每 10 秒自动刷新</text>
     </view>
   </view>
 
-  <!-- 订单列表 -->
-  <view class="order-list">
+  <!-- 流水视图：订单列表 -->
+  <view class="order-list" wx:if="{{viewMode === 'list'}}">
     <view class="order-item" wx:for="{{orders}}" wx:key="_id">
       <!-- 订单头部 -->
       <view class="order-header">
@@ -100,6 +128,32 @@
     </view>
 
     <van-empty wx:if="{{orders.length === 0}}" description="暂无订单数据" />
+  </view>
+
+  <!-- 分类汇总视图 -->
+  <view class="summary-view" wx:if="{{viewMode === 'summary'}}">
+    <view class="summary-stats">
+      <text class="summary-stats-text">
+        共 {{summaryStats.orderCount}} 个订单 · {{summaryStats.dishCount}} 份菜
+      </text>
+    </view>
+
+    <view class="summary-card" wx:for="{{summaryList}}" wx:key="categoryName">
+      <view class="summary-card-head">
+        <text class="summary-cat-name">{{item.categoryName}}</text>
+        <text class="summary-cat-count">{{item.dishes.length}} 道菜</text>
+      </view>
+      <view
+        class="summary-dish"
+        wx:for="{{item.dishes}}"
+        wx:for-item="dish"
+        wx:key="name">
+        <text class="summary-dish-name">{{dish.name}}</text>
+        <text class="summary-dish-count">×{{dish.count}}</text>
+      </view>
+    </view>
+
+    <van-empty wx:if="{{summaryList.length === 0}}" description="该时段没有点餐订单" />
   </view>
 
 </view>
