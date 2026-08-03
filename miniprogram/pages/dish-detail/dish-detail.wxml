@@ -170,7 +170,7 @@
             class="add-button {{dish.hasSaleSku ? '' : 'disabled'}}"
             bindtap="addToCart"
             disabled="{{!dish.hasSaleSku}}">
-            加入购物车
+            加入菜篮
           </button>
         </view>
       </view>

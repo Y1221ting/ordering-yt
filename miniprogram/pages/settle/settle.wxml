@@ -66,7 +66,7 @@
         </view>
       </view>
 
-      <van-empty wx:if="{{orderGoods.length === 0}}" description="购物车为空" />
+      <van-empty wx:if="{{orderGoods.length === 0}}" description="菜篮还空着，去挑几道吧" />
     </view>
   </view>
 

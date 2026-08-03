@@ -294,9 +294,14 @@ Page({
     })
   },
 
-  // 删除记录（带确认弹窗）
+  // 删除记录（只能删自己的，界面按钮已按 isMine 隐藏，这里再拦一道）
   deleteRecord(e) {
     const id = e.currentTarget.dataset.id
+    const record = this.data.records.find(r => r._id === id)
+    if (!record || !record.isMine) {
+      wx.showToast({ title: '只能删除自己记的账', icon: 'none' })
+      return
+    }
     wx.showModal({
       title: '删除记录',
       content: '确定删除这条记录吗？删除后不可恢复',

@@ -278,7 +278,7 @@ Page({
     saveStoredCart(cart)
 
     wx.showToast({
-      title: '已加入购物车',
+      title: '已加入菜篮',
       icon: 'success',
       duration: 900
     })
@@ -322,10 +322,10 @@ Page({
       wx.navigateTo({
         url: '/pages/settle/settle',
         fail: (err) => {
-          console.error('打开结算页失败', err)
+          console.error('打开确认页失败', err)
           wx.removeStorageSync('settleCartData')
           wx.showToast({
-            title: '打开结算页失败',
+            title: '打开确认页失败',
             icon: 'none'
           })
         }
@@ -333,7 +333,7 @@ Page({
     } catch (err) {
       console.error('立即购买失败', err)
       wx.showToast({
-        title: '打开结算页失败',
+        title: '打开确认页失败',
         icon: 'none'
       })
     }

@@ -73,7 +73,7 @@ Page({
       const cartData = wx.getStorageSync('settleCartData')
       if (!cartData) {
         wx.showToast({
-          title: '购物车为空',
+          title: '菜篮还空着',
           icon: 'none'
         })
         setTimeout(() => {

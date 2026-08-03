@@ -145,7 +145,7 @@
       </view>
       <view class="cart-right">
         <view class="settle-btn {{cartCount > 0 ? 'active' : ''}}" bindtap="goToSettle">
-          去结算
+          就点这些
         </view>
       </view>
     </view>
@@ -155,7 +155,7 @@
   <view class="cart-mask {{showCart ? 'show' : ''}}" bindtap="toggleCart"></view>
   <view class="cart-detail {{showCart ? 'show' : ''}}">
     <view class="cart-header">
-      <text class="cart-title">购物车</text>
+      <text class="cart-title">我的菜篮</text>
       <text class="cart-clear" bindtap="clearCart">清空</text>
     </view>
     <scroll-view class="cart-content" scroll-y>
@@ -183,13 +183,13 @@
         </view>
       </view>
 
-      <van-empty wx:if="{{cartCount === 0}}" description="购物车是空的" />
+      <van-empty wx:if="{{cartCount === 0}}" description="菜篮还空着，去挑几道吧" />
     </scroll-view>
 
     <!-- 购物车底部栏 -->
     <view class="cart-footer" wx:if="{{cartCount > 0}}">
       <view class="cart-footer-right">
-        <view class="cart-settle-btn" bindtap="goToSettle">去下单</view>
+        <view class="cart-settle-btn" bindtap="goToSettle">就点这些</view>
       </view>
     </view>
   </view>
@@ -278,7 +278,7 @@
 
       <!-- 底部按钮 -->
       <view class="modal-footer-bar">
-        <view class="add-cart-btn" bindtap="confirmAddToCart">加入购物车</view>
+        <view class="add-cart-btn" bindtap="confirmAddToCart">加入菜篮</view>
       </view>
     </view>
   </view>

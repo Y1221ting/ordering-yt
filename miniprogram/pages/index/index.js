@@ -1189,7 +1189,7 @@ Page({
 
   goToSettle() {
     if (this.data.cartCount === 0) {
-      wx.showToast({ title: '购物车为空', icon: 'none' })
+      wx.showToast({ title: '菜篮还空着', icon: 'none' })
       return
     }
 

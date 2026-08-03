@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "订单结算",
+  "navigationBarTitleText": "确认清单",
   "usingComponents": {
     "van-cell": "/vant/cell/index",
     "van-cell-group": "/vant/cell-group/index",
