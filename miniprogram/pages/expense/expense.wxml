@@ -2,6 +2,7 @@
 <view class="page expense-page">
   <!-- 顶部预算卡 -->
   <view class="card budget-card">
+    <image class="budget-mountain" src="/images/wanshan.png" mode="aspectFill"></image>
     <view class="budget-top">
       <view class="budget-meta">
         <view class="budget-month">{{monthLabel}}预算</view>

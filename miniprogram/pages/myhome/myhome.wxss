@@ -3,7 +3,7 @@
   min-height: 100vh;
   box-sizing: border-box;
   padding: 24rpx 24rpx calc(34rpx + env(safe-area-inset-bottom));
-  background: linear-gradient(180deg, #f0faf6 0%, #faf7f0 360rpx, #faf7f0 100%);
+  background: linear-gradient(180deg, #faf7f0 0%, #faf7f0 360rpx, #faf7f0 100%);
 }
 
 .member-hero {
@@ -13,7 +13,7 @@
   border-radius: 20rpx;
   overflow: hidden;
   color: #ffffff;
-  background: linear-gradient(135deg, #2f8a6d 0%, #5fc4a3 58%, #8fd8bc 100%);
+  background: linear-gradient(135deg, #2e4a40 0%, #3f9d81 56%, #5fc4a3 100%);
   box-shadow: 0 22rpx 50rpx rgba(95, 196, 163, 0.24);
 }
 

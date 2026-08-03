@@ -17,9 +17,9 @@ page {
   --text-main: #22252b;
   --text-sub: #69707d;
   --text-muted: #9aa1ad;
-  --line-color: #ebeef3;
+  --line-color: #e3dbc9;
   --card-bg: #ffffff;
-  --page-bg: #f6f7f9;
+  --page-bg: #faf7f0;
   --card-shadow: 0 12rpx 34rpx rgba(27, 36, 48, 0.07);
   --soft-shadow: 0 8rpx 22rpx rgba(95, 196, 163, 0.16);
   --theme-gradient: linear-gradient(135deg, #2e4a40 0%, #3f9d81 56%, #5fc4a3 100%);
@@ -142,9 +142,9 @@ textarea {
 .password-input,
 .search-input,
 .option-input {
-  border-color: #e6e9ef !important;
+  border-color: #e3dbc9 !important;
   border-radius: 12rpx !important;
-  background: #fbfcfd;
+  background: #fdfaf3;
 }
 
 .section-title,

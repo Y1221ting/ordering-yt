@@ -326,7 +326,7 @@
 
 /* 高级版视觉覆盖 */
 .page {
-  background: linear-gradient(180deg, #f0faf6 0%, #faf7f0 240rpx, #faf7f0 100%);
+  background: linear-gradient(180deg, #faf7f0 0%, #faf7f0 240rpx, #faf7f0 100%);
 }
 
 .tabs {

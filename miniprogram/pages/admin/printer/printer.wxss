@@ -136,7 +136,7 @@
 .bind-btn {
   display: inline-block;
   padding: 24rpx 60rpx;
-  background: linear-gradient(135deg, #5fc4a3 0%, #8fd8bc 100%);
+  background: linear-gradient(135deg, #2e4a40 0%, #3f9d81 56%, #5fc4a3 100%);
   color: white;
   border-radius: 50rpx;
   font-size: 32rpx;
@@ -191,7 +191,7 @@
 }
 
 .option-btn.active {
-  background: linear-gradient(135deg, #5fc4a3 0%, #8fd8bc 100%);
+  background: linear-gradient(135deg, #2e4a40 0%, #3f9d81 56%, #5fc4a3 100%);
   color: white;
   border-color: transparent;
 }
@@ -280,7 +280,7 @@
 
 /* 高级版视觉覆盖 */
 .page {
-  background: linear-gradient(180deg, #f0faf6 0%, #faf7f0 240rpx, #faf7f0 100%);
+  background: linear-gradient(180deg, #faf7f0 0%, #faf7f0 240rpx, #faf7f0 100%);
   padding: 24rpx;
   padding-bottom: 48rpx;
 }
@@ -327,7 +327,7 @@
 
 .bind-btn,
 .option-btn.active {
-  background: linear-gradient(135deg, #3f9d81 0%, #5fc4a3 58%, #8fd8bc 100%);
+  background: linear-gradient(135deg, #2e4a40 0%, #3f9d81 56%, #5fc4a3 100%);
   box-shadow: 0 12rpx 26rpx rgba(95, 196, 163, 0.2);
 }
 

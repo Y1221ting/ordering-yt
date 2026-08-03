@@ -8,12 +8,12 @@
 
 /* 状态栏占位 */
 .status-bar {
-  background: linear-gradient(135deg, #5fc4a3 0%, #8fd8bc 100%);
+  background: linear-gradient(135deg, #2e4a40 0%, #3f9d81 56%, #5fc4a3 100%);
 }
 
 /* 店名 */
 .shop-header {
-  background: linear-gradient(135deg, #5fc4a3 0%, #8fd8bc 100%);
+  background: linear-gradient(135deg, #2e4a40 0%, #3f9d81 56%, #5fc4a3 100%);
   padding: 24rpx 30rpx 28rpx;
   text-align: center;
 }
@@ -595,7 +595,7 @@
 
 .cart-settle-btn {
   padding: 20rpx 50rpx;
-  background: linear-gradient(135deg, #5fc4a3 0%, #8fd8bc 100%);
+  background: linear-gradient(135deg, #2e4a40 0%, #3f9d81 56%, #5fc4a3 100%);
   color: white;
   border-radius: 50rpx;
   font-size: 28rpx;
@@ -794,7 +794,7 @@
 }
 
 .tag-option.selected {
-  background: linear-gradient(135deg, #5fc4a3 0%, #8fd8bc 100%);
+  background: linear-gradient(135deg, #2e4a40 0%, #3f9d81 56%, #5fc4a3 100%);
   border-color: #5fc4a3;
   color: white;
   font-weight: bold;
@@ -827,7 +827,7 @@
   width: 60rpx;
   height: 60rpx;
   border-radius: 50%;
-  background: linear-gradient(135deg, #5fc4a3 0%, #8fd8bc 100%);
+  background: linear-gradient(135deg, #2e4a40 0%, #3f9d81 56%, #5fc4a3 100%);
   color: white;
   display: flex;
   align-items: center;
@@ -885,7 +885,7 @@
 
 .add-cart-btn {
   padding: 20rpx 60rpx;
-  background: linear-gradient(135deg, #5fc4a3 0%, #8fd8bc 100%);
+  background: linear-gradient(135deg, #2e4a40 0%, #3f9d81 56%, #5fc4a3 100%);
   color: white;
   border-radius: 50rpx;
   font-size: 28rpx;
@@ -899,7 +899,7 @@
 
 .status-bar,
 .shop-header {
-  background: linear-gradient(135deg, #2f8a6d 0%, #5fc4a3 58%, #8fd8bc 100%);
+  background: linear-gradient(135deg, #2e4a40 0%, #3f9d81 56%, #5fc4a3 100%);
 }
 
 .shop-header {
